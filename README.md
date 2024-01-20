@@ -1,4 +1,6 @@
-# Final project &ndash; A personal blogging system &ndash; Starter project
+# Final project - A personal blogging system &ndash - Amber Axolotls
+
+![](./frontend//static//Amber%20Axolotls.png)
 
 This repository contains a starting point for your team's final project.
 

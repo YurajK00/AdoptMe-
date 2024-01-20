@@ -14,6 +14,9 @@
 <!-- This image is stored on our Express server. -->
 <img src={`${PUBLIC_IMAGES_URL}/Dragonite.png`} alt="Dragonite" style="width: 320px" />
 
+<!-- This image is stored in the frontend's "static" folder -->
+<img src="Amber%20Axolotls.png" alt="Amber Axolotls" style="width: 320px" />
+
 <h2>Messages from server</h2>
 {#each data.messages as message (message.id)}
   <MessageView {message} />
