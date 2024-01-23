@@ -5,10 +5,10 @@
 </script>
 
 <svelte:head>
-  <title>Home</title>
+  <title>Adopt me</title>
 </svelte:head>
 
-<h1>Home page</h1>
+<h1>Adopt me!</h1>
 <p>This is the homepage.</p>
 
 <!-- This image is stored on our Express server. -->
@@ -21,3 +21,16 @@
 {#each data.messages as message (message.id)}
   <MessageView {message} />
 {/each}
+
+<style>
+
+  h1{
+    background-color: #B9D8A8;
+    color: #21492a;
+    text-align: center;
+    box-shadow: 0 5px 3px lightgray;
+    margin: 20px;
+    border: 50px;
+  }
+
+  </style>
