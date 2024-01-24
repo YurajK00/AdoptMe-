@@ -29,7 +29,7 @@
     
     @font-face {
       font-family: 'ADR';
-      src: url('lib/font/ArchitectsDaughter-Regular.tff');
+      src: url('lib/font/ArchitectsDaughter-Regular.ttf');
     }
 
 
@@ -71,17 +71,13 @@
       padding: 10px;
 
       &:hover {
-        /* background-color: rgba(255, 255, 255, 0.2); */
         transition-duration: 0.8s;
-        border-radius: 12px;
         transform: scale(1.1);
-
       }
     }
 
     & a {
       color:#434e2a;
-      font-family: "ADR";
       font-size: 1.3rem;
       font-weight: bold;
       text-decoration: none;
