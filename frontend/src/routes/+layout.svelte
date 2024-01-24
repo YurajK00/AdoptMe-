@@ -19,6 +19,8 @@
   <slot />
 
 </div>
+
+
 </body>
 
 
@@ -72,6 +74,7 @@
       width: 100%;
     }
   }
+
 
   body{
     background: url("Background.png") no-repeat;
