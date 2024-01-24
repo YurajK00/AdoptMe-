@@ -1,7 +1,10 @@
  <script>
   import "$lib/css/app.css";
   import { page } from "$app/stores";
+
+
   $: path = $page.url.pathname;
+  
 </script>
 
 <nav>
@@ -10,7 +13,7 @@
     <li><a href="/" class:active={path === "/"}>Home</a></li>
     <li><a href="/" class:active={path === "/"}>Articles</a></li>
     <li><a href="/" class:active={path === "/"}>Founder Story</a></li>
-    <li id="login"><a href="/" class:active={path === "/"}>Log in!</a></li>
+    <button id="login"><a href="/" class:active={path === "/"}>Log in!</a></button>
   </ul>
 </nav>
 
@@ -23,13 +26,30 @@
 
 
 <style>
+    
+    @font-face {
+      font-family: 'ADR';
+      src: url('lib/font/ArchitectsDaughter-Regular.tff');
+    }
 
-/* #login{
-      color:#9da588;
+
+#login {
+      margin: 5px;
+      background-color: #B9D8A8;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 32px;
+      color:#87a803;
       font-size: 1rem;
       font-weight: bold;
-      text-decoration: none;
-    } */
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition-duration: 0.8s;
+        border-radius: 12px;
+      }
+
+    }
 
 
   nav {
@@ -47,24 +67,36 @@
     }
 
     & li {
-      margin: 0px;
+      margin: 5px;
       padding: 10px;
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        transition-duration: 0.8s;
+        border-radius: 12px;
+        transform: scale(1.1);
+
       }
     }
 
     & a {
       color:#434e2a;
+      font-family: "ADR";
       font-size: 1.3rem;
       font-weight: bold;
       text-decoration: none;
+
+      &:hover {
+        color: #d27a7b;
+        transition-duration: 0.8s;
+
+      }
     }
   }
 
   .container {
-    width: 1200px;
+    position: relative;
+    width: 1500px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.362);
 
