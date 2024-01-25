@@ -1,0 +1,431 @@
+@font-face {
+    font-family: 'heyhoo';
+    src: url("../font/heyhoo-lgnmd.ttf");
+    }
+
+@font-face {
+    font-family: 'ADR';
+    src: url("../font/ArchitectsDaughter-Regular.ttf");
+    }
+
+@font-face {
+    font-family: 'roboto';
+    src: url("../font/Roboto-Medium.ttf");
+    }
+
+@font-face {
+    font-family: 'thewonder';
+    src: url("../font/thewonder.ttf");
+    }
+
+@font-face {
+    font-family: 'fornest';
+    src: url("../font/fornest.ttf");
+    }
+
+@font-face {
+    font-family: 'welovepeace';
+    src: url("../font/welovepeace.ttf");
+    }
+
+.container {
+        position: relative;
+        width: 1500px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.362);
+      
+        @media (max-width: 1200px) {
+          width: 100%;
+        }
+      }
+      
+ body{
+        background: url("Background.png") no-repeat;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+      }
+
+ #header {
+    background: linear-gradient(to right, transparent, #B9D8A8);
+    color: #21492a;
+    text-align: center;
+    box-shadow: 0 5px 3px lightgray;
+    margin: 20px;
+    border: 50px;
+    font-family: "welovepeace";
+    font-size: 70px;
+    letter-spacing: 10px;
+    text-shadow: 
+    1px 1px 0 #D2D478,
+    2px 2px 0 #277025,
+    3px 3px 0 #277025,
+    4px 4px 0 #D2D478;
+  }
+
+  #pawIcon {
+    position:absolute;
+    left: 400px;
+    top: 0px;
+    width: 80px;
+  }
+
+  #rawPaw {
+    position:absolute;
+    right: 180px;
+    top: -45px;
+    width: 300px;
+  }
+
+
+
+#firstPart{
+  display: flex;
+  padding: 20px;
+  padding-top:0px;
+  margin: 20px;
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+  .introduction-box {
+    background: 
+    linear-gradient(to right, transparent, 50%, pink),
+    url("pawBG.png");
+    background-size: 250%;
+    border: 0.3rem outset #efaaa5;
+    outline: 0.3rem solid #B9D8A8;
+    border-radius: 12px;
+    width: 400px;
+    height: 550px;
+    padding: 20px;
+    margin: 20px;
+
+    & img {
+      position: relative;
+      width: 150px;
+      height: 100px;
+      bottom: 30px;
+      left: 280px;
+    }
+
+    &:hover {
+        transition-duration: 1.5s;
+        transform: scale(1.03);
+      }
+
+    & #mainHeading {
+      color: #a85337;
+      text-align: left;
+      font-size: 30px;
+      margin: 5px;
+      padding: 10px;
+      font-family: "welovepeace";
+      letter-spacing: 5px;
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+    }
+
+    & #subheading {
+      color: #a85337;
+      text-align: right;
+      font-size: 20px;
+      margin: 0;
+      font-family: "roboto";
+      letter-spacing: 5px;
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+    }
+
+
+    & p {
+      color: #277025;
+      margin: 10px;
+      text-align: left;
+      font-size: 18px;
+      text-indent: 20px;
+      font-family:"roboto";
+      line-height: 32px;
+    }
+  } 
+  
+  .slideshow {
+    width: 650px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    border: 0.5rem outset #efaaa5;
+    outline: 0.5rem solid #B9D8A8;
+    border-radius: 12px;
+  }
+
+  #images-container{
+    position: absolute;
+    left: 0; 
+    top: 0;
+    animation: slideshow 20s linear infinite;
+    display: flex;
+    transform: translate3d(0, 0, 0);
+  } 
+
+  .list {
+    width: 650px;
+    height: 450px;
+    float: left;
+    margin-right: 10px;
+  }
+
+  @keyframes slideshow{
+    0% {transform: translate(0,0);}
+    15% {transform: translate(0,0);} 
+
+    20% {transform: translate(-20%,0);} 
+    35% {transform: translate(-20%,0);}
+
+    40% {transform: translate(-40%,0);}
+    55% {transform: translate(-40%,0);}
+
+    60% {transform: translate(-60%,0);}
+    75% {transform: translate(-60%,0);}
+
+    80% {transform: translate(-80%,0);}
+    95% {transform: translate(-80%,0);}
+
+    100% {transform: translate(0,0);} 
+  }
+
+  .activityBox{
+    background: 
+    linear-gradient(to right, transparent, 50%, pink),
+    url("pawBG.png");
+    background-size: 250%;
+    width: 650px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    border: 0.5rem outset #efaaa5;
+    outline: 0.5rem solid #B9D8A8;
+    border-radius: 12px;
+
+    &:hover {
+        transition-duration: 1.5s;
+        transform: scale(1.03);
+      }
+
+    & #loudspeaker {
+      position: relative;
+      z-index: 1;
+      width: 100px;
+      height: 90px;
+      bottom: 90px;
+      left: 10px;
+    }
+  }
+
+
+  .activity{
+    & h3 {
+      font-family: "heyhoo";
+      letter-spacing: 3px;
+      text-align: right;
+      padding-right: 15px;
+      color: #a85337;
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+    }
+
+    & p {
+      font-family: "heyhoo";
+      letter-spacing: 3px;
+      text-align: right;
+      padding-right: 15px;
+      font-size: 19px;
+      color: #a85337;
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+    }
+  }
+
+  .sideNavBox {
+    position: fixed;
+    right: 220px;
+    top: 280px;
+    background: 
+    linear-gradient(to right, transparent, 20%, pink);
+    background-size: 250%;
+    border: 0.3rem outset #efaaa5;
+    outline: 0.3rem solid #B9D8A8;
+    border-radius: 12px;
+    width: 150px;
+    height: 500px;
+    padding: 20px;
+    margin: 20px;
+    z-index: 2;
+    transition: 0.5s; 
+
+    & h2 {
+    color: #a85337;
+    margin: 0;
+    font-family: "welovepeace";
+    font-size: 22px;
+    padding-top: 20px;
+    text-shadow: 
+    1px 1px 0 #d27a7b,
+    2px 2px 0 #dfdaa3,
+    3px 3px 0 #d27a7b,
+    4px 4px 0 #dfdaa3;
+    }
+
+    & #gingerCat{
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 80px;
+    right: 120px;
+    top: -50px;
+    }
+
+    & .customerService {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+
+
+      & p {
+        margin-top: 0px;
+        color: #a85337;
+        font-family: "heyhoo";
+        font-size: 20px;
+      }
+
+      & button {
+        margin-top: 0px;
+        color: #a85337;
+        font-family: "heyhoo";
+        font-size: 15px;
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: dotted ;
+        border-radius: 12px;
+
+        &:hover {
+        color: red;
+      }
+      }
+    }
+
+    &:hover {
+        transition-duration: 1.5s;
+        transform: scale(1.03);
+      }
+  }
+
+
+  .sideNav a {
+    padding-top: 45px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 21px;
+    color: #21492a;
+    display: block;
+    transition: 0.3s;
+    font-family: "heyhoo";
+    text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+   
+    &:hover {
+        transition-duration: 0.5s;
+        color: #d27a7b;
+      }
+}
+
+.dividingLine{
+    overflow: hidden;
+    text-align: center;
+    padding-top: 0px;
+}
+ .pawPrint{
+    display: inline-block;
+    width: 1680px;
+  }
+
+  #login {
+    margin: 5px;
+    background-color: #B9D8A8;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 32px;
+    color:#87a803;
+    font-size: 1rem;
+    font-weight: bold;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transition-duration: 0.8s;
+      border-radius: 12px;
+    }
+
+  }
+
+
+nav {
+  background-color: #9BC07C;
+  padding-left: 20px;
+  box-shadow: 0 5px 3px lightgray;
+
+  & > ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 300px;
+  }
+
+  & li {
+    padding-top: 20px;
+    &:hover {
+      transition-duration: 0.8s;
+      transform: scale(1.1);
+    }
+  }
+
+  & a {
+    color:#434e2a;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: "thewonder";
+
+    &:hover {
+      color: #d27a7b;
+      transition-duration: 0.8s;
+
+    }
+  }
+}
+
+/*
+分割线
+*/
+
+
+
