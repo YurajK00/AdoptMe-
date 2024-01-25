@@ -22,8 +22,10 @@
     }
 
     button{
+        margin-top: 10px;
         background-color: white;
         font-size: 16px;
+        cursor: pointer;
     }
 
 </style>

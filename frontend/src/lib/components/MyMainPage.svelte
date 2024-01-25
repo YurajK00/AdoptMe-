@@ -5,9 +5,9 @@
 
 <h1>View Articles</h1>
 <div id="article-container">
-    <div id="article-buttons">
-        <button class="hot-new-buttons">HOT</button>
-        <button class="hot-new-buttons">NEWEST</button>
+    <div >
+        <a class="hot-new-articles" href="url" target="_blank">HOT</a>
+        <a class="hot-new-articles" href="url" target="_blank">NEWEST</a>
     </div>
     
     <div class="article-info">
@@ -25,7 +25,7 @@
     <div class="article-info">
         <a href="url">Finding a new home for a rabbit</a>
         <LikeButtons/>
-        <time datetime="2024-01-24">January 24, 2026</time>
+        <time datetime="2024-01-24">January 24, 2027</time>
     </div> 
 
     <ReadMore /> 
@@ -37,11 +37,24 @@
 
 <style>
     #article-container{
-        margin-bottom: 50px;
-        margin-top: 30px;
+        margin: 30px 30px 50px 30px;
         border: dashed 1px;
-        padding: 10px;
+        padding: 15px;
     }
+
+    .hot-new-articles {
+        margin-bottom: 5px;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #d1f339;
+        color: #070707;
+        text-decoration: none;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
 
     div{
         font-size: 20px;
@@ -56,34 +69,6 @@
         border: 50px;
     }
 
-    .hot-new-buttons {
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        color: #ffffff;
-        background-color: #ff4500;
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-  
-    .hot-new-buttons:hover {
-        background-color: #ff5e00;
-    }
-    
-    .hot-new-buttons:focus {
-        outline: none;
-    }
-    
-    .hot-new-buttons:active {
-        background-color: #ff3300;
-    }
 
     a{
         color: rgb(31, 28, 28);

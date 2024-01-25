@@ -44,5 +44,15 @@
         border-radius: 50%;
         margin-left: 50px;
     }
+    
+    button:hover {
+        background-color: #d1f339;
+        cursor: pointer;
+    }
+
+    button:active {
+        background-color: #1a1818;
+    }
+
 </style>
 
