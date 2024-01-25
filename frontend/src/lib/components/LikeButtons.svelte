@@ -12,7 +12,6 @@
     }
 </script>
 
-
 <div class="thumb-button">
     <button on:click={incrementLikes}>
         <span class="thumb-icon">&#128077;
@@ -28,11 +27,6 @@
 </div>
   
 <style>
-    .thumb-button {
-        display: inline-block;
-        align-items: center;
-    }
-
     .thumb-icon {
         font-size: 24px;
         margin-right: 8px;
