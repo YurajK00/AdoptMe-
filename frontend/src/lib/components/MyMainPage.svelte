@@ -1,9 +1,10 @@
 <script>
     import LikeButtons from "./LikeButtons.svelte";
+    import ReadMore from "./ReadMore.svelte";
 </script>
 
 <h1>View Articles</h1>
-<div>
+<div id="article-container">
     <div id="article-buttons">
         <button class="hot-new-buttons">HOT</button>
         <button class="hot-new-buttons">NEWEST</button>
@@ -16,16 +17,32 @@
     </div>    
 
     <div class="article-info">
-        <a href="url">Adopt a cat from Auckland</a>
+        <a href="url">Do you want a dog from Hamilton?</a>
         <LikeButtons like= 200/>
-        <time datetime="2024-01-24">January 24, 2024</time>
+        <time datetime="2024-01-24">March 3, 2025</time>
     </div>  
+
+    <div class="article-info">
+        <a href="url">Finding a new home for a rabbit</a>
+        <LikeButtons/>
+        <time datetime="2024-01-24">January 24, 2026</time>
+    </div> 
+
+    <ReadMore /> 
 </div>
 
+<h1>Founders' Story</h1>
 
 
 
 <style>
+    #article-container{
+        margin-bottom: 50px;
+        margin-top: 30px;
+        border: dashed 1px;
+        padding: 10px;
+    }
+
     div{
         font-size: 20px;
     }
@@ -74,7 +91,7 @@
     }
 
     time{
-        margin-left: 35px;
+        margin-left: 105px;
     }
 
 </style>

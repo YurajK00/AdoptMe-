@@ -1,7 +1,6 @@
 <script>
   import { PUBLIC_IMAGES_URL } from "$env/static/public";
   import MessageView from "$lib/components/MessageView.svelte";
-  import '@fortawesome/fontawesome-free/css/all.css';
   import MyMainPage from "../lib/components/MyMainPage.svelte";
   export let data;
 </script>
