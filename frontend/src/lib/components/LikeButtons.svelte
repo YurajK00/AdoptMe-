@@ -1,7 +1,7 @@
 <script>
     export let likes = 300;
     export let dislikes = 24;
-    import '@fortawesome/fontawesome-free/css/all.css';
+    // import '@fortawesome/fontawesome-free/css/all.css';
   
     function incrementLikes() {
       likes += 1;
@@ -12,41 +12,12 @@
     }
 </script>
 
-<div class="thumb-button">
-    <button on:click={incrementLikes}>
-        <span class="thumb-icon">&#128077;
+<div class="likeButton">
+    <button class="thumb-button"  on:click={incrementLikes}>
+        <span class="thumb-icon">&#128077 Likes: {likes}
     </button>
-    <span>Likes: {likes}</span>
-</div>
 
-<div class="thumb-button">
-    <button on:click={incrementDislikes}>
-        <span class="thumb-icon">&#128078;
+    <button class="thumb-button" on:click={incrementDislikes}>
+        <span class="thumb-icon">&#128078 Dislikes: {dislikes}
     </button>
-    <span>Dislikes: {dislikes}</span>
 </div>
-  
-<style>
-    .thumb-icon {
-        font-size: 24px;
-        margin-right: 8px;
-    }
-
-    button{
-        border: none;
-        background-color: none;
-        border-radius: 50%;
-        margin-left: 50px;
-    }
-    
-    button:hover {
-        background-color: #d1f339;
-        cursor: pointer;
-    }
-
-    button:active {
-        background-color: #1a1818;
-    }
-
-</style>
-

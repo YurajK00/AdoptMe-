@@ -1,11 +1,11 @@
 <script>
   import { PUBLIC_IMAGES_URL } from "$env/static/public";
-  import MyMainPage from "../lib/components/MyMainPage.svelte";
   export let data;
   import Introduction from "$lib/components/Introduction.svelte";
   import SideNavBar from "../lib/components/SideNavBar.svelte";
   import LeftPart from "../lib/components/LeftPart.svelte";
   import DividingLine from "../lib/components/DividingLine.svelte";
+  import Articles from "../lib/components/Articles.svelte";
 
 
 </script>
@@ -14,7 +14,7 @@
   <title>Adopt me</title>
 </svelte:head>
 
-<h1 id="header">Adopt me!</h1>
+<h1 id="mainHeader">Adopt me!</h1>
 
 <!-- The dividing line after header -->
 <DividingLine />
@@ -34,10 +34,8 @@
 
 </div>
 
+<!-- The dividing line after first part -->
+<DividingLine />
 
-  <DividingLine />
-
-
-
-
-<MyMainPage />
+<!-- The article part -->
+<Articles />

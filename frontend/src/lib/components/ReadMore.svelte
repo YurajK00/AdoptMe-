@@ -1,31 +1,18 @@
 <script>
-    import '@fortawesome/fontawesome-free/css/all.css';
-    import { navigate } from 'svelte-routing';
+    // import '@fortawesome/fontawesome-free/css/all.css';
+    // import { navigate } from 'svelte-routing';
 
-    function goToArticlePage() {
-        navigate('/');
-    }
+    // function goToArticlePage() {
+    //     navigate('/');
+    // }
 </script>
 
-<div class="button-container">
-    <button on:click={goToArticlePage}>
-        <i class="fa-solid fa-arrow-right"></i>
-        Read more
+<div class="readMoreButton-container">
+    <button>
+        &#x1F48C ReadMore
     </button>
 </div>
  
 
-<style>
-    .button-container{
-        justify-content: flex-end;
-        display: flex;
-    }
-
-    button{
-        margin-top: 10px;
-        background-color: white;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-</style>
+<!-- on:click={goToArticlePage} -->
+<!-- <i class="fa-solid fa-arrow-right"></i> -->
