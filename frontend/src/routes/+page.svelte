@@ -1,5 +1,6 @@
 <script>
   import { PUBLIC_IMAGES_URL } from "$env/static/public";
+  import MyMainPage from "../lib/components/MyMainPage.svelte";
   export let data;
   import Introduction from "$lib/components/Introduction.svelte";
   import SideNavBar from "../lib/components/SideNavBar.svelte";
@@ -33,6 +34,10 @@
 
 </div>
 
+
   <DividingLine />
 
 
+
+
+<MyMainPage />
