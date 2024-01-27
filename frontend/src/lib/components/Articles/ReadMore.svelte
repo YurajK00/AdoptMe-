@@ -9,7 +9,7 @@
 
 <div class="readMoreButton-container">
     <button>
-        &#x1F48C ReadMore
+        &#x1F48C Read More
     </button>
 </div>
  
