@@ -1,12 +1,12 @@
 <script>
   import { PUBLIC_IMAGES_URL } from "$env/static/public";
   export let data;
-  import Header from "$lib/components/Header/Header.svelte";
-  import FirstPart from "$lib/components/FirstPart/FirstPart.svelte";
+  import Header from "$lib/components/MainPage/Header/Header.svelte";
+  import FirstPart from "$lib/components/MainPage/FirstPart/FirstPart.svelte";
   import DividingLine from "$lib/components/DividingLine.svelte";
-  import Articles from "$lib/components/Articles/Articles.svelte";
-  import FounderStory from "$lib/components/FounderStory/FounderStory.svelte";
-    import Contact from "../lib/components/Contact/Contact.svelte";
+  import Articles from "$lib/components/MainPage/Articles/Articles.svelte";
+  import FounderStory from "$lib/components/MainPage/FounderStory/FounderStory.svelte";
+  import Contact from "../lib/components/MainPage/Contact/Contact.svelte";
 
 
 </script>
@@ -15,11 +15,11 @@
   <title>Adopt me</title>
 </svelte:head>
 
+
 <!-- The Header -->
 <Header />
 
 <!-- The first part -->
-
 <FirstPart />
 
 <!-- The dividing line after first part -->

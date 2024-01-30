@@ -7,7 +7,7 @@
 
 <div>
 <h1>View Articles</h1>
-<img id="pawIcon" src="pawIcon.png" alt="paw Icon" />
+<img id="pawIcon" src="src/lib/image/pawIcon.png" alt="paw Icon" />
 </div>
 
     <div class="articleOrderButton">

@@ -8,13 +8,10 @@
   
 </script>
 
-<NavBar />
 
-<body>
+<NavBar/>
+
 <div class="container">
   <slot />
 
 </div>
-
-
-</body>

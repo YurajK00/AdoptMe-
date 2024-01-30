@@ -7,7 +7,7 @@
 <div id="ContactContainer">
 
     <div id="QRpart">
-    <img id="QRcode" src="QRcode.png" alt="QRcode" /> 
+    <img id="QRcode" src="src/lib/image/QRcode.png" alt="QRcode" /> 
     <p>Scan the QR Code!</p>
     </div>
 
@@ -17,6 +17,6 @@
 
     <div id="moreSuggestion">
       <p>More suggestions ?</p>
-    <img src="send.svg" alt="moreSuggestion" />  
+    <img src="src/lib/image/send.svg" alt="moreSuggestion" />  
     </div>
 </div>
