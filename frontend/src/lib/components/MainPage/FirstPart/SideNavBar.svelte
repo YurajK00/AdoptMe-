@@ -1,7 +1,7 @@
 
 <!-- Side nav bar part -->
 <div class="sideNavBox">
-    <img id="gingerCat" src="src/lib/image/gingercat.png" alt="gingerCat">
+    <img id="gingerCat" src="/src/lib/image/gingercat.png" alt="gingerCat">
 
     <div class = "sideNav">   
       <h2>Quick Guide</h2>

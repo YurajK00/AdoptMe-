@@ -1,6 +1,6 @@
 <script>
   import { PUBLIC_IMAGES_URL } from "$env/static/public";
-  export let data;
+
   import Header from "$lib/components/MainPage/Header/Header.svelte";
   import FirstPart from "$lib/components/MainPage/FirstPart/FirstPart.svelte";
   import DividingLine from "$lib/components/DividingLine.svelte";

@@ -1,6 +1,7 @@
 <script>
+    import DividingLine from "$lib/components/DividingLine.svelte";
+
     let showModal = false;
-  
     function toggleModal() {
       showModal = !showModal;
     }
@@ -31,3 +32,5 @@
     {/if}
 
 </div>
+
+<DividingLine />
