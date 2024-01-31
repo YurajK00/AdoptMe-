@@ -1,41 +1,44 @@
 <script>
   import { PUBLIC_IMAGES_URL } from "$env/static/public";
-  import MessageView from "$lib/components/MessageView.svelte";
-  import MyMainPage from "../lib/components/MyMainPage.svelte";
   export let data;
+  import Header from "$lib/components/MainPage/Header/Header.svelte";
+  import FirstPart from "$lib/components/MainPage/FirstPart/FirstPart.svelte";
+  import DividingLine from "$lib/components/DividingLine.svelte";
+  import Articles from "$lib/components/MainPage/Articles/Articles.svelte";
+  import FounderStory from "$lib/components/MainPage/FounderStory/FounderStory.svelte";
+  import Contact from "../lib/components/MainPage/Contact/Contact.svelte";
+
+
 </script>
 
 <svelte:head>
   <title>Adopt me</title>
 </svelte:head>
 
-<h1>Adopt me!</h1>
-<p>This is the homepage.</p>
 
-<!-- This image is stored on our Express server. -->
-<img src={`${PUBLIC_IMAGES_URL}/Dragonite.png`} alt="Dragonite" style="width: 320px" />
+<!-- The Header -->
+<Header />
 
-<!-- This image is stored in the frontend's "static" folder -->
-<img src="Amber%20Axolotls.png" alt="Amber Axolotls" style="width: 320px" />
+<!-- The first part -->
+<FirstPart />
 
-<h2>Messages from server</h2>
-{#each data.messages as message (message.id)}
-  <MessageView {message} />
-{/each}
+<!-- The dividing line after first part -->
+<DividingLine />
 
+<!-- The article part -->
+<Articles />
 
-<style>
+<!-- The dividing line after article part -->
+<DividingLine />
 
-  h1{
-    background-color: #B9D8A8;
-    color: #21492a;
-    text-align: center;
-    box-shadow: 0 5px 3px lightgray;
-    margin: 20px;
-    border: 50px;
-  }
+<!-- The founder story part -->
+<FounderStory />
 
+<!-- The dividing line after founder story part -->
+<DividingLine />
 
-  </style>
+<!-- The contact part -->
+<Contact />
 
-<MyMainPage />
+<!-- The last dividing line -->
+<DividingLine />
