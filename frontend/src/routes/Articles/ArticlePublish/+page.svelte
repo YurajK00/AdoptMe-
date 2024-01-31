@@ -9,6 +9,7 @@
   <title>Adopt me</title>
 </svelte:head>
 
-<h1>Publish your own article</h1>
+
+<h1 id="articlePublishHeader">Publish your own article</h1>
 
 <ArticlePublish />

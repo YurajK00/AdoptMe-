@@ -1,14 +1,33 @@
+<script>
+    let showModal = false;
+  
+    function toggleModal() {
+      showModal = !showModal;
+    }
+  </script>
+
 <div id="publishArticles-container">
-    <label for="article_title"> The title</label>
+    <label for="article_title"> Title</label>
     <textarea id="article_title" name="article_title" rows="1" cols="40" maxlength="20" required>
-    What do you want to share?
+    Give me your title...
     </textarea>
     
     
-    <label for="article_content"> The content</label>
+    <label for="article_content"> Content</label>
     <textarea id="article_content" name="article_content" rows="4" cols="40" maxlength="1000" required>
     Something interesting?
     </textarea>
     
-    <input id="submit" type="submit" value="Submit now!"> 
+    <button id="submit" on:click = { toggleModal }> 
+        Submit now!
+    </button>
+
+    {#if showModal}
+    <div class="pop-up-publish">
+        <p>Do you want to submit?</p>
+        <button on:click={toggleModal}>Yes</button>
+        <button on:click={toggleModal}>No</button>
+    </div>
+    {/if}
+
 </div>

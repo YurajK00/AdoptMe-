@@ -860,6 +860,12 @@ CSS of article page
   padding: 10px 20px;
   font-family: "welovepeace";
 
+  & a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  
   & button {
     margin-right: 20px;
     padding:  10PX 20px;
@@ -972,6 +978,19 @@ CSS of article page
 CSS of publish article
 */
 
+#articlePublishHeader{
+  position: relative;
+  top: 30px;
+  color: #a85337;
+  text-align: left;
+  box-shadow: 0 5px 3px lightgray;
+  margin: 20px;
+  padding: 20px;
+  font-family: "welovepeace";
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
 #publishArticles-container{
   display: flex;
   flex-direction: column;
@@ -980,8 +999,8 @@ CSS of publish article
 
   & label {
     position: relative;
-    top: 30px;
-    margin: 0 auto;
+    top: 50px;
+    left: 350px;
     font-size: 20px;
     font-family: "welovepeace";
     color: #a85337;
@@ -997,6 +1016,12 @@ CSS of publish article
     color: #a85337;
     border: #a85337 dotted ;
     border-radius: 12px;
+    
+    &:hover {
+      transition-duration: 0.5s;
+      transform: scale(1.03);
+      cursor: pointer;
+    }
   }
 }
 
@@ -1004,7 +1029,7 @@ CSS of publish article
   margin: 0 auto;
   width: 800px;
   height: 30px;
-  font-size: 25px;
+  font-size: 20px;
   color: #333;
   font-family: Arial, sans-serif;
   border: 1px solid #ccc;
@@ -1024,4 +1049,28 @@ CSS of publish article
   border-radius: 2px;
   padding: 5px;
   box-shadow: 1px 1px 2px #ccc;
+}
+
+.pop-up-publish {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & p{
+    font-size: 20px;
+  }
+
+  & button{
+    width: 80px;
+    height: 40px;
+    font-size: 20px ;
+    margin: 10px;
+    
+  }
 }
