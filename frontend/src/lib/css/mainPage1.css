@@ -246,6 +246,35 @@ box-shadow: 0 5px 3px lightgray;
     border: 0.5rem outset #efaaa5;
     outline: 0.5rem solid #B9D8A8;
     border-radius: 12px;
+
+    & #last {
+      position: absolute;
+      top: 200px;
+      font-size: 40px;
+      background-color: transparent;
+      border: none;
+      color: rgb(199, 115, 129);
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+    }
+
+    & #next{
+      position: absolute;
+      top: 200px;
+      left: 600px;
+      font-size: 40px;
+      background-color: transparent;
+      border: none;
+      color: rgb(199, 115, 129);
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+    }
   }
 
   #images-container{
@@ -253,36 +282,18 @@ box-shadow: 0 5px 3px lightgray;
     left: 0; 
     top: 0;
     margin: 0 auto;
-    animation: slideshow 20s linear infinite;
     display: flex;
-    transform: translate3d(0, 0, 0);
-  } 
-
-  .list {
+    width: 100%; 
+    transition: transform 1.5s ease-in-out;
+    
+  & img {
+    flex: 0 0 100%;
     width: 650px;
     height: 450px;
     float: left;
-    margin-right: 10px;
   }
+}
 
-  @keyframes slideshow{
-    0% {transform: translate(0,0);}
-    15% {transform: translate(0,0);} 
-
-    20% {transform: translate(-20%,0);} 
-    35% {transform: translate(-20%,0);}
-
-    40% {transform: translate(-40%,0);}
-    55% {transform: translate(-40%,0);}
-
-    60% {transform: translate(-60%,0);}
-    75% {transform: translate(-60%,0);}
-
-    80% {transform: translate(-80%,0);}
-    95% {transform: translate(-80%,0);}
-
-    100% {transform: translate(0,0);} 
-  }
 
   .activityBox{
     background: 
