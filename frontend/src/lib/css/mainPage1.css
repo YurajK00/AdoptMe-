@@ -1303,3 +1303,180 @@ CSS of founder story page
           transform: translateY(0);
       }
   }
+
+  /*
+CSS of edit page
+*/
+
+.edit-button{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    gap: 20px;
+
+    & button{
+      width: 200px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.6);
+      font-family: "welovepeace";
+      font-size: 20px;
+      color: #a85337;
+      border: #a85337 dotted ;
+      border-radius: 12px;
+
+      &:hover {
+        transition-duration: 0.5s;
+        transform: scale(1.03);
+        cursor: pointer;
+      }
+    }
+
+    & a{
+      text-decoration: none;
+      color: #a85337;
+    }
+}
+
+  /*
+CSS of profile page
+*/
+
+#profilePage-header{
+  position: relative;
+  top: 30px;
+  color: #a85337;
+  text-align: left;
+  box-shadow: 0 5px 3px lightgray;
+  margin: 20px;
+  padding: 20px;
+  font-family: "welovepeace";
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
+#profilePage-container {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 1000px;
+
+  padding: 30px;
+}
+
+#PP {
+  display: flex;
+  flex-direction: column;
+
+  
+  & img{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  & button{
+    position: relative;
+    bottom: 30px;
+    margin: 0 auto;
+    width: 200px;
+    font-size: 18px;
+    border-radius: 12px;
+    font-family: "roboto";
+    padding: 10px;
+  }
+}
+
+#user-infomation{
+  font-family: "roboto";
+  font-size: 20px;
+  padding: 20px;
+
+  & button{
+    position: relative;
+    width: 80px;
+    font-size: 15px;
+    border-radius: 12px;
+    font-family: "roboto";
+    padding: 5px;
+    margin: 5px;
+  }
+
+  & a{
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.pop-up-delete{
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & p{
+    font-size: 20px;
+  }
+
+  & button{
+    width: 80px;
+    height: 40px;
+    font-size: 20px ;
+    margin: 10px;
+    
+  }
+}
+
+.pop-up-profileChange {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & img{
+    width: 150px;
+    height: 150px;
+  }
+
+  & p{
+    padding:10px;
+    font-size: 20px;
+  }
+
+  & button{
+    position: relative;
+    left: 180px;
+    width: 80px;
+    height: 40px;
+    font-size: 20px ;
+    margin: 20px;
+  }
+}
+
+.profile-container{
+  display: flex;
+  margin: 0 auto;
+
+  & button{
+    position: relative;
+    left: 0px;
+    top: 30px;
+    width: 50px;
+  }
+
+}
