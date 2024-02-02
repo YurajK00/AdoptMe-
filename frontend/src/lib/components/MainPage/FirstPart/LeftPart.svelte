@@ -50,9 +50,9 @@
               {#each images as img (img)}
                 <img src={img} alt="pic">
               {/each}
-              <button id="last" on:click={handleClickLast}>◀</button>
-              <button id="next" on:click={handleClickNext}>▶</button>
             </div>
+            <button id="last" on:click={handleClickLast}>◀</button>
+            <button id="next" on:click={handleClickNext}>▶</button>
         </div>
     
         <div class="activityBox">

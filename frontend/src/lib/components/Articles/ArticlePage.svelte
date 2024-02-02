@@ -12,7 +12,7 @@
         <div class = "LinksofArticles"> 
             <div id = "link1">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url"> Adopt a cat from Auckland</a>
+                <a href="/Articles/SpecificArticle"> Adopt a cat from Auckland</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -25,7 +25,7 @@
         <div class = "LinksofArticles">  
             <div id = "link2">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">Do you want a dog from Wellington?</a>
+                <a href="/Articles/SpecificArticle">Do you want a dog from Hamilton?</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -38,7 +38,7 @@
         <div class = "LinksofArticles" > 
             <div id = "link3">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">Do you want a cat from Wellington?</a>
+                <a href="/Articles/SpecificArticle">Finding a new home for a cute rabbit!</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -51,7 +51,7 @@
         <div class = "LinksofArticles"> 
             <div id = "link4">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">Hello Darkness my only friend</a>
+                <a href="/Articles/SpecificArticle">My life, my rules, my style, my attitude</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -64,7 +64,7 @@
         <div class = "LinksofArticles">
             <div id = "link5">
                 <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">Just call me Angel my morning Angel</a>
+                <a href="/Articles/SpecificArticle">Just call me Angel my morning Angel</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -77,7 +77,7 @@
         <div class = "LinksofArticles"> 
             <div id = "link6">
                 <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">One Piece is Peak Fiction</a>
+                <a href="/Articles/SpecificArticle">One Piece is Peak Fiction</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -90,7 +90,7 @@
         <div class = "LinksofArticles">
             <div id = "link7">
                 <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">Here's how to adopt a Tiger in New Zealand</a>
+                <a href="/Articles/SpecificArticle">Here's how to adopt a Tiger in New Zealand</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -102,7 +102,8 @@
        
         <div class = "LinksofArticles">
             <div id = "link8">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> <a href="url">Taylor Swift is overrated</a>
+                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
+                <a href="/Articles/SpecificArticle">Taylor Swift is overrated</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -114,7 +115,8 @@
 
         <div class = "LinksofArticles"> 
             <div id = "link9">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> <a href="url">One Piece is Peak Fiction. Period</a>
+                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
+                <a href="/Articles/SpecificArticle">One Piece is Peak Fiction. Period</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>
@@ -127,7 +129,7 @@
         <div class = "LinksofArticles">
             <div id = "link10">
                 <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="url">Im not superstitious but Im a little stitious</a>
+                <a href="/Articles/SpecificArticle">Im not superstitious but Im a little stitious</a>
                 <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
                 <span class="publisher">Default user</span>

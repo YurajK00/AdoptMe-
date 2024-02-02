@@ -248,7 +248,7 @@ box-shadow: 0 5px 3px lightgray;
     border-radius: 12px;
 
     & #last {
-      position: absolute;
+      position: relative;
       top: 200px;
       font-size: 40px;
       background-color: transparent;
@@ -262,9 +262,10 @@ box-shadow: 0 5px 3px lightgray;
     }
 
     & #next{
-      position: absolute;
+      position: relative;
+      z-index: 1;
       top: 200px;
-      left: 600px;
+      left: 550px;
       font-size: 40px;
       background-color: transparent;
       border: none;
@@ -453,6 +454,80 @@ box-shadow: 0 5px 3px lightgray;
       }
 }
 
+.pop-up-customerService{
+  z-index: 1;
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 500px;
+
+  & h3{
+    font-size: 25px;
+    color: #21492a;
+    font-family: "welovepeace";
+  }
+
+  & p{
+    font-size: 20px;
+  }
+
+  & button{
+    position: absolute;
+    left: 530px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px ;
+    margin: 10px;
+  }
+
+  .customerService-container{
+    background: rgb(255, 255, 255,0.6);
+    border: dotted black 2px;
+    border-radius: 12px;
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+  }
+
+  & .faq {
+    margin-left: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+  }
+
+  & .answer {
+    display: none;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #21492a;
+    font-family: 'roboto';
+    font-weight: bold;
+    transition: opacity 0.5s ease;
+  }
+
+  & .answer.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.customerService-container p{
+  &:hover {
+    transition-duration: 1.5s;
+    transform: scale(1.03);
+  }
+}
 
 /*
 CSS of Articles
@@ -1479,4 +1554,164 @@ CSS of profile page
     width: 50px;
   }
 
+}
+
+  /*
+CSS of specific Article Page
+*/
+
+hr{
+  border: 0;
+  padding: 3px;
+  background: repeating-linear-gradient(135deg, #a2a9b6 0px, #a2a9b6 1px, transparent 1px, transparent 6px);
+}
+
+aside.user-profile {
+  width: 200px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 50px;
+  top: 100px;
+  overflow-y: auto;
+
+  & .profile-content{
+    position: relative;
+  }
+
+  & img {
+      border: solid grey 1px;
+      width: 80%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      margin-bottom: 10px;
+      margin: 0 auto;
+  }
+
+  & p {
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+    color: black;
+  }
+
+  & #author-label {
+    color: rgb(32, 32, 180);
+  }
+}
+
+
+#specificArticle-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: rgba(255,255,255,0.6);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
+    & article{
+      max-width: 1000px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+    }  
+
+    & h1 {
+      text-align: center;
+    }
+  
+    & img {
+      width: 80%;
+      height: 450px;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      size: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    & h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    & #info-time-author {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+  
+    & .content {
+      list-style: decimal;
+      margin-left: 1.5em;
+      padding-left: 0.5em;
+    }
+}
+
+#comments-container {
+  position: relative;
+  top: 30px;
+  margin-bottom: 30px; 
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+  }
+
+  & textarea {
+    width: 100%;
+    resize: vertical;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  & button[type="submit"] {
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    
+  }
+
+  & button[type="submit"]:hover {
+    background-color: #007bff;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  & li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+  }
+
+  & #commentor-info{
+    font-size: 15px;
+  }
+
+  & #comment-content{
+    font-size: 20px;
+  }
 }
