@@ -1,6 +1,19 @@
 <script>
     import ArticleButton from "./ArticleButton.svelte";
+    import ArticleLikeButton from "./ArticleLikeButton.svelte";
     
+    let articlesToShow = [
+    { title: 'Adopt a cat from Auckland', publisher: 'Default user',  time:'January 20, 2024'},
+    { title: 'Do you want a dog from Hamilton?', publisher: 'Default user',  time:'January 18, 2024'},
+    { title: 'Finding a new home for a cute rabbit!', publisher: 'Default user',  time:'January 15, 2024'},
+    { title: 'My life, my rules, my style, my attitude', publisher: 'Default user',  time:'January 13, 2024'},
+    { title: 'Just call me Angel my morning Angel', publisher: 'Default user',  time:'January 11, 2024'},
+    { title: 'One Piece is Peak Fiction', publisher: 'Default user',  time:'January 6, 2024'},
+    { title: 'Here\'s how to adopt a Tiger in New Zealand', publisher: 'Default user',  time:'January 1, 2024'},
+    { title: 'Taylor Swift is overrated', publisher: 'Default user',  time:'December 24, 2023'},
+    { title: 'One Piece is Peak Fiction. Period', publisher: 'Default user',  time:'December 21, 2023'},
+    { title: 'I\'m not superstitious but I\'m a little stitious', publisher: 'Default user',  time:'December 18, 2023'}
+  ];
 </script>
 
 <div class="article-container">
@@ -9,134 +22,28 @@
 
    <div class = "article-links">
 
-        <div class = "LinksofArticles"> 
-            <div id = "link1">
+        <div class = "LinksofArticles">
+
+                {#each articlesToShow as { title, publisher, time }, index (index)}
+            <div id = "articleTitle">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle"> Adopt a cat from Auckland</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 20, 2024</span>
-                </div>
+                <a href="/Articles/SpecificArticle"> {title}</a>
             </div>
+
+            <div id = "articleLikeButton">
+                <ArticleLikeButton />
+            </div>
+
+            <div class="info">
+                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
+                <span class="publisher">{publisher}</span>
+                <span class="time">&#x23F1 {time}</span>
+            </div>
+
+                {/each}
+            
         </div> 
-         
 
-        <div class = "LinksofArticles">  
-            <div id = "link2">
-                <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">Do you want a dog from Hamilton?</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 18, 2024</span>
-                </div>
-            </div>
-        </div>
-          
-
-        <div class = "LinksofArticles" > 
-            <div id = "link3">
-                <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">Finding a new home for a cute rabbit!</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 15, 2024</span>
-            </div>
-        </div>
-        </div>
-
-
-        <div class = "LinksofArticles"> 
-            <div id = "link4">
-                <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">My life, my rules, my style, my attitude</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 13, 2024</span>
-            </div>
-        </div>
-        </div>
-     
-
-        <div class = "LinksofArticles">
-            <div id = "link5">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">Just call me Angel my morning Angel</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 11, 2024</span>
-            </div>
-        </div>
-        </div>
-        
-
-        <div class = "LinksofArticles"> 
-            <div id = "link6">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">One Piece is Peak Fiction</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 8, 2024</span>
-            </div>
-        </div>
-        </div>
-
-          
-        <div class = "LinksofArticles">
-            <div id = "link7">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">Here's how to adopt a Tiger in New Zealand</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 6, 2024</span>
-            </div>
-        </div>
-        </div>
-        
-       
-        <div class = "LinksofArticles">
-            <div id = "link8">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">Taylor Swift is overrated</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 January 1, 2024</span>
-           </div>
-        </div>
-        </div>
-          
-
-        <div class = "LinksofArticles"> 
-            <div id = "link9">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">One Piece is Peak Fiction. Period</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 December 24, 2023</span>
-            </div>
-        </div>
-        </div>
-       
-
-        <div class = "LinksofArticles">
-            <div id = "link10">
-                <img img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle">Im not superstitious but Im a little stitious</a>
-                <div class="info">
-                <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">Default user</span>
-                <span class="time">&#x23F1 December 21, 2023</span>
-            </div>
-        </div>
-        </div>
        
     </div>
 </div>

@@ -1004,30 +1004,14 @@ CSS of article page
 .LinksofArticles{
   padding: 0px;
   margin: 0px;
-  display: flex;
-
-& a {
-  position: relative;
-  font-size: 22px;
-  text-decoration: none;
-  padding: 0px;
-  color:#21492a;
-  letter-spacing: 1px;
-  left: 35px;
-
-}
-
-& :hover{
-  transform: scale(1.03);
-  transition-duration: 0.5s;
-  color: #ad3408;
-}
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
+  align-items: baseline;
 
 & span {
   position: relative;
   text-align: right;
-  right: -500px;
-  margin-left: 10px;
 }
 
 & .publisher {
@@ -1042,22 +1026,53 @@ CSS of article page
 
 & .pokemon{
     position: relative;
-    left: 510px;
     top: 10px;
     width: 30px;
     height: 40px;
 }
 
-& .time{
-  justify-content: right;
 }
 
-& .info {
+#articleTitle{
+
+  & a{
   position: relative;
-  left: 300px;
-  bottom: 35px;
-  margin: 0px;
+  font-size: 22px;
+  text-decoration: none;
+  padding: 20px;
+  color:#21492a;
+  letter-spacing: 1px;
+  left: 35px;
+  }
+
+  & :hover{
+  transition-duration: 0.5s;
+  color: #ad3408;
+  }
 }
+
+#articleLikeButton{
+  position: relative;
+  left: 50px;
+
+  & button{
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #a85337;
+    font-family: "roboto";
+    text-decoration: none;
+    border: none ;
+    border-radius: 12px;
+    padding: 5px;
+  }
+
+  & span{
+    font-size: 16px;
+  }
+
+  & button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 }
 
 /*
