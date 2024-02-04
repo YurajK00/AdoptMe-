@@ -14,7 +14,7 @@
       <li><a href="/Articles" class:active={path === "/"}>Articles</a></li>
       <li><a href="/FounderStory" class:active={path === "/"}>Founder Story</a></li>
       <button id="login"><a href="/" class:active={path === "/"}>Log in!</a></button>
-      <a href="/ProfilePage"  class:active={path === "/"} >ProfilePage</a>
+      <!-- <a href="/ProfilePage"  class:active={path === "/"} >ProfilePage</a> -->
     </ul>
   </nav>
 
