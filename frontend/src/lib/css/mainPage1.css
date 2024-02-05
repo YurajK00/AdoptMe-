@@ -1484,7 +1484,7 @@ CSS of edit page
       &:hover {
         transition-duration: 0.5s;
         transform: scale(1.03);
-        cursor: url('link.cur'), auto;
+        cursor: pointer;
       }
     }
 
