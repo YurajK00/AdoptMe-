@@ -1525,6 +1525,7 @@ CSS of profile page
 #PP {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 
   
   & img{
@@ -1602,6 +1603,7 @@ CSS of profile page
 
   & p{
     font-size: 20px;
+    margin: 0 auto;
   }
 
   & button{
@@ -1616,6 +1618,58 @@ CSS of profile page
     margin: 10px;
     cursor: pointer;
     font-size: 15px;
+  }
+}
+
+.pop-up-deactivate{
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & button{
+    position: relative;
+    left: 120px;
+    top: 20px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  & a{
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+#deactivateinfo-container{
+background-color: rgba(255, 255, 255, 0.8);
+border: #a85337 dotted;
+border-radius: 12px;
+padding: 20px;
+text-align: center;
+width: 400px;
+
+  & #deactivate-alert{
+    font-size: 20px;
+  }
+
+  & #deactivate{
+    font-size: 15px;
+    color: red;
   }
 }
 
@@ -1710,6 +1764,44 @@ CSS of profile page
     height: 80px;
   } 
 
+}
+
+
+  /*
+CSS of deactivate Page
+*/
+#deactivate-container{
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+
+#deactivate-img{
+  margin: 20px;
+}
+
+#deactivate-info{
+font-size: 25px;
+font-family: "welovepeace";
+color: #a85337;
+padding: 10px;
+margin: 10px;
+}
+
+#deactivate-button{
+  border: dotted #a85337;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  font-size: 15px;
+  font-family: "welovepeace";
+
+  & a{
+    text-decoration: none;
+    color: #a85337;
+  }
 }
 
   /*

@@ -33,7 +33,7 @@
         Submit now!
     </button>
 
-    <button><a href="/ProfilePage">Cancel</a></button>
+    <button><a href="/ProfilePage/ProfilePageShow">Cancel</a></button>
   </div>
 
     {#if showModal}

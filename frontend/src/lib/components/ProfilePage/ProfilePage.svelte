@@ -6,6 +6,12 @@
         showProfileChange = !showProfileChange;
     }
 
+    //Deactivate Account pop-up window
+    let showDeactivateAccount = false;
+    function toggleDeactivateAccount() {
+        showDeactivateAccount = !showDeactivateAccount;
+    }
+
     //Cancel button pop-up window
     let showModalDelete = false;
     function toggleModalDelete() {
@@ -41,7 +47,8 @@
 
 <div id="PP">
     <img src={newImage} alt="PP" /> 
-    <button on:click = { toggleProfile }>Edit information</button>  
+    <button on:click = { toggleProfile }>Edit information</button>
+    <button on:click = { toggleDeactivateAccount }>Deactivate Account</button>  
 </div>
 
 
@@ -92,6 +99,18 @@
         <p>Do you want to delete?</p>
         <button on:click={toggleModalDelete}>Yes</button>
         <button on:click={toggleModalDelete}>No</button>
+    </div>
+    {/if}
+
+    <!-- To Do: click Yes to cancel accounter -->
+    {#if showDeactivateAccount}
+    <div class="pop-up-deactivate">
+        <div id="deactivateinfo-container">
+        <p id="deactivate-alert"> &#9888 Do you want to deactivate your account?</p>
+        <p id="deactivate">*Once you deactivate your account, all your personal account information will be cleared and cannot be retrieved, including all articles and comments you published. </p>
+        </div>
+        <button on:click={toggleDeactivateAccount}><a href="/ProfilePage/ProfilePageDeactivate">Yes</a></button>
+        <button on:click={toggleDeactivateAccount}>No</button>
     </div>
     {/if}
 
