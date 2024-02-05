@@ -15,6 +15,8 @@ router.use("/users", userRoutes);
 import comments from "./api-comments.js";
 router.use("/comments", comments);
 
+import singupusersRoutes from "./api-signup.js"
+router.use("/signup" , singupusersRoutes)
 
 
 

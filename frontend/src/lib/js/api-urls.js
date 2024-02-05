@@ -12,3 +12,5 @@ export const AUTH_URL = `${BASE_URL}/auth`;
 export const TODO_URL = `${BASE_URL}/users/todos`;
 
 export const ARTICLE_URL = `${BASE_URL}/articles`;
+
+export const SIGNUP_URL = `${BASE_URL}/signup`;

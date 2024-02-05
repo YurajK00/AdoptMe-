@@ -1,0 +1,37 @@
+import express from "express";
+import { signup } from "../../data/signupusers.js";
+
+const router = express.Router();
+
+/**
+ * Sending a POST request to /api/signup with valid user data will register a new user and
+ * return the JWT auth token set as the "authToken" HTTP-only cookie. In addition, the user's username will be sent back
+ * as JSON, in the response. This can be used to display the user's username on the frontend if required.
+ *
+ * Sending invalid user data will result in an appropriate error response.
+ */
+
+router.post("/", async (req, res) => {
+  console.log("post request to / ");
+  console.log(req.body);
+  const { username, email, password } = req.body;
+  console.log(username, email, password);
+
+  try {
+    // Calling signup function
+    await signup({ username, email, password });
+
+    // Returning responses
+    res.status(200).json({ success: true });
+  } catch (error) {
+    if (error.message === 'Passwords do not match') {
+      res.status(400).json({ error: 'password_mismatch' });
+    } else if (error.message === 'Username or email already exists') {
+      res.status(400).json({ error: 'username_or_email_taken' });
+    } else {
+      res.status(500).json({ error: 'signup_fail' });
+    }
+  }
+});
+
+export default router;

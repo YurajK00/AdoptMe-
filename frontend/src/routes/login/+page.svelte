@@ -1,9 +1,9 @@
 <script>
-  import Loginpage from "$lib/components/Login/Loginpage.svelte";
+  import Login from "$lib/components/login/Login.svelte";
 </script>
 
 <svelte:head>
   <title>Login</title>
 </svelte:head>
 
-<Loginpage/>
+<Login/>
