@@ -1,5 +1,4 @@
 <script>
-  import DividingLine from "$lib/components/DividingLine.svelte";
   import { invalidate } from "$app/navigation";
   import { USER_URL } from "$lib/js/api-urls.js";
   export let user;
@@ -44,21 +43,27 @@ let success = false;
 <form on:submit|preventDefault={handleSave}>
 
   <div id="publishArticles-container">
+    
+    <div>
     <label for="article_title"> Title</label>
     <textarea id="article_title" bind:value={article_title} rows="1" cols="40" maxlength="20" required></textarea>
+    </div>
 
-<div>
-    <label for="article_content"> Content</label>
-    <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required></textarea>
- 
+    <div id="content-upload">
+    <div>
+      <label id="article_content_label" for="article_content"> Content</label>
+      <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required></textarea>
+    </div>
 
-    <span class="fileinput-button">
+    <div class="fileinput-button">
       <span id="text">Add image</span>
       <input type="file" id="content-image" name="content-image" accept="image/*"/>
-    </span>
+    </div>
   </div>
-    
+
+    <div>
     <button id="submit">Submit now!</button>
+    </div>
 
     {#if showModal}
     <div class="pop-up-publish">
@@ -95,5 +100,3 @@ let success = false;
   }
 
 </style>
-
-<DividingLine />

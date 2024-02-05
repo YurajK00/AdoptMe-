@@ -1,7 +1,7 @@
 <script>
     import DividingLine from "$lib/components/DividingLine.svelte";
     import Contact from "$lib/components/MainPage/Contact/Contact.svelte";
-    import ArticlePublish from "../../../lib/components/Articles/ArticlePublish.svelte";
+    import ArticlePublish from "$lib/components/Articles/ArticlePublish.svelte";
     
     export let data;
 let mf;
@@ -16,6 +16,7 @@ let mf;
 
 {#if data.user}
 <ArticlePublish user ={data.user} />
-<DividingLine/>
 <Contact/>
+<DividingLine />
+
 {/if}

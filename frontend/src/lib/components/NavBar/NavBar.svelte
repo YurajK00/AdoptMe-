@@ -24,8 +24,8 @@
       <li><a href="/" class:active={path === "/"}>Home</a></li>
       <li><a href="/Articles" class:active={path === "/"}>Articles</a></li>
       <li><a href="/FounderStory" class:active={path === "/"}>Founder Story</a></li>
-      <li><a href="/ProfilePage/ProfilePageShow"  class:active={path === "/"} >ProfilePage</a></li>
       {#if data.isLoggedIn}
+       <li><a href="/ProfilePage/ProfilePageShow"  class:active={path === "/"} >Profile Page</a></li>
        <li><button on:click={handleLogout} id = "logout">Logout</button></li> 
     {:else} 
        <button id="login"><a href="/login" class:active={path === "/login"}>Log in!</a></button> 
@@ -33,30 +33,6 @@
     </ul>
   </nav>
 
-
-  
-  <style>
-    #logout{
-  position: relative;
-  bottom: 15px;
-     margin: 5px;
-    background-color: #B9D8A8;
-    border: none;
-    border-radius: 12px;
-    padding: 15px 32px;
-    color:#87a803;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: "thewonder";
-  
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      transition-duration: 0.8s;
-      border-radius: 12px;
-    }
-  
-    }
-  </style>
   
 
   

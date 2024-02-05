@@ -4,6 +4,7 @@
     import { SIGNUP_URL } from "../../../lib/js/api-urls.js"
   let username = "";
   let email ="";
+  let birthday ="";
   let password = "";
   let confirmedPassword = "";
   let error = false;
@@ -70,6 +71,10 @@
       {#if emailTakenError}
         <p style="color: red;">Email is already taken. Please use a different email address.</p>
       {/if}
+
+      <label for="birthday">Choose your birthday:</label>
+      <input type="date" name="birthday" bind:value={birthday} required />
+
       <label for="password">Enter your password:</label>
       <input type="password" name="password" bind:value={password} required />
       <label for="confirmedPassword">Confirm your password:</label>
@@ -95,93 +100,3 @@
         </span>
       </div>
     </form>
-
-    <style>
-
-    #registerHeader{
-      position: relative;
-      top: 30px;
-      color: #a85337;
-      text-align: left;
-      box-shadow: 0 5px 3px lightgray;
-      margin: 20px;
-      padding: 20px;
-      font-family: "welovepeace";
-      font-size: 30px;
-      letter-spacing: 5px;
-    }
-  
-    #register-container{
-      background-color: rgba(255, 255, 255, 0.6);
-      position: relative;
-      margin: 0 auto;
-      top: 50px;
-      margin-bottom: 100px;
-      width: 500px;
-      height: 500px;
-      border: dotted rgb(10, 20, 10);
-      border-radius: 12px;
-      padding: 15px 32px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 10px;
-
-      & label{
-        font-size: 20px;
-        padding: 5px;
-      }
-    }
-
-    #registerButton {
-      grid-column: 1 / 3;
-      padding: 10px;
-      margin: 25px;
-      font-size: 15px;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
-    .login{
-      font-size: 19px;
-
-      & a{
-        text-decoration: underline;
-        font-family: "roboto";
-        font-size: 20px;
-        position: relative;
-        left:200px;
-        color: #21492a;
-      }
-    }
-
-
-    .pickPP{
-      display: flex;
-    }
-
-    .pickPP-image{
-      display: flex;
-      flex-direction:column;
-      gap: 10px;
-      position: relative;
-      top: 15px;
-      left: 200px;
-    
-      & button{
-        width: 100px;
-        font-size: 15px;
-        border-radius: 12px;
-        cursor: pointer;
-      }
-    }
-
-    img{
-      width: 100px;
-      height: 100px;
-
-      &:hover {
-        transition-duration: 0.5s;
-        transform: scale(1.2);
-      }
-    }
-      </style>
