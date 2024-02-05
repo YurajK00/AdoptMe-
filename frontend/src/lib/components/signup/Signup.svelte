@@ -3,6 +3,8 @@
     import { user } from "../../../lib/components/user.js";
     import { SIGNUP_URL } from "../../../lib/js/api-urls.js"
   let username = "";
+  let firstName = "";
+  let lastName = "";
   let email ="";
   let birthday ="";
   let password = "";
@@ -19,39 +21,46 @@
   }
 
   async function handleSignup() {
-    error = false;
-    passwordMatchError = false;
-    usernameTakenError = false;
-    emailTakenError = false;
+  error = false;
+  passwordMatchError = false;
+  usernameTakenError = false;
+  emailTakenError = false;
 
-    // Validation to make passwords matching
-    if (password !== confirmedPassword) {
-      passwordMatchError = true;
-      return;
-    }
-    const response = await fetch(SIGNUP_URL, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password, confirmedPassword })
-    });
-
-    if (response.status === 400) {
-      // Handle signup failure, like username or email is already taken
-      const data = await response.json();
-      if (data.error === "username_taken") {
-        usernameTakenError = true;
-      } else if (data.error === "email_taken") {
-        emailTakenError = true;
-      } else {
-        error = true;
-      }
-    } else {
-      // Signup successful
-      user.login({ username, email });
-      goto("/", { invalidateAll: true, replaceState: true });
-    }
+  // Validation to make passwords matching
+  if (password !== confirmedPassword) {
+    passwordMatchError = true;
+    return;
   }
+
+  // Validate that birthday is chosen
+  if (!birthday) {
+    error = true;
+    return;
+  }
+
+  const response = await fetch(SIGNUP_URL, {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, firstName, lastName, email, password, confirmedPassword, birthday })
+  });
+
+  if (response.status === 400) {
+    // Handle signup failure, like username or email is already taken
+    const data = await response.json();
+    if (data.error === "username_taken") {
+      usernameTakenError = true;
+    } else if (data.error === "email_taken") {
+      emailTakenError = true;
+    } else {
+      error = true;
+    }
+  } else {
+    // Signup successful
+    user.login({ username, email });
+    goto("/", { invalidateAll: true, replaceState: true });
+  }
+}
 </script>
 
 <svelte:head>
@@ -63,6 +72,10 @@
     <form id="register-container" on:submit|preventDefault={handleSignup}> 
       <label for="username">Enter your username:</label>
       <input type="text" name ="username" bind:value={username} required />
+      <label for="firstName">Enter your first name:</label>
+      <input type="text" name="firstName" bind:value={firstName} required />
+      <label for="lastName">Enter your last name:</label>
+      <input type="text" name="lastName" bind:value={lastName} required />
       {#if usernameTakenError}
         <p style="color: red;">Username is already taken. Please choose another one.</p>
       {/if}
