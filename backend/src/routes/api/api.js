@@ -12,6 +12,12 @@ router.use("/auth", authRoutes);
 import userRoutes from "./api-users.js";
 router.use("/users", userRoutes);
 
+import comments from "./api-comments.js";
+router.use("/comments", comments);
+
+
+
+
 
 
 
