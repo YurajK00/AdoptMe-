@@ -4,6 +4,7 @@
     import ArticlePublish from "../../../lib/components/Articles/ArticlePublish.svelte";
     
     export let data;
+let mf;
 </script>
 
 <svelte:head>
