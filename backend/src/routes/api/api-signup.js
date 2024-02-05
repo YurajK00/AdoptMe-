@@ -14,15 +14,15 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   console.log("post request to / ");
   console.log(req.body);
-  const { username, email, password } = req.body;
-  console.log(username, email, password);
+  const userData = req.body;
+  console.log(userData);
 
   try {
     // Calling signup function
-    await signup({ username, email, password });
+   const s =  await signup(userData);
 
     // Returning responses
-    res.status(200).json({ success: true });
+    res.status(200).json({s});
   } catch (error) {
     if (error.message === 'Passwords do not match') {
       res.status(400).json({ error: 'password_mismatch' });

@@ -1,6 +1,7 @@
 <script>
     import { goto } from "$app/navigation";
     import { user } from "../../../lib/components/user.js";
+    import { SIGNUP_URL } from "../../../lib/js/api-urls.js"
   let username = "";
   let email ="";
   let password = "";
@@ -27,7 +28,7 @@
       passwordMatchError = true;
       return;
     }
-    const response = await fetch("/api/signup", {
+    const response = await fetch(SIGNUP_URL, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },

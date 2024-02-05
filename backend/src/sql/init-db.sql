@@ -2,17 +2,19 @@
 CREATE TABLE IF NOT EXISTS Users (
     id INTEGER NOT NULL PRIMARY KEY,
     username TEXT NOT NULL,
-    firstName TEXT NOT NULL,
-    lastName TEXT NOT NULL,
-    password TEXT NOT NULL
+    firstName TEXT ,
+    lastName TEXT ,
+    password TEXT NOT NULL,
+    confirmedPassword TEXT NOT NULL,
+    email TEXT NOT NULL
 );
 
 -- Insert sample data into the Users table
-INSERT INTO Users ( username, firstName, lastName, password) VALUES
-    ( 'Echo', 'Echo', 'Martinez', 'nono'),
-    ( 'Yuraj', 'Yuraj', 'Kharche', 'lolo' ),
-    ( 'Billy', 'Billy', 'TheButcher', 'yoyo'),
-    ('Natalia', 'Natalia' , 'Sharp' , 'momo' );
+INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword) VALUES
+    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono'),
+    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo' ),
+    ( 'Billy', 'Billy', 'TheButcher','yuraj@gmail.com', 'yoyo', 'yoyo'),
+    ('Natalia', 'Natalia' , 'Sharp' , 'yuraj@gmail.com','momo','momo' );
 
 -- Create the Articles table
 CREATE TABLE IF NOT EXISTS Articles (

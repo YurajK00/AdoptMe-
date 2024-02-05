@@ -10,7 +10,7 @@ export async function signup(userData) {
   const { username, email, password, confirmedPassword } = userData;
 
   // Check if passwords match
-  if (password !== confirmedPassword) {
+  if (password != confirmedPassword) {
     throw new Error("Passwords do not match");
   }
 
@@ -22,9 +22,9 @@ export async function signup(userData) {
 
   // Hash and salt the password
   const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-  const sql = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)";
-  const values = [username, email, hashedPassword];
+  
+  const sql = "INSERT INTO Users (username, email, password ,confirmedPassword) VALUES (?, ?, ?,?)";
+  const values = [username, email, hashedPassword, confirmedPassword];
 
   try {
     const result = await db.run(sql, values);
