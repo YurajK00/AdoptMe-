@@ -50,7 +50,6 @@ CSS of the Whole Layout
         height: 100%;
         width: 100%;
         background-size: cover;
-        cursor: url('normal.cur'), auto;
 
       }
 
@@ -78,7 +77,6 @@ CSS of First Part
   color:#87a803;
   font-size: 1rem;
   font-weight: bold;
-  cursor: url('normal.cur'), auto;
 
 
   &:hover {
@@ -121,7 +119,7 @@ box-shadow: 0 5px 3px lightgray;
   font-weight: bold;
   text-decoration: none;
   font-family: "thewonder";
-  cursor: url('link.cur'), auto;
+  cursor: pointer;
 
 
   &:hover {
@@ -268,7 +266,7 @@ box-shadow: 0 5px 3px lightgray;
       2px 2px 0 #dfdaa3,
       3px 3px 0 #d27a7b,
       4px 4px 0 #dfdaa3;
-      cursor: url('link.cur'), auto;
+      cursor: pointer;
 
     }
 
@@ -286,7 +284,7 @@ box-shadow: 0 5px 3px lightgray;
       2px 2px 0 #dfdaa3,
       3px 3px 0 #d27a7b,
       4px 4px 0 #dfdaa3;
-      cursor: url('link.cur'), auto;
+      cursor: pointer;
 
     }
   }
@@ -432,7 +430,7 @@ box-shadow: 0 5px 3px lightgray;
         background-color: rgba(255, 255, 255, 0.7);
         border: dotted ;
         border-radius: 12px;
-        cursor: url('link.cur'), auto;
+        cursor: pointer;
 
         &:hover {
         color: red;
@@ -465,7 +463,7 @@ box-shadow: 0 5px 3px lightgray;
     &:hover {
         transition-duration: 0.5s;
         color: #d27a7b;
-        cursor: url('link.cur'), auto;
+        cursor: pointer;
       }
 }
 
@@ -513,7 +511,7 @@ box-shadow: 0 5px 3px lightgray;
 
   & .faq {
     margin-left: 10px;
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
     margin-bottom: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -602,7 +600,7 @@ CSS of Articles
     font-size: 20px;
     border: #a85337 dotted ;
     border-radius: 12px;
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
 
     &:hover {
       transition-duration: 0.8s;
@@ -629,7 +627,7 @@ CSS of Articles
     text-decoration: none;
     padding: 0px;
     color: #a85337;
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
 }
 
   & .date {
@@ -656,13 +654,13 @@ CSS of Articles
     font-size: 20px;
     border: #a85337 dotted ;
     border-radius: 12px;
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
   }
 
   & :hover{
     transition-duration: 0.5s;
     transform: scale(1.03);
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
   }
 }
 
@@ -690,7 +688,7 @@ CSS of Articles
   margin: 10px;
   padding: 5px;
   animation: tada 1s;
-  cursor: url('link.cur'), auto;
+  cursor: pointer;
 
 }
 
@@ -726,7 +724,7 @@ CSS of Articles
   & :hover{
     transition-duration: 1.5s;
     transform: scale(1.03);
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
 }
 }
 
@@ -881,7 +879,7 @@ CSS of Contact
     }
   
     & :hover {
-      cursor: url('link.cur'), auto;
+      cursor: pointer;
       transition-duration: 1s;
       transform: scale(1.1);
     }
@@ -917,7 +915,7 @@ CSS of Contact
   }
 
   & :hover {
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
     transition-duration: 1s;
     transform: scale(1.1);
   }
@@ -983,7 +981,7 @@ CSS of article page
     animation-duration: 1s;
     background-color: #d27a7b;
     transition: background-color 0.3s ease;
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
   }
 
   & :focus{
@@ -1054,7 +1052,7 @@ CSS of article page
   color:#21492a;
   letter-spacing: 1px;
   left: 35px;
-  cursor: url('link.cur'), auto;
+  cursor: pointer;
   }
 
   & :hover{
@@ -1075,15 +1073,11 @@ CSS of article page
     border: none ;
     border-radius: 12px;
     padding: 5px;
+    cursor: pointer;
   }
 
   & span{
     font-size: 16px;
-  }
-
-  & button:hover{
-    
-    cursor: url('link.cur'), auto;
   }
 
 }
@@ -1098,7 +1092,6 @@ CSS of article page
     color: #a85337;
     font-family: "roboto";
     font-size: bold;
-    cursor: url('normal.cur'), auto;
   }
 
   & textarea{
@@ -1119,7 +1112,7 @@ CSS of article page
   }
 
   & button:hover{
-    cursor: url('link.cur'), auto;
+    cursor: pointer;
   }
 } 
 
@@ -1172,13 +1165,26 @@ CSS of publish article
     color: #a85337;
     border: #a85337 dotted ;
     border-radius: 12px;
+    cursor: pointer;
     
     &:hover {
       transition-duration: 0.5s;
       transform: scale(1.03);
-      cursor: url('link.cur'), auto;
     }
   }
+}
+
+
+.fileinput-button{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  left: 750px;
+  top:60px;
+  font-family: "roboto";
+  padding: 10px;
+  color: #a85337;
+  border-radius: 12px;
 }
 
 #article_title {
@@ -1227,6 +1233,12 @@ CSS of publish article
     height: 40px;
     font-size: 20px ;
     margin: 10px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
     
   }
 }
@@ -1525,16 +1537,20 @@ CSS of profile page
   & button{
     position: relative;
     bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #a85337;
+    border: dotted 2px;
+    border-radius: 12px;
     margin: 0 auto;
+    padding: 10px;
     width: 200px;
     font-size: 18px;
-    border-radius: 12px;
     font-family: "roboto";
-    padding: 10px;
+    cursor: pointer;
   }
 }
 
-#user-infomation{
+#all-infomation{
   font-family: "roboto";
   font-size: 20px;
   padding: 20px;
@@ -1543,17 +1559,35 @@ CSS of profile page
     position: relative;
     width: 80px;
     font-size: 15px;
-    border-radius: 12px;
     font-family: "roboto";
     padding: 5px;
     margin: 5px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #a85337;
+    border: dotted 2px;
+    border-radius: 12px;
+    padding: 10px;
   }
 
   & a{
     text-decoration: none;
-    color: black;
+    color: #a85337;
   }
 }
+
+#user-information{
+  & span{
+    display: flex;
+    gap:15px;
+  }
+}
+
+.info-title{
+  color: #555a5f;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 
 .pop-up-delete{
   background: url("$lib/image/pawBG.png");
@@ -1571,17 +1605,25 @@ CSS of profile page
   }
 
   & button{
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
     width: 80px;
     height: 40px;
-    font-size: 20px ;
     margin: 10px;
-    
+    cursor: pointer;
+    font-size: 15px;
   }
 }
 
 .pop-up-profileChange {
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  gap: 50px;
   width: 600px;
   background: url("$lib/image/pawBG.png");
   position: fixed;
@@ -1593,36 +1635,80 @@ CSS of profile page
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
 
-  & img{
-    width: 150px;
-    height: 150px;
+  & p{
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #a85337;
+    font-family: "welovepeace";
   }
 
-  & p{
-    padding:10px;
-    font-size: 20px;
+  & #profile-info{
+    display: flex;
   }
 
   & button{
     position: relative;
-    left: 180px;
+    left: 200px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
     width: 80px;
     height: 40px;
-    font-size: 20px ;
-    margin: 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
   }
 }
 
-.profile-container{
+#profile-container{
   display: flex;
-  margin: 0 auto;
 
   & button{
     position: relative;
-    left: 0px;
-    top: 30px;
-    width: 50px;
+    left: -30px;
+    top: 150px;
+    width: 30px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
   }
+
+  & img{
+    position: relative;
+    left: -30px;
+    top: 100px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+#info-container{
+  display: flex;
+  flex-direction: column;
+
+  & span{
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  & textarea{
+    margin-top: 10px;
+    height: 20px;
+  }
+
+  & #individual-info-change{
+    position: relative;
+    right: 40px;
+    width: 280px;
+    height: 80px;
+  } 
 
 }
 
@@ -1755,8 +1841,8 @@ aside.user-profile {
     color: #fff;
     border: none;
     border-radius: 4px;
-    cursor: url('link.cur'), auto;
     font-size: 16px;
+    cursor: pointer;
     
   }
 
@@ -1769,19 +1855,62 @@ aside.user-profile {
     padding: 0;
     margin: 0;
   }
+}
 
-  & li {
+#commentor-container{
+    display: flex;
+    gap: 5px;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 4px;
     background-color: #f7f7f7;
-  }
+    
 
-  & #commentor-info{
+  & #commentor-PP{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 280px;
+  }
+  
+  & #commentor-name{
     font-size: 15px;
+    position: relative;
+    right: 550px;
   }
-
+  
   & #comment-content{
     font-size: 20px;
+    position: relative;
+    right: 550px;
+  }
+
+  & button{
+    width: 70px;
+    height: 30px;
+    position: relative;
+    top: 70px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+#show-hide-comments{
+  width: 200px;
+  margin: 0 auto;
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #007bff;
   }
 }

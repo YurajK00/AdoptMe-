@@ -5,16 +5,23 @@
     function toggleModal() {
       showModal = !showModal;
     }
+
   </script>
 
 <div id="publishArticles-container">
     <label for="article_title"> Title</label>
-    <textarea id="article_title" name="article_title" rows="1" cols="40" maxlength="20" required>
-    Give me your title...
-    </textarea>
+    <input type="text" id="article_title" name="article_title" maxlength="20" minlength="1" required value="something interesting?"/>
     
-    
+    <div>
     <label for="article_content"> Content</label>
+    
+    <span class="fileinput-button">
+      <span id="text">Add image</span>
+      <input type="file" id="content-image" name="content-image" accept="image/*"/>
+    </span>
+    
+    </div>
+
     <textarea id="article_content" name="article_content" rows="4" cols="40" maxlength="1000" required>
     Something interesting?
     </textarea>

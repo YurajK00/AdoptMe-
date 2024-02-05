@@ -1,4 +1,5 @@
 <script>
+
     //Change profile photo pop-up window
     let showProfileChange = false;
     function toggleProfile() {
@@ -40,22 +41,45 @@
 
 <div id="PP">
     <img src={newImage} alt="PP" /> 
-    <button on:click = { toggleProfile }>Change Profile Photo</button>  
+    <button on:click = { toggleProfile }>Edit information</button>  
 </div>
 
 
 
-<div id="user-infomation">
-    <p>Username: </p>
+<div id="all-infomation">
+    
+    <!-- To do: Update user's information -->
+    <div id="user-information">
+
+        <span>
+         <p class="info-title">User name: </p>
+         <p>Default</p>   
+        </span>
+         
+        <span>
+         <p class="info-title">Real name: </p>
+         <p>Default</p>  
+        </span>
+        
+        <span>
+         <p class="info-title">Birthday: </p>
+         <p>2000-10-10</p>  
+        </span>
+        
+        <span>
+         <p class="info-title">Individual information: </p>
+         <p id="individual-info">Love you</p>  
+        </span>
+    </div>
 
     <div id="articles-you-published">
-        <p>Articles you published: </p>
+        <p class="info-title">Articles you published: </p>
         <button on:click = { toggleModalDelete }>Delete</button>
         <button><a href="/Articles/ArticleEdit">Edit</a></button>
     </div>
 
     <div id="comments-you-published">
-        <p>Comments you published:</p>
+        <p class="info-title">Comments you published:</p>
 
         <button on:click = { toggleModalDelete }>Delete</button>
     </div>
@@ -72,26 +96,52 @@
     {/if}
 
 
-    <!-- To Do: save new profile photo to database -->
+    <!-- To Do: save new info to database -->
     {#if showProfileChange}
-    <div class="pop-up-profileChange" >
 
-        <div>
-         <p>Which one you prefer?</p>
-        </div>
+    <div class="pop-up-profileChange" >
+        <p>Edit your information</p>
         
-        <div class="profile-container">
+        <div id="profile-info">
+
+        <div id="profile-container">
             <button id="last" on:click={prevImage}>◀</button>
             <img src={images[currentImage]} alt="pic">
             <button id="next" on:click={nextImage}>▶</button>
         </div>
 
+        <div id="info-container">
+            <span >
+            <label for="username-change" class="info-title">User name: </label>
+            <input type="text" id="username-change" value="Default" /> 
+           </span>
+            
+           <span>
+            <label for="realname-change" class="info-title">Real name: </label>
+            <input type="text" id="realname-change" value="Default">
+           </span>
+           
+           <span>
+            <label for="birthday-change"class="info-title">Birthday: </label>
+            <input type="date" id="birthday-change"/> 
+           </span>
+           
+            <span>
+            <label for="indicidual-info-change" class="info-title">Individual information: </label>
+            <input type="text" id="individual-info-change" value="Love you"/>
+           </span>
+        </div>
+
+        </div>
+
+
         <div>
-            <button on:click={toggleImage}>Pick</button>
+            <button on:click={toggleImage}>Save</button>
             <button on:click={toggleProfile}>Cancel</button>
         </div>
-        
     </div>
+        
     {/if}
+
 
 </div>

@@ -10,6 +10,13 @@
     content: ''
   };
 
+  //To show or hide comments
+  let showComments = true;
+
+  function toggleComments() {
+    showComments = !showComments;
+  }
+
   // Update the article object with new values
   article.username = 'Kelly Lamb';
   article.commentDate = 'Feburary 3, 2024';
@@ -88,14 +95,37 @@
         <button type="submit">Submit</button>
       </form>
       <hr>
+
+      <button id="show-hide-comments" on:click={toggleComments}>
+        {#if showComments}
+          Hide Comments
+        {:else}
+          Show Comments
+        {/if}
+      </button>
+
+      {#if showComments}
       <ul id="comment-list">
         {#each comments as comment}
           <li>
-            <p id="commentor-info">User : <u>{comment.username}</u> - {comment.commentDate}</p>
+
+            <div id="commentor-container">
+              <!-- TO DO: change commentor's info -->
+            <img id="commentor-PP" src="/src/lib/image/defaultPP-cat.png" alt="ProfilePhoto">
+            
+            
+            <div id="commentor-info">
+            <p id="commentor-name">User : <u>{comment.username}</u> - {comment.commentDate}</p>
             <p id="comment-content">{comment.text}</p>
+            </div>
+
+            <!-- TO DO: Add nest comment -->
+            <button>Comment</button>
+            </div>
           </li>
         {/each}
       </ul>
+      {/if}
     </div>
 
   </article>
