@@ -8,5 +8,5 @@
     <p>Users can either share details about pets available for adoption or search for their desired companions. </p>
     <p>To uphold the rights and interests of everyone involved and prevent any external discrepancies, all platform users are required to undergo real-name authentication. </p>
     </div>
-    <img id="LihuaCat" src="src/lib/image/LihuaCat.png" alt="LihuaCat">
+    <img id="LihuaCat" src="/src/lib/image/LihuaCat.png" alt="LihuaCat">
   </div>

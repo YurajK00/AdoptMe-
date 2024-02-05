@@ -1,7 +1,6 @@
 <script>
     export let likes = 300;
     export let dislikes = 24;
-    // import '@fortawesome/fontawesome-free/css/all.css';
   
     function incrementLikes() {
       likes += 1;

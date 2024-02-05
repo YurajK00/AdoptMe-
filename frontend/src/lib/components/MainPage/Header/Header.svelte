@@ -8,5 +8,5 @@ import DividingLine from "$lib/components/DividingLine.svelte";
 <DividingLine />
 
 <!-- Two images on header -->
-<img id="pawIcon" src="src/lib/image/pawIcon.png" alt="paw Icon" />
-<img id="rawPaw" src="src/lib/image/rawPaw.png" alt="a row of paws" />
+<img id="pawIcon" src="/src/lib/image/pawIcon.png" alt="paw Icon" />
+<img id="rawPaw" src="/src/lib/image/rawPaw.png" alt="a row of paws" />

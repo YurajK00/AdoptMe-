@@ -78,6 +78,7 @@ CSS of First Part
   font-size: 1rem;
   font-weight: bold;
 
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transition-duration: 0.8s;
@@ -92,6 +93,7 @@ background-color: #9BC07C;
 padding-left: 20px;
 box-shadow: 0 5px 3px lightgray;
 
+
 & > ul {
   list-style: none;
   margin: 0;
@@ -99,10 +101,12 @@ box-shadow: 0 5px 3px lightgray;
   justify-content: center;
   flex-wrap: wrap;
   gap: 300px;
+  
 }
 
 & li {
   padding-top: 20px;
+  
   &:hover {
     transition-duration: 0.8s;
     transform: scale(1.1);
@@ -115,10 +119,13 @@ box-shadow: 0 5px 3px lightgray;
   font-weight: bold;
   text-decoration: none;
   font-family: "thewonder";
+  cursor: pointer;
+
 
   &:hover {
     color: #d27a7b;
     transition-duration: 0.8s;
+    
 
   }
 }
@@ -246,6 +253,40 @@ box-shadow: 0 5px 3px lightgray;
     border: 0.5rem outset #efaaa5;
     outline: 0.5rem solid #B9D8A8;
     border-radius: 12px;
+
+    & #last {
+      position: relative;
+      top: 200px;
+      font-size: 40px;
+      background-color: transparent;
+      border: none;
+      color: rgb(199, 115, 129);
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+      cursor: pointer;
+
+    }
+
+    & #next{
+      position: relative;
+      z-index: 1;
+      top: 200px;
+      left: 550px;
+      font-size: 40px;
+      background-color: transparent;
+      border: none;
+      color: rgb(199, 115, 129);
+      text-shadow: 
+      1px 1px 0 #d27a7b,
+      2px 2px 0 #dfdaa3,
+      3px 3px 0 #d27a7b,
+      4px 4px 0 #dfdaa3;
+      cursor: pointer;
+
+    }
   }
 
   #images-container{
@@ -253,36 +294,18 @@ box-shadow: 0 5px 3px lightgray;
     left: 0; 
     top: 0;
     margin: 0 auto;
-    animation: slideshow 20s linear infinite;
     display: flex;
-    transform: translate3d(0, 0, 0);
-  } 
-
-  .list {
+    width: 100%; 
+    transition: transform 1.5s ease-in-out;
+    
+  & img {
+    flex: 0 0 100%;
     width: 650px;
     height: 450px;
     float: left;
-    margin-right: 10px;
   }
+}
 
-  @keyframes slideshow{
-    0% {transform: translate(0,0);}
-    15% {transform: translate(0,0);} 
-
-    20% {transform: translate(-20%,0);} 
-    35% {transform: translate(-20%,0);}
-
-    40% {transform: translate(-40%,0);}
-    55% {transform: translate(-40%,0);}
-
-    60% {transform: translate(-60%,0);}
-    75% {transform: translate(-60%,0);}
-
-    80% {transform: translate(-80%,0);}
-    95% {transform: translate(-80%,0);}
-
-    100% {transform: translate(0,0);} 
-  }
 
   .activityBox{
     background: 
@@ -407,6 +430,7 @@ box-shadow: 0 5px 3px lightgray;
         background-color: rgba(255, 255, 255, 0.7);
         border: dotted ;
         border-radius: 12px;
+        cursor: pointer;
 
         &:hover {
         color: red;
@@ -439,9 +463,84 @@ box-shadow: 0 5px 3px lightgray;
     &:hover {
         transition-duration: 0.5s;
         color: #d27a7b;
+        cursor: pointer;
       }
 }
 
+.pop-up-customerService{
+  z-index: 1;
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 500px;
+
+  & h3{
+    font-size: 25px;
+    color: #21492a;
+    font-family: "welovepeace";
+  }
+
+  & p{
+    font-size: 20px;
+  }
+
+  & button{
+    position: absolute;
+    left: 530px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px ;
+    margin: 10px;
+  }
+
+  .customerService-container{
+    background: rgb(255, 255, 255,0.6);
+    border: dotted black 2px;
+    border-radius: 12px;
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+  }
+
+  & .faq {
+    margin-left: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+
+  }
+
+  & .answer {
+    display: none;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #21492a;
+    font-family: 'roboto';
+    font-weight: bold;
+    transition: opacity 0.5s ease;
+  }
+
+  & .answer.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.customerService-container p{
+  &:hover {
+    transition-duration: 1.5s;
+    transform: scale(1.03);
+  }
+}
 
 /*
 CSS of Articles
@@ -492,28 +591,20 @@ CSS of Articles
   position: relative;
   top: -90px;
 
-  & div{
+  & button{
     margin: 5px;
+    color: #ad3408;
     padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.6);
     font-family: "heyhoo";
     font-size: 20px;
     border: #a85337 dotted ;
     border-radius: 12px;
+    cursor: pointer;
 
     &:hover {
       transition-duration: 0.8s;
       transform: scale(1.1);
-      color: #d27a7b;
-    }
-  }
-
-  & a{
-    color: #a85337;
-    text-decoration: none;
-
-    &:hover {
-      transition-duration: 0.8s;
       color: #d27a7b;
     }
   }
@@ -524,8 +615,9 @@ CSS of Articles
   display: flex;
   align-items: center;
   gap: 100px;
-  font-family: "heyhoo";
+  font-family: "roboto";
   color: #a85337;
+  font-size: 17px;
 
   & .articleLink {
     position: relative;
@@ -535,6 +627,7 @@ CSS of Articles
     text-decoration: none;
     padding: 0px;
     color: #a85337;
+    cursor: pointer;
 }
 
   & .date {
@@ -595,6 +688,8 @@ CSS of Articles
   margin: 10px;
   padding: 5px;
   animation: tada 1s;
+  cursor: pointer;
+
 }
 
 .thumb-button:hover{
@@ -918,30 +1013,14 @@ CSS of article page
 .LinksofArticles{
   padding: 0px;
   margin: 0px;
-  display: flex;
-
-& a {
-  position: relative;
-  font-size: 22px;
-  text-decoration: none;
-  padding: 0px;
-  color:#21492a;
-  letter-spacing: 1px;
-  left: 35px;
-
-}
-
-& :hover{
-  transform: scale(1.03);
-  transition-duration: 0.5s;
-  color: #ad3408;
-}
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
+  align-items: baseline;
 
 & span {
   position: relative;
   text-align: right;
-  right: -500px;
-  margin-left: 10px;
 }
 
 & .publisher {
@@ -956,22 +1035,91 @@ CSS of article page
 
 & .pokemon{
     position: relative;
-    left: 510px;
     top: 10px;
     width: 30px;
     height: 40px;
 }
 
-& .time{
-  justify-content: right;
 }
 
-& .info {
+#articleTitle{
+
+  & a{
   position: relative;
-  left: 300px;
-  bottom: 35px;
-  margin: 0px;
+  font-size: 22px;
+  text-decoration: none;
+  padding: 20px;
+  color:#21492a;
+  letter-spacing: 1px;
+  left: 35px;
+  cursor: pointer;
+  }
+
+  & :hover{
+  transition-duration: 0.5s;
+  color: #ad3408;
+  }
 }
+
+#articleLikeButton{
+  position: relative;
+  left: 50px;
+
+  & button{
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #a85337;
+    font-family: "roboto";
+    text-decoration: none;
+    border: none ;
+    border-radius: 12px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  & span{
+    font-size: 16px;
+  }
+
+}
+
+.search{
+  position: relative;
+  
+  
+  & label{
+    margin-left: 20px;
+    font-size: 15px;
+    color: #a85337;
+    font-family: "roboto";
+    font-size: bold;
+  }
+
+  & textarea{
+    height: 20px;
+    cursor: url('text.cur'), auto;
+  }
+
+  & button{
+    font-size: 15px;
+    font-family: "roboto";
+    color: #a85337;
+    margin-left: 10px;
+    padding: 5px;
+    width: auto;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+  }
+
+  & button:hover{
+    cursor: pointer;
+  }
+} 
+
+ #no-match{
+  position: relative;
+  left: 20px;
+  font-size: 20px;
 }
 
 /*
@@ -1004,6 +1152,7 @@ CSS of publish article
     font-size: 20px;
     font-family: "welovepeace";
     color: #a85337;
+    
   }
 
   & #submit {
@@ -1016,13 +1165,26 @@ CSS of publish article
     color: #a85337;
     border: #a85337 dotted ;
     border-radius: 12px;
+    cursor: pointer;
     
     &:hover {
       transition-duration: 0.5s;
       transform: scale(1.03);
-      cursor: pointer;
     }
   }
+}
+
+
+.fileinput-button{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  left: 750px;
+  top:60px;
+  font-family: "roboto";
+  padding: 10px;
+  color: #a85337;
+  border-radius: 12px;
 }
 
 #article_title {
@@ -1052,12 +1214,12 @@ CSS of publish article
 }
 
 .pop-up-publish {
+  background: url("$lib/image/pawBG.png");
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 50px;
-  background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
@@ -1071,6 +1233,776 @@ CSS of publish article
     height: 40px;
     font-size: 20px ;
     margin: 10px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
     
+  }
+}
+
+/*
+CSS of founder story page
+*/
+#recruitHeader{
+  position: relative;
+  color: black;
+  text-align: center;
+  text-shadow: 
+  1px 1px 0 #d27a7b,
+  2px 2px 0 #dfdaa3,
+  3px 3px 0 #d27a7b,
+  4px 4px 0 #dfdaa3;
+  font-family: "fornest";
+  margin-bottom: -20px;
+  letter-spacing: 3px;
+  font-size: 40px;
+  animation: fade-in ease 1.5s;
+  animation-fill-mode: forwards;
+
+  &:hover {
+      transition-duration: 1s;
+      transform: scale(1.03);
+    }
+}
+
+#globe {
+  position: absolute;
+  left: 400px;
+  top: 240px;
+  width: 50px;
+  height: 50px;
+}
+
+#usersgroup {
+  position: absolute;
+  right: 400px;
+  top: 240px;
+  width: 50px;
+  height: 50px;
+}
+
+
+.founderHeader{
+  background: linear-gradient(to right, transparent, #B9D8A8);
+  color: #21492a;
+  text-align: center;
+  box-shadow: 0 5px 3px lightgray;
+  margin: 20px;
+  text-shadow: 
+  1px 1px 0 #D2D478,
+  2px 2px 0 #277025,
+  3px 3px 0 #277025,
+  4px 4px 0 #D2D478;
+
+  & h1 {
+      position: relative;
+      top: 10px;
+      font-size: 50px;
+      font-family: "welovepeace";
+      letter-spacing: 10px;
+  }
+
+  & h2 {
+      position: relative;
+      left: 200px;
+      bottom: 10px;
+      font-size: 25px;
+      font-family: "fornest";
+      letter-spacing: 2px;
+  }
+}
+
+
+#founderPhotoDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+
+  & .photo{
+  width: 1100px;
+  height: 750px;
+  }
+}
+
+.display {
+  transition: opacity 0.1s;
+}
+
+
+#content1 {
+  position: absolute;
+  z-index: 1;
+  top: 400px;
+  left: 300px;
+}
+
+#content2 {
+  position: absolute;
+  z-index: 1;
+  top: 1200px;
+  left: 300px;
+}
+
+#content3 {
+  position: absolute;
+  z-index: 1;
+  top: 2000px;
+  left: 300px;
+}
+
+#content4 {
+  position: absolute;
+  z-index: 1;
+  top: 2800px;
+  left: 300px;
+}
+
+.image{
+  position: relative;
+}
+
+.photoTitle {
+  font-size: 40px;
+  color:#21492a;
+  margin: 0;
+  font-family: "welovepeace";
+  font-size: 40px;
+  padding-top: 20px;
+  text-shadow: 
+  1px 1px 0 #d27a7b,
+  2px 2px 0 #dfdaa3,
+  3px 3px 0 #d27a7b,
+  4px 4px 0 #dfdaa3;
+
+  &:hover {
+      transition-duration: 1s;
+      transform: scale(1.03);
+    }
+  }
+  
+.photoSubtitle{
+  font-size: 30px;
+  color:#21492a;
+  margin: 0;
+  font-family: "welovepeace";
+  padding-top: 20px;
+  text-shadow: 
+  1px 1px 0 #d27a7b,
+  2px 2px 0 #dfdaa3,
+  3px 3px 0 #d27a7b,
+  4px 4px 0 #dfdaa3;
+
+  &:hover {
+      transition-duration: 1s;
+      transform: scale(1.03);
+    }
+  }
+
+.photoInfo{
+  text-align: justify;
+  width: 380px;
+  height: 200px;
+  text-indent: 2em;
+  color: #21492a;
+  font-family:"roboto";
+  line-height: 32px;
+  font-size: 22px;
+  }
+
+.personalEmail{
+  position: relative;
+  bottom: 50px;
+  color: #21492a;
+  font-family:"fornest";
+  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 
+  1px 1px 0 #d27a7b,
+  2px 2px 0 #dfdaa3,
+  3px 3px 0 #d27a7b,
+  4px 4px 0 #dfdaa3;
+
+  &:hover {
+      transition-duration: 1s;
+      transform: scale(1.03);
+    }
+  }
+
+  #YurajEmail{
+    position: relative;
+    bottom: 100px;
+  }
+
+  .fade {
+      animation: fade-in ease 1.5s;
+      animation-fill-mode: forwards;
+  }
+
+  .fadeOut { opacity: 0; }
+  .fadeIn { opacity: 1; }
+
+  @keyframes fade-in {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to{
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  /*
+CSS of edit page
+*/
+
+.edit-button{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    gap: 20px;
+
+    & button{
+      width: 200px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.6);
+      font-family: "welovepeace";
+      font-size: 20px;
+      color: #a85337;
+      border: #a85337 dotted ;
+      border-radius: 12px;
+
+      &:hover {
+        transition-duration: 0.5s;
+        transform: scale(1.03);
+        cursor: pointer;
+      }
+    }
+
+    & a{
+      text-decoration: none;
+      color: #a85337;
+    }
+}
+
+  /*
+CSS of profile page
+*/
+
+#profilePage-header{
+  position: relative;
+  top: 30px;
+  color: #a85337;
+  text-align: left;
+  box-shadow: 0 5px 3px lightgray;
+  margin: 20px;
+  padding: 20px;
+  font-family: "welovepeace";
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
+#profilePage-container {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 1000px;
+
+  padding: 30px;
+}
+
+#PP {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  
+  & img{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  & button{
+    position: relative;
+    bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #a85337;
+    border: dotted 2px;
+    border-radius: 12px;
+    margin: 0 auto;
+    padding: 10px;
+    width: 200px;
+    font-size: 18px;
+    font-family: "roboto";
+    cursor: pointer;
+  }
+}
+
+#all-infomation{
+  font-family: "roboto";
+  font-size: 20px;
+  padding: 20px;
+
+  & button{
+    position: relative;
+    width: 80px;
+    font-size: 15px;
+    font-family: "roboto";
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #a85337;
+    border: dotted 2px;
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  & a{
+    text-decoration: none;
+    color: #a85337;
+  }
+}
+
+#user-information{
+  & span{
+    display: flex;
+    gap:15px;
+  }
+}
+
+.info-title{
+  color: #555a5f;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.pop-up-delete{
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & p{
+    font-size: 20px;
+    margin: 0 auto;
+  }
+
+  & button{
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+}
+
+.pop-up-deactivate{
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & button{
+    position: relative;
+    left: 120px;
+    top: 20px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  & a{
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+#deactivateinfo-container{
+background-color: rgba(255, 255, 255, 0.8);
+border: #a85337 dotted;
+border-radius: 12px;
+padding: 20px;
+text-align: center;
+width: 400px;
+
+  & #deactivate-alert{
+    font-size: 20px;
+  }
+
+  & #deactivate{
+    font-size: 15px;
+    color: red;
+  }
+}
+
+.pop-up-profileChange {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 600px;
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  & p{
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #a85337;
+    font-family: "welovepeace";
+  }
+
+  & #profile-info{
+    display: flex;
+  }
+
+  & button{
+    position: relative;
+    left: 200px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+}
+
+#profile-container{
+  display: flex;
+
+  & button{
+    position: relative;
+    left: -30px;
+    top: 150px;
+    width: 30px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "roboto";
+  }
+
+  & img{
+    position: relative;
+    left: -30px;
+    top: 100px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+#info-container{
+  display: flex;
+  flex-direction: column;
+
+  & span{
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  & textarea{
+    margin-top: 10px;
+    height: 20px;
+  }
+
+  & #individual-info-change{
+    position: relative;
+    right: 40px;
+    width: 280px;
+    height: 80px;
+  } 
+
+}
+
+
+  /*
+CSS of deactivate Page
+*/
+#deactivate-container{
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+
+#deactivate-img{
+  margin: 20px;
+}
+
+#deactivate-info{
+font-size: 25px;
+font-family: "welovepeace";
+color: #a85337;
+padding: 10px;
+margin: 10px;
+}
+
+#deactivate-button{
+  border: dotted #a85337;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  font-size: 15px;
+  font-family: "welovepeace";
+
+  & a{
+    text-decoration: none;
+    color: #a85337;
+  }
+}
+
+  /*
+CSS of specific Article Page
+*/
+
+hr{
+  border: 0;
+  padding: 3px;
+  background: repeating-linear-gradient(135deg, #a2a9b6 0px, #a2a9b6 1px, transparent 1px, transparent 6px);
+}
+
+aside.user-profile {
+  width: 200px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 50px;
+  top: 100px;
+  overflow-y: auto;
+
+  & .profile-content{
+    position: relative;
+  }
+
+  & img {
+      border: solid grey 1px;
+      width: 80%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      margin-bottom: 10px;
+      margin: 0 auto;
+  }
+
+  & p {
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+    color: black;
+  }
+
+  & #author-label {
+    color: rgb(32, 32, 180);
+  }
+}
+
+
+#specificArticle-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: rgba(255,255,255,0.6);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
+    & article{
+      max-width: 1000px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+    }  
+
+    & h1 {
+      text-align: center;
+    }
+  
+    & img {
+      width: 80%;
+      height: 450px;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      size: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    & h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    & #info-time-author {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+  
+    & .content {
+      list-style: decimal;
+      margin-left: 1.5em;
+      padding-left: 0.5em;
+    }
+}
+
+#comments-container {
+  position: relative;
+  top: 30px;
+  margin-bottom: 30px; 
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+  }
+
+  & textarea {
+    width: 100%;
+    resize: vertical;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  & button[type="submit"] {
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    
+  }
+
+  & button[type="submit"]:hover {
+    background-color: #007bff;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+#commentor-container{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    
+
+  & #commentor-PP{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 280px;
+  }
+  
+  & #commentor-name{
+    font-size: 15px;
+    position: relative;
+    right: 550px;
+  }
+  
+  & #comment-content{
+    font-size: 20px;
+    position: relative;
+    right: 550px;
+  }
+
+  & button{
+    width: 70px;
+    height: 30px;
+    position: relative;
+    top: 70px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+#show-hide-comments{
+  width: 200px;
+  margin: 0 auto;
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #007bff;
   }
 }

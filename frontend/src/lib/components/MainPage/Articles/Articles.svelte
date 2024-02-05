@@ -7,12 +7,12 @@
 
 <div>
 <h1>View Articles</h1>
-<img id="pawIcon" src="src/lib/image/pawIcon.png" alt="paw Icon" />
+<img id="pawIcon" src="/src/lib/image/pawIcon.png" alt="paw Icon" />
 </div>
 
     <div class="articleOrderButton">
-        <div><a id="hotArticles" href="url" target="_blank">&#x1F525 Hot</a></div>
-        <div><a id="NewArticles" href="url" target="_blank">&#x1F525 Newest</a></div>
+        <button id="hotArticles" >&#x1F525 Hot</button>
+        <button id="NewArticles" >&#x1F525 Newest</button>
     </div>
 
     <div id="articleMainPart">
