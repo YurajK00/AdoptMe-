@@ -1,43 +1,99 @@
 <script>
-    import DividingLine from "$lib/components/DividingLine.svelte";
+  import DividingLine from "$lib/components/DividingLine.svelte";
+  import { invalidate } from "$app/navigation";
+  import { USER_URL } from "$lib/js/api-urls.js";
+  export let user;
+
+let article_title = user.article_title;
+let article_content = user.article_content;
+let error = false;
+let success = false;
+
 
     let showModal = false;
     function toggleModal() {
       showModal = !showModal;
     }
 
+    async function handleSave() {
+    error = false;
+    success = false;
+
+    
+      const response = await fetch(USER_URL, {
+        method: "PATCH",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ article_title, article_content })
+        
+      });
+
+      success = response.status === 204;
+    error = !success;
+
+    if (success) invalidate(USER_URL);
+
+   
+  }
+
+
+    
+
   </script>
 
-<div id="publishArticles-container">
+<form on:submit|preventDefault={handleSave}>
+
+  <div id="publishArticles-container">
     <label for="article_title"> Title</label>
-    <input type="text" id="article_title" name="article_title" maxlength="20" minlength="1" required value="something interesting?"/>
-    
-    <div>
+    <textarea id="article_title" bind:value={article_title} rows="1" cols="40" maxlength="20" required></textarea>
+
+<div>
     <label for="article_content"> Content</label>
-    
+    <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required></textarea>
+ 
+
     <span class="fileinput-button">
       <span id="text">Add image</span>
       <input type="file" id="content-image" name="content-image" accept="image/*"/>
     </span>
+  </div>
     
-    </div>
-
-    <textarea id="article_content" name="article_content" rows="4" cols="40" maxlength="1000" required>
-    Something interesting?
-    </textarea>
-    
-    <button id="submit" on:click = { toggleModal }> 
-        Submit now!
-    </button>
+    <button id="submit">Submit now!</button>
 
     {#if showModal}
     <div class="pop-up-publish">
-        <p>Do you want to submit?</p>
-        <button on:click={toggleModal}>Yes</button>
-        <button on:click={toggleModal}>No</button>
+      <p>Do you want to submit?</p>
+      <button on:click={handleSave}>Yes</button>
+      <button on:click={toggleModal}>No</button>
     </div>
     {/if}
 
-</div>
+    {#if error}<span class="error">Could not save!</span>{/if}
+    {#if success}<span class="success">Saved!</span>{/if}
+    
+   </div>
+</form>
+
+
+<style>
+
+.error,
+  .success {
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .error {
+    color: darkred;
+    background-color: lightcoral;
+  }
+
+  .success {
+    color: darkgreen;
+    background-color: lightgreen;
+  }
+
+</style>
 
 <DividingLine />

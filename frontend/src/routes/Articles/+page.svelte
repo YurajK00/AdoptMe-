@@ -2,6 +2,8 @@
     import ArticlePage from "$lib/components/Articles/ArticlePage.svelte";
     import DividingLine from "$lib/components/DividingLine.svelte";
     import Contact from "$lib/components/MainPage/Contact/Contact.svelte";
+
+    export let data;
 </script>
 
 <svelte:head>
@@ -15,7 +17,7 @@
 <DividingLine />
 
 <!-- The main part to show the articless -->
-<ArticlePage />
+<ArticlePage {data} />
 
 <!-- The dividing line after main part -->
 <DividingLine />

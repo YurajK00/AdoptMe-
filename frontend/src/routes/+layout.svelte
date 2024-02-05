@@ -5,11 +5,12 @@
 
 
   $: path = $page.url.pathname;
+  export let data;
   
 </script>
 
 
-<NavBar/>
+<NavBar {data}/>
 
 <div class="container">
   <slot />

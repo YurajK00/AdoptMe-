@@ -5,7 +5,9 @@
     let searchResults = [];
     let showResults = false;
     let selectedDate = "";
+    export let data;
     
+
     let articles = [
     { title: 'Adopt a cat from Auckland', publisher: 'Default user',  date:'2024-01-20'},
     { title: 'Do you want a dog from Hamilton?', publisher: 'Default user',  date:'2024-01-18'},
@@ -19,7 +21,17 @@
     { title: 'I\'m not superstitious but I\'m a little stitious', publisher: 'Default user',  date:'2023-12-15'}
   ];
 
-    let articleToShow = articles;
+ let articleToShow = articles;
+  
+ for (let index = 0; index < articles.length; index++) {
+ 
+  let articleNo = articles[index].index;
+
+
+  console.log(`Index: ${index}`);
+  console.log(articleNo);
+  console.log(articles[index]);
+}
 
   function search() {
     if (searchTerm.trim() !== "" || selectedDate.trim() !== "") {
@@ -43,8 +55,18 @@
 </script>
 
 <div class="article-container">
-    
+
+
+{#if data.isLoggedIn}
     <ArticleButton />
+
+    {:else}
+    <div class="ArticleButtons">
+     <button >HOT</button>
+     <button>NEWEST</button>
+ </div>
+ {/if}
+    
 
    <div class = "article-links">
     
@@ -62,11 +84,17 @@
 
         <div class = "LinksofArticles">
 
-            {#each articleToShow as { title, publisher, date }}
+            {#each articleToShow as { title, publisher, date }, index (index)}
+       
+          
+
+ 
+
 
             <div id = "articleTitle">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle"> {title}</a>
+                <a href="/Articles/SpecificArticle0"> {title}</a>
+      
             </div>
 
             <div id = "articleLikeButton">

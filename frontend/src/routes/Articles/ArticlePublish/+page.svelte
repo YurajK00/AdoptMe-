@@ -3,6 +3,7 @@
     import Contact from "$lib/components/MainPage/Contact/Contact.svelte";
     import ArticlePublish from "../../../lib/components/Articles/ArticlePublish.svelte";
     
+    export let data;
 </script>
 
 <svelte:head>
@@ -12,4 +13,8 @@
 
 <h1 id="articlePublishHeader">Publish your own article</h1>
 
-<ArticlePublish />
+{#if data.user}
+<ArticlePublish user ={data.user} />
+<DividingLine/>
+<Contact/>
+{/if}
