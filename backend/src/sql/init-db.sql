@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS Users (
     password TEXT NOT NULL,
     confirmedPassword TEXT NOT NULL,
     email TEXT NOT NULL,
-    Introduction TEXT
+    Introduction TEXT,
+    profilePicture TEXT
     
 );
 

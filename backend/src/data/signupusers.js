@@ -2,13 +2,13 @@ import { getDatabase } from "../db/database.js";
 import bcrypt from "bcryptjs";
 
 const saltRounds = 10;
- const saltrounds1 = 10;
+
 
 export async function signup(userData) {
   console.log("Function call to signup...");
   const db = await getDatabase();
 
-  const { username, firstName, lastName, email, password, confirmedPassword, birthday } = userData;
+  const { username, firstName, lastName, email, password, confirmedPassword, birthday, profilePicture } = userData;
 
   // Check if passwords match
   if (password !== confirmedPassword) {
@@ -25,10 +25,10 @@ export async function signup(userData) {
 
   // Hash and salt the password
   const hashedPassword = await bcrypt.hash(password, saltRounds);
-  const hashedConfirmedPassword = await bcrypt.hash(confirmedPassword, saltrounds1);
+  const hashedConfirmedPassword = await bcrypt.hash(confirmedPassword, saltRounds);
 
-  const sql = "INSERT INTO Users (username, firstName, lastName, email, password, confirmedPassword, birthday) VALUES (?, ?, ?, ?, ?, ?, ?)";
-  const values = [username, firstName, lastName, email, hashedPassword ,hashedConfirmedPassword, birthday];
+  const sql = "INSERT INTO Users (username, firstName, lastName, email, password, confirmedPassword, birthday, profilePicture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+  const values = [username, firstName, lastName, email, hashedPassword ,hashedConfirmedPassword, birthday, profilePicture];
 
   try {
     const result = await db.run(sql, values);

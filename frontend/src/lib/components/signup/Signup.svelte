@@ -1,11 +1,9 @@
 <script>
     import { goto } from "$app/navigation";
     import { user } from "../../../lib/components/user.js";
-    import { SIGNUP_URL } from "../../../lib/js/api-urls.js"
-   
+    import { SIGNUP_URL } from "../../../lib/js/api-urls.js";
   
-  
-    let username = "";
+  let username = "";
   let firstName = "";
   let lastName = "";
   let email ="";
@@ -37,17 +35,25 @@
     return;
   }
 
-  const response = await fetch(SIGNUP_URL, {
-    method: "POST",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, firstName, lastName, email, password, confirmedPassword, birthday })
+const response = await fetch(SIGNUP_URL, {
+method: "POST",
+credentials: "include",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ 
+  username,
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmedPassword,
+  birthday,
+  profilePicture: images[currentImage], })
   });
 
   if (response.ok) {
             // Signup successful
             const userData = await response.json();
-            user.login({ username: userData.username, email: userData.email });
+            user.login({ username: userData.username, email: userData.email, password: userData.password, confirmedPassword: userData.confirmedPassword });
             goto("/", { replaceState: true });
         } 
         
@@ -60,7 +66,9 @@
             } 
              if (data.error === "username or email already taken") {
                 emailTakenError = true;
-
+            }
+            if (password !== confirmedPassword) {
+              passwordMatchError = true;
             }
           }
           else {
@@ -68,12 +76,9 @@
             console.log(data.error);
             console.error("Signup failed:", response.statusText);
             // Display a generic error message to the user
-            // You can set an error state or display a notification
+            
         }
-     
-  //           Handle other errors
-  //         console.error("Signup failed:", response.statusText);
-  //  
+       
 
 }
   }
@@ -109,10 +114,6 @@
       <input type="password" name="password" bind:value={password} required />
       <label for="confirmedPassword">Confirm your password:</label>
       <input type="password" name="confirmedPassword" bind:value={confirmedPassword} required />
-      {#if passwordMatchError}
-      <p style="color: red;">Password does not match.</p>
-      {/if}
-
       <div class="pickPP">
         <div class="pickPP-label">
           <label for="profilePicture">Profile pictures:</label>
@@ -121,6 +122,9 @@
         <img src={images[currentImage]} alt="nextImage">
         <button on:click={toggleImage}>next</button>
       </div>
+      {#if passwordMatchError}
+      <p style="color: red;">Password does not match.</p>
+      {/if}
     </div>
 
       <button id="registerButton" type="submit">Signup</button>
