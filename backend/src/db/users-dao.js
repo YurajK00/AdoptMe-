@@ -1,5 +1,6 @@
 import yup from "yup";
 import { getDatabase } from "./database.js";
+import bcrypt from "bcryptjs";
 
 //--------------------------------------------------------------------------------------------------------------
 
@@ -13,6 +14,8 @@ import { getDatabase } from "./database.js";
 export async function getUserWithUsername(username) {
   const db = await getDatabase();
   const sql = "SELECT * FROM Users WHERE username = ?";
+
+  
   const userData = await db.get(sql, username)
   return userData
 }
@@ -28,16 +31,39 @@ export async function getUserWithUsername(username) {
 //------------------------------------------------------------------------------------------------------------------
 
 export async function getUserWithCredentials(username, password) {
-  const db = await getDatabase();
-  const sql = "SELECT * FROM Users WHERE username = ? and password = ?";
-  const userData = await db.get(
-    sql,
-    username,
-    password
-  )
-  return userData
-}
+  try {
+      const db = await getDatabase();
+      const sql = "SELECT * FROM Users WHERE username = ?";
+      
+      const userData = await db.get(sql, username);
+      
+      if (!userData) {
+          // User not found in the database
+          return null;
+      }
 
+      // Check if userData has a password property before attempting to compare
+      if (!userData.password) {
+          // Handle the scenario where the password is not found in userData
+          return null;
+      }
+
+      // Compare the provided password with the hashed password retrieved from the database
+      const passwordsMatch = await bcrypt.compare(password, userData.password);
+
+      if (passwordsMatch) {
+          // Passwords match, return the user data
+          return userData;
+      } else {
+          // Passwords don't match
+          return null;
+      }
+  } catch (error) {
+      // Handle any errors that occur during database retrieval or password comparison
+      console.error("Error retrieving user:", error);
+      throw error;
+  }
+}
 
 export async function getArticles(article_id) {
   const db = await getDatabase(); 

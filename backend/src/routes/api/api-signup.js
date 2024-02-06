@@ -1,5 +1,6 @@
 import express from "express";
 import { signup } from "../../data/signupusers.js";
+import { createUserJWT } from "../../utils/jwt-utils.js";
 
 const router = express.Router();
 
@@ -23,14 +24,19 @@ router.post("/", async (req, res) => {
 
     // Returning responses
     res.status(200).json({s});
+
+   
   } catch (error) {
+    console.log(error.message);
     if (error.message === 'Passwords do not match') {
       res.status(400).json({ error: 'password_mismatch' });
     } else if (error.message === 'Username or email already taken') {
-      res.status(400).json({ error: 'username_or_email_taken' });
+      res.status(400).json({ error: 'username or email already taken' });
     } else {
       res.status(500).json({ error: 'signup_fail' });
+
     }
+
   }
 });
 

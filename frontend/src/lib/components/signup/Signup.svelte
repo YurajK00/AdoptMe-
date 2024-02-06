@@ -26,11 +26,7 @@
   usernameTakenError = false;
   emailTakenError = false;
 
-  // Validation to make passwords matching
-  if (password !== confirmedPassword) {
-    passwordMatchError = true;
-    return;
-  }
+  
 
   // Validate that birthday is chosen
   if (!birthday) {
@@ -45,22 +41,40 @@
     body: JSON.stringify({ username, firstName, lastName, email, password, confirmedPassword, birthday })
   });
 
-  if (response.status === 400) {
-    // Handle signup failure, like username or email is already taken
-    const data = await response.json();
-    if (data.error === "username_taken") {
-      usernameTakenError = true;
-    } else if (data.error === "email_taken") {
-      emailTakenError = true;
-    } else {
-      error = true;
-    }
-  } else {
-    // Signup successful
-    user.login({ username, email });
-    goto("/", { invalidateAll: true, replaceState: true });
-  }
+  if (response.ok) {
+            // Signup successful
+            const userData = await response.json();
+            user.login({ username: userData.username, email: userData.email });
+            goto("/", { replaceState: true });
+        } 
+        
+        else {
+          const data = await response.json();
+        if (response.status === 400) {
+         
+            if (data.error === "username or email already taken") {
+                usernameTakenError = true;
+            } 
+             if (data.error === "username or email already taken") {
+                emailTakenError = true;
+
+            }
+          }
+          else {
+            // Handle other errors (e.g., server errors)
+            console.log(data.error);
+            console.error("Signup failed:", response.statusText);
+            // Display a generic error message to the user
+            // You can set an error state or display a notification
+        }
+     
+  //           Handle other errors
+  //         console.error("Signup failed:", response.statusText);
+  //  
+
 }
+  }
+
 </script>
 
 <svelte:head>
@@ -77,7 +91,7 @@
       <label for="lastName">Enter your last name:</label>
       <input type="text" name="lastName" bind:value={lastName} required />
       {#if usernameTakenError}
-        <p style="color: red;">Username is already taken. Please choose another one.</p>
+      <p style="color: red;">Username is already taken.</p>
       {/if}
       <label for="email">Enter your email:</label>
       <input type="email" name="email" bind:value={email} required />
@@ -109,7 +123,9 @@
       <button id="registerButton" type="submit">Signup</button>
       <div class="login">
         <span class="signingin">Already have an account?
-          <a href="login" on:click={() => goto("/login")}>&#x1F64C Log in</a> 
+      
+          <a href="/login" on:click={() => goto("/login")}>&#x1F64C Log in</a> 
+          
         </span>
       </div>
     </form>
