@@ -14,11 +14,11 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 -- Insert sample data into the Users table
-INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword,birthday,Introduction) VALUES
-    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono' , '1990-01-20', 'Hello I am Echo'),
-    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo','1990-01-20','Hello I am Yuraj' ),
-    ( 'Billy', 'Billy', 'TheButcher','billy@gmail.com', 'yoyo', 'yoyo','1990-01-20','Hello I am Billy'),
-    ('Natalia', 'Natalia' , 'Sharp' , 'natalia@gmail.com','momo','momo','1990-01-20','Hello I am Natalia' );
+INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword,birthday,Introduction, profilePicture) VALUES
+    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono' , '1990-01-20', 'Hello I am Echo', '/src/lib/image/defaultPP-cat.png'),
+    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo','1990-01-20','Hello I am Yuraj','/src/lib/image/defaultPP-dog.png' ),
+    ( 'Billy', 'Billy', 'TheButcher','billy@gmail.com', 'yoyo', 'yoyo','1990-01-20','Hello I am Billy','/src/lib/image/defaultPP-duck.png'),
+    ('Natalia', 'Natalia' , 'Sharp' , 'natalia@gmail.com','momo','momo','1990-01-20','Hello I am Natalia' ,'/src/lib/image/defaultPP-hamster.png');
 
 -- Create the Articles table
 

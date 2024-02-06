@@ -1,6 +1,5 @@
 import express from "express";
 import { signup } from "../../data/signupusers.js";
-import { createUserJWT } from "../../utils/jwt-utils.js";
 
 const router = express.Router();
 
@@ -20,13 +19,11 @@ router.post("/", async (req, res) => {
 
   try {
     // Calling signup function
-   const s =  await signup(userData);
+    const username = await signup(userData);
 
     // Returning responses
-    res.status(200).json({s});
-
-   
-  }  catch (error) {
+    res.status(200).json({ username });
+  } catch (error) {
     if (error.message === 'Passwords do not match') {
       res.status(400).json({ error: 'password_mismatch' });
     } else if (error.message === 'Username or email already taken') {

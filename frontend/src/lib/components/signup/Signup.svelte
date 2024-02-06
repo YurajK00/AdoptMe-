@@ -10,6 +10,7 @@
   let birthday ="";
   let password = "";
   let confirmedPassword = "";
+  let profilePicture = "";
   let error = false;
   let passwordMatchError = false;
   let usernameTakenError = false;
@@ -91,7 +92,8 @@ body: JSON.stringify({
 
 <h1 id="registerHeader">Register</h1>
 
-    <form id="register-container" on:submit|preventDefault={handleSignup}> 
+    <form id="register-container"> 
+      
       <label for="username">Enter your username:</label>
       <input type="text" name ="username" bind:value={username} required />
       <label for="firstName">Enter your first name:</label>
@@ -127,7 +129,7 @@ body: JSON.stringify({
       {/if}
     </div>
 
-      <button id="registerButton" type="submit">Signup</button>
+      <button id="registerButton" type="submit" on:click={handleSignup} >Signup</button>
       <div class="login">
         <span class="signingin">Already have an account?
       

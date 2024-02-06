@@ -8,7 +8,7 @@ export async function getUserProfile(id) {
     const db = await getDatabase(); 
   
     // SQL query with placeholders
-    const sql = "SELECT username, firstName, lastName, birthday, Introduction FROM Users where id = ? ";
+    const sql = "SELECT username, firstName, lastName, birthday, Introduction, profilePicture FROM Users where id = ? ";
 
     try {
       // Execute the SQL query
@@ -28,7 +28,8 @@ export async function getUserProfile(id) {
   firstName: yup.string().optional(),
   lastName: yup.string().optional(),
   birthday: yup.string().optional(),
-  Introduction: yup.string().optional()
+  Introduction: yup.string().optional(),
+  profilePicture:yup.string().optional()
   
   })
   .required();
@@ -41,10 +42,10 @@ export async function getUserProfile(id) {
       stripUnknown: true
     });
   
-    const sql = "UPDATE Users SET username =?, firstName= ?, lastName = ?,birthday =?, Introduction = ? WHERE id = ?";
+    const sql = "UPDATE Users SET username =?, firstName= ?, lastName = ?,birthday =?, Introduction = ?, profilePicture = ? WHERE id = ?";
     const db = await getDatabase();
   
-    const dbResult = await db.run(sql, validated.username, validated.firstName, validated.lastName, validated.birthday, validated.Introduction, id);
+    const dbResult = await db.run(sql, validated.username, validated.firstName, validated.lastName, validated.birthday, validated.Introduction, validated.profilePicture, id);
   
     // Return true if changes applied, false otherwise
     return dbResult.changes > 0;

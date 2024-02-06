@@ -2,7 +2,6 @@
      
 import { onMount } from 'svelte';
   import { USERPROFILE_URL } from "$lib/js/api-urls.js";
-  import { invalidate } from "$app/navigation";
    export let user; 
 
 let data;
@@ -12,7 +11,7 @@ let id = user.id;
   let lastName = user.lastName;
   let birthday = user.birthday;
   let Introduction = user.Introduction;
-  let newImage = "/src/lib/image/defaultPP-cat.png";
+  let profilePicture= user.profilePicture;
   let showProfileChange = false;
   let showDeactivateAccount = false;
   let showModalDelete = false;
@@ -25,17 +24,13 @@ let id = user.id;
 
       if (response.ok) {
          data = await response.json(); 
-        console.log(data);
-       
-        
         username = data[0].username;
-
-        console.log(username);
-        
         firstName = data[0].firstName;
         lastName = data[0].lastName;
         birthday = data[0].birthday;
         Introduction = data[0].Introduction;
+        profilePicture = data[0].profilePicture;
+        
       } else {
         console.log("Error fetching user profile");
       }
@@ -53,15 +48,17 @@ let id = user.id;
 
   //-------------------------------------------------------------------------------------------------------
 
-  async function handleSave(e) {
+  async function handleSave() {
     error = false;
     success = false;
     showProfileChange = !showProfileChange;
+    profilePicture = images[currentImage];
+    console.log(profilePicture);
     const response = await fetch(`${USERPROFILE_URL}/${id}`, {
       method: "PATCH",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, firstName, lastName, birthday, Introduction})
+      body: JSON.stringify({ username, firstName, lastName, birthday, Introduction, profilePicture})
     });
 
     success = response.status === 204;
@@ -94,9 +91,7 @@ let currentImage = 0;
     currentImage = (currentImage - 1 + images.length) % images.length;
   }
 
-  function toggleImage() {
-    newImage = images[currentImage];
-  }
+
   </script>
 
 <h1 id="profilePage-header">Profile page</h1>
@@ -104,7 +99,7 @@ let currentImage = 0;
 <div id="profilePage-container">
 
 <div id="PP">
-    <img src={newImage} alt="PP" /> 
+    <img src={profilePicture} alt="PP" /> 
     <button on:click = { toggleProfile }>Edit information</button>
     <button on:click = { toggleDeactivateAccount }>Deactivate Account</button>  
 </div>
