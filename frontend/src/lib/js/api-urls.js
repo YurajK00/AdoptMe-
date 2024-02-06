@@ -17,3 +17,6 @@ export const SIGNUP_URL = `${BASE_URL}/signup`;
 
 export const USERPROFILE_URL = `${BASE_URL}/userprofile`;
 
+export const GETARTICLE_URL = `${BASE_URL}/articles/articles`;
+
+

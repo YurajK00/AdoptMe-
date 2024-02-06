@@ -1,11 +1,59 @@
 <script>
     import ArticleButton from "./ArticleButton.svelte";
     import ArticleLikeButton from "./ArticleLikeButton.svelte";
+    import { onMount } from 'svelte';
+    // import { useParams } from 'svelte-routing';
+   
+   
+    import { GETARTICLE_URL } from "$lib/js/api-urls.js" ;
+
+   
+    let articleData;
+    let title ="";
+    let authorname = "";
+    let date_published = "";
+    export let data;
+
+
     let searchTerm = "";
     let searchResults = [];
     let showResults = false;
     let selectedDate = "";
-    export let data;
+
+
+ 
+   
+
+     fetchArticleData;
+ 
+
+    async function fetchArticleData(e) {
+      const article = e.detail;
+    try {
+
+      const response = await fetch(`${GETARTICLE_URL}/${article.id}`);
+
+      if (response.ok) {
+        data = await response.json(); 
+        console.log(data);
+        console.log("Hey it works")
+       
+        
+        title = data.article_title;
+
+        console.log(title);
+        
+
+      } else {
+        console.log("Error fetching user profile");
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+
+
+
     
 
     let articles = [
@@ -28,9 +76,9 @@
   let articleNo = articles[index].index;
 
 
-  console.log(`Index: ${index}`);
-  console.log(articleNo);
-  console.log(articles[index]);
+  // console.log(`Index: ${index}`);
+  // console.log(articleNo);
+  // console.log(articles[index]);
 }
 
   function search() {

@@ -6,6 +6,10 @@ const router = express.Router();
 import articleRoutes from "./api-articles.js";
 router.use("/articles", articleRoutes)
 
+import articlelinkRoutes from "./api-articles.js";
+router.use("/articles/articles", articlelinkRoutes)
+
+
 import authRoutes from "./api-auth.js";
 router.use("/auth", authRoutes);
 
@@ -20,6 +24,7 @@ router.use("/signup" , singupusersRoutes);
 
 import userprofileRoutes  from "./api-userprofile.js";
 router.use("/userprofile", userprofileRoutes);
+
 
 
 

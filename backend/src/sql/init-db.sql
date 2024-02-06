@@ -41,6 +41,23 @@ INSERT INTO Articles (article_content, article_title, author_name, author_id, li
    'Adoption of cat',
    'Natalia Sharp',
    1, 0, 0, '2024-01-26', '/src/images/YellowCat.png'
+),
+    ('test',
+    'Adopt a cat from Auckland',
+    'Nancy',
+    2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
+),
+
+    ('test',
+    'Adopt a cat from Auckland2',
+    'Nancy',
+    2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
+),
+
+    ('test',
+    'Adopt a cat from Auckland3',
+    'Nancy',
+    2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
 );
 
 
