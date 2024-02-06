@@ -2,8 +2,9 @@
 CREATE TABLE IF NOT EXISTS Users (
     id INTEGER NOT NULL PRIMARY KEY,
     username TEXT NOT NULL,
-    firstName TEXT ,
-    lastName TEXT ,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    birthday DATE,
     password TEXT NOT NULL,
     confirmedPassword TEXT NOT NULL,
     email TEXT NOT NULL
