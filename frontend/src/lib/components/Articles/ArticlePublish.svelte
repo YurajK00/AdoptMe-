@@ -1,10 +1,11 @@
 <script>
-  import { invalidate } from "$app/navigation";
-  import { USER_URL } from "$lib/js/api-urls.js";
-  export let user;
+ 
+  import { ARTICLE_URL } from "$lib/js/api-urls.js";
+  
+  
 
-let article_title = user.article_title;
-let article_content = user.article_content;
+let article_title = "";
+let article_content = "";
 let error = false;
 let success = false;
 
@@ -14,33 +15,45 @@ let success = false;
       showModal = !showModal;
     }
 
-    async function handleSave() {
+//-----------------------------------------------------------------
+  async function createArticle() {
     error = false;
     success = false;
 
+    try{
     
-      const response = await fetch(USER_URL, {
-        method: "PATCH",
+      const response = await fetch(ARTICLE_URL, {
+        method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ article_title, article_content })
+        body: JSON.stringify({ article_title :article_title, article_content:article_content })
         
       });
 
-      success = response.status === 204;
-    error = !success;
+    if (!response.ok){
+      const errorMessage = await response.json();
+      throw new Error(errorMessage.error);
+    }
+    alert('Article created successfully');
 
-    if (success) invalidate(USER_URL);
-
-   
+    article_content = "";
+    article_title = "";
   }
+
+    catch (error) {
+            console.error('Error creating article:', error.message);
+            alert('Error creating article: ' + error.message);
+
+  }
+
+}
 
 
     
 
   </script>
 
-<form on:submit|preventDefault={handleSave}>
+<form on:submit|preventDefault={createArticle}>
 
   <div id="publishArticles-container">
     
@@ -68,7 +81,7 @@ let success = false;
     {#if showModal}
     <div class="pop-up-publish">
       <p>Do you want to submit?</p>
-      <button on:click={handleSave}>Yes</button>
+      <button on:click={createArticle}>Yes</button>
       <button on:click={toggleModal}>No</button>
     </div>
     {/if}

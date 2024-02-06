@@ -1,6 +1,8 @@
 import yup from "yup";
 import { getDatabase } from "./database.js";
 
+//--------------------------------------------------------------------------------------------------------------
+
 
 /**
  * Gets the user with the given username, if it exists.
@@ -10,7 +12,7 @@ import { getDatabase } from "./database.js";
  */
 export async function getUserWithUsername(username) {
   const db = await getDatabase();
-  const sql = "SELECT * FROM PUBLISH WHERE username = ?";
+  const sql = "SELECT * FROM Users WHERE username = ?";
   const userData = await db.get(sql, username)
   return userData
 }
@@ -22,6 +24,9 @@ export async function getUserWithUsername(username) {
  * @param {*} password the password to search
  * @returns the user with the given credentials, or undefined.
  */
+
+//------------------------------------------------------------------------------------------------------------------
+
 export async function getUserWithCredentials(username, password) {
   const db = await getDatabase();
   const sql = "SELECT * FROM Users WHERE username = ? and password = ?";
@@ -33,8 +38,9 @@ export async function getUserWithCredentials(username, password) {
   return userData
 }
 
+
 export async function getArticles(article_id) {
-  const db = await getDatabase(); // Assuming getDatabase returns a database connection
+  const db = await getDatabase(); 
 
   // SQL query with placeholders
   const sql = "SELECT * FROM Articles WHERE article_id = ?";
@@ -49,14 +55,72 @@ export async function getArticles(article_id) {
     throw error; // Propagate the error to the caller
   } 
 }
-//export async function insertUser(username, password){
-  //const db =await getDatabase();
-  //const sql = 'Insert into Users (username, password) Values (? , ?';
-  //const userData = await db.run(
-  //  sql, username, password
- // )
- // return userData
-//}
+
+//------------------------------------------------------------------------------------------------------------------
+
+//Publish New Article
+
+// export async function insertArticle(articleData){
+//   const db = await getDatabase();
+
+//   const{ article_title , article_content , author_username} = articleData;
+
+
+
+
+//   const sql = "INSERT INTO Articles (article_title, article_content) VALUES (?,?)"
+//   const values = [article_title, article_content]
+
+  
+//  try {
+//     const result = await db.run(sql, values);
+//     console.log("Article added", result.article_id);
+//     return result.changes>0;
+//   } catch (error) {
+//     console.error("Error adding article:", error);
+//     throw error;
+//   }
+
+
+// }
+
+export async function insertArticle(articleData){
+  const {article_content , article_title , author_username} = articleData
+ 
+  const db = await getDatabase();
+
+ await db.get('SELECT id FROM Users WHERE username = ?', [author_username], (err, row) => {
+  if (err) {
+      return res.status(500).json({ error: err.message });
+  }
+
+  if (!row) {
+      return res.status(404).json({ error: 'Author not found' });
+  }
+
+  const author_id = row.id;
+
+  // Insert the new article into the Articles table and retrieve author_name dynamically
+  db.run(
+      `INSERT INTO Articles (article_content, article_title, author_id, author_name) 
+       SELECT ?, ?, u.username, ?, ?, ?, ?
+       FROM Users u 
+       WHERE u.username = ?`,
+      [article_content, article_title, author_id, author_username],
+      function (err) {
+          if (err) {
+              return res.status(500).json({ error: err.message });
+          }
+          res.status(201).json({ message: 'Article created successfully', article_id: this.lastID });
+      }
+  );
+});
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+
 
 
 const updateUserSchema = yup
@@ -65,6 +129,9 @@ const updateUserSchema = yup
   article_content: yup.string().optional()
   })
   .required();
+
+
+
 
 // Edit and pulbish the article
  
@@ -82,5 +149,8 @@ export async function updateUser(publisher_id, updateData) {
   // Return true if changes applied, false otherwise
   return dbResult.changes > 0;
 }
+
+
+
 
 

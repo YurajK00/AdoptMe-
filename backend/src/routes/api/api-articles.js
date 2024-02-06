@@ -1,7 +1,25 @@
 import express from "express";
 import { getArticles } from "../../db/users-dao.js";
+import { insertArticle } from "../../db/users-dao.js";
 
 const router = express.Router();
+
+
+
+//Setting up a router to post article on the server and then back to the database
+
+router.post("/" , async (req,res)=>{
+
+try {
+  const articleData = req.body;
+  console.log(articleData);
+  const articles = await insertArticle(articleData);
+  res.status(201).json({ articles });
+} catch (error) {
+    console.error('Error adding article:', error);
+    res.status(500).json({ error: 'Failed to add article' });
+}
+})
 
 
 

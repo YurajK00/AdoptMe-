@@ -11,22 +11,23 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 -- Insert sample data into the Users table
-INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword) VALUES
-    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono'),
-    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo' ),
-    ( 'Billy', 'Billy', 'TheButcher','yuraj@gmail.com', 'yoyo', 'yoyo'),
-    ('Natalia', 'Natalia' , 'Sharp' , 'yuraj@gmail.com','momo','momo' );
+INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword,birthday) VALUES
+    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono' , '1990-01-20'),
+    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo','1990-01-20' ),
+    ( 'Billy', 'Billy', 'TheButcher','yuraj@gmail.com', 'yoyo', 'yoyo','1990-01-20'),
+    ('Natalia', 'Natalia' , 'Sharp' , 'yuraj@gmail.com','momo','momo','1990-01-20' );
 
 -- Create the Articles table
+
 CREATE TABLE IF NOT EXISTS Articles (
     article_id INTEGER NOT NULL PRIMARY KEY,
     article_content TEXT NOT NULL,
     article_title TEXT NOT NULL,
-    author_id INTEGER NOT NULL,
+    author_id INTEGER ,
     author_name VARCHAR(255),
     likes INTEGER,
     dislikes INTEGER,
-    date_published DATE NOT NULL,
+    date_published DATE,
     image_path VARCHAR(255),
     FOREIGN KEY (author_id) REFERENCES Users(id)
 );
@@ -39,30 +40,31 @@ INSERT INTO Articles (article_content, article_title, author_name, author_id, li
    1, 0, 0, '2024-01-26', '/src/images/YellowCat.png'
 );
 
--- Create the Publish table
-CREATE TABLE IF NOT EXISTS Publish (
-    publisher_id INTEGER NOT NULL PRIMARY KEY,
-    username TEXT NOt Null,
-    article_content TEXT NOT NULL,
-    article_title TEXT NOT NULL,
-    article_id INTEGER NOT NULL,
-    FOREIGN KEY (publisher_id) REFERENCES Users(id),
-    FOREIGN KEY (article_id) REFERENCES Articles(article_id)
-);
 
--- Insert sample data into the Publish table
-INSERT INTO Publish (publisher_id,username, article_content, article_title, article_id) VALUES (
-  1, 'Echo' , 'Whats on your Mind today', 'Your Title', 1
-),
-(
-  2, 'Yuraj' , 'Whats on your Mind today', 'Your Title', 1
-),
-(3,
-   'Billy' , 'Whats on your Mind today', 'Your Title', 1
-),
-(4,
-   'Natalia' , 'Whats on your Mind today', 'Your Title', 1
-);
+
+-- Create the Publish table
+-- CREATE TABLE IF NOT EXISTS Publish (
+--     publisher_id INTEGER NOT NULL PRIMARY KEY,
+--     username TEXT,
+--     article_content TEXT NOT NULL,
+--     article_title TEXT NOT NULL,
+--     FOREIGN KEY (publisher_id) REFERENCES Users(id)
+  
+-- );
+
+-- -- Insert sample data into the Publish table
+-- INSERT INTO Publish (publisher_id,username, article_content, article_title) VALUES (
+--   1, 'Echo' , 'Whats on your Mind today', 'Your Title' 
+-- ),
+-- (
+--   2, 'Yuraj' , 'Whats on your Mind today', 'Your Title' 
+-- ),
+-- (3,
+--    'Billy' , 'Whats on your Mind today', 'Your Title'
+-- ),
+-- (4,
+--    'Natalia' , 'Whats on your Mind today', 'Your Title'
+-- );
 
 DROP TABLE IF EXISTS comments;
 CREATE TABLE comments (
