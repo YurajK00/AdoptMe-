@@ -8,7 +8,14 @@
 
     export let data;
 
+    let showModal = false;
+
+    function toggleModal() {
+    showModal = !showModal;
+    }
+
     async function handleLogout() {
+      showModal = !showModal;
     const response = await fetch(AUTH_URL, {
       method: "DELETE",
       credentials: "include"
@@ -16,6 +23,8 @@
     await invalidateAll();
   }
     
+
+
   </script>
 
 <nav>
@@ -26,7 +35,16 @@
       <li><a href="/FounderStory" class:active={path === "/"}>Founder Story</a></li>
       {#if data.isLoggedIn}
        <li><a href="/ProfilePage/ProfilePageShow"  class:active={path === "/"} >Profile Page</a></li>
-       <li><button on:click={handleLogout} id = "logout">Logout</button></li> 
+       <li><button on:click={toggleModal} id = "logout">Logout</button></li>
+       
+       {#if showModal}
+      <div class="pop-up-logout">
+        <p>Do you want to logout?</p>
+        <button on:click={handleLogout}>Yes</button>
+        <button on:click={toggleModal}>No</button>
+    </div>
+    {/if}
+       
     {:else} 
        <button id="login"><a href="/login" class:active={path === "/login"}>Log in!</a></button> 
     {/if} 
