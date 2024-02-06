@@ -2,17 +2,22 @@
     import ArticleButton from "./ArticleButton.svelte";
     import ArticleLikeButton from "./ArticleLikeButton.svelte";
     import { onMount } from 'svelte';
+    import { GETARTICLEID_URL } from "$lib/js/api-urls.js" ;
+    
     // import { useParams } from 'svelte-routing';
    
    
     import { GETARTICLE_URL } from "$lib/js/api-urls.js" ;
-
-   
+export let user;
+let id = user.id;
+  
+    let article_id;
     let articleData;
     let title ="";
     let authorname = "";
     let date_published = "";
-    export let data;
+    let userdata;
+
 
 
     let searchTerm = "";
@@ -21,25 +26,46 @@
     let selectedDate = "";
 
 
- 
-   
+    onMount(async () => {
+        console.log('Page loading...');
+       // Fetch the article ID from the backend
+        // try {
+        //    const response = await fetch(GETARTICLEID_URL);
+        //    if (response.ok) {
+        //         const  article_id = await response.json();
+        //         console.log(article_id);
+        //         // Once the article ID is fetched, fetch article data
+        //         await fetchArticleData(article_id);
+        //     } else {
+        //         console.error('Failed to fetch article ID');
+        //     }
+        // } catch (error) {
+        //     console.error('Error fetching article ID:', error);
+        // }
+      
+const article_id = id;
+console.log(article_id);
+await fetchArticleData(article_id);
 
-     fetchArticleData;
- 
 
-    async function fetchArticleData(e) {
-      const article = e.detail;
+    });
+
+  // Function to navigate to the individual article page when an article is clicked
+  
+ 
+async function fetchArticleData(article_id) {
+    
     try {
 
-      const response = await fetch(`${GETARTICLE_URL}/${article.id}`);
+      const response = await fetch(`${GETARTICLE_URL}/${article_id}`);
 
       if (response.ok) {
-        data = await response.json(); 
-        console.log(data);
+        userdata = await response.json(); 
+        console.log(userdata);
         console.log("Hey it works")
        
         
-        title = data.article_title;
+        title = userdata.article_title;
 
         console.log(title);
         
@@ -102,10 +128,16 @@
 
 </script>
 
+
+
+
+
+
+
 <div class="article-container">
 
 
-{#if data.isLoggedIn}
+{#if user.isLoggedIn}
     <ArticleButton />
 
     {:else}

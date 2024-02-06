@@ -7,7 +7,10 @@ import articleRoutes from "./api-articles.js";
 router.use("/articles", articleRoutes)
 
 import articlelinkRoutes from "./api-articles.js";
-router.use("/articles/articles", articlelinkRoutes)
+router.use("/articles/link", articlelinkRoutes)
+
+import articleidRoutes from "./api-articles.js";
+router.use("/articles/id", articleidRoutes)
 
 
 import authRoutes from "./api-auth.js";
