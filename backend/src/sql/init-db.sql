@@ -7,15 +7,17 @@ CREATE TABLE IF NOT EXISTS Users (
     birthday DATE,
     password TEXT NOT NULL,
     confirmedPassword TEXT NOT NULL,
-    email TEXT NOT NULL
+    email TEXT NOT NULL,
+    Introduction TEXT
+    
 );
 
 -- Insert sample data into the Users table
-INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword,birthday) VALUES
-    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono' , '1990-01-20'),
-    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo','1990-01-20' ),
-    ( 'Billy', 'Billy', 'TheButcher','yuraj@gmail.com', 'yoyo', 'yoyo','1990-01-20'),
-    ('Natalia', 'Natalia' , 'Sharp' , 'yuraj@gmail.com','momo','momo','1990-01-20' );
+INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword,birthday,Introduction) VALUES
+    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono' , '1990-01-20', 'Hello I am Echo'),
+    ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo','1990-01-20','Hello I am Yuraj' ),
+    ( 'Billy', 'Billy', 'TheButcher','billy@gmail.com', 'yoyo', 'yoyo','1990-01-20','Hello I am Billy'),
+    ('Natalia', 'Natalia' , 'Sharp' , 'natalia@gmail.com','momo','momo','1990-01-20','Hello I am Natalia' );
 
 -- Create the Articles table
 

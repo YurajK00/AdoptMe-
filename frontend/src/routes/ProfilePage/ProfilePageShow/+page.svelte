@@ -3,7 +3,7 @@
     import DividingLine from "$lib/components/DividingLine.svelte";  
     import ProfilePage from "$lib/components/ProfilePage/ProfilePage.svelte";
     import Contact from "$lib/components/MainPage/Contact/Contact.svelte";
-  
+  export let data;
   </script>
 
   
@@ -12,7 +12,7 @@
 </svelte:head>
 
 <!-- The profilepage to show -->
-  <ProfilePage />
+  <ProfilePage user = {data.user}/>
 
 <!-- The second dividing line-->
   <DividingLine />

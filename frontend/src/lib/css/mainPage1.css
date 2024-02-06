@@ -1966,11 +1966,21 @@ width: 400px;
 
   & #individual-info-change{
     position: relative;
-    right: 50px;
-    width: 280px;
-    height: 80px;
+    width: 200px;
+    height: 50px;
   } 
 
+}
+
+#username-container{
+  display: flex;
+  flex-direction: column;
+}
+
+#username-alert{
+  color: red;
+  font-size:12px;
+  font-family: "roboto";
 }
 
 

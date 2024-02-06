@@ -1,44 +1,102 @@
 <script>
+     
+import { onMount } from 'svelte';
+  import { USERPROFILE_URL } from "$lib/js/api-urls.js";
+  import { invalidate } from "$app/navigation";
+   export let user; 
 
-    //Change profile photo pop-up window
-    let showProfileChange = false;
-    function toggleProfile() {
-        showProfileChange = !showProfileChange;
+let data;
+let id = user.id;
+  let username = user.username;
+  let firstName = user.firstName
+  let lastName = user.lastName;
+  let birthday = user.birthday;
+  let Introduction = user.Introduction;
+  let newImage = "/src/lib/image/defaultPP-cat.png";
+  let showProfileChange = false;
+  let showDeactivateAccount = false;
+  let showModalDelete = false;
+  let error = false;
+ let success = false;
+
+  async function fetchData(id) {
+    try {
+      const response = await fetch(`${USERPROFILE_URL}/${id}`);
+
+      if (response.ok) {
+         data = await response.json(); 
+        console.log(data);
+       
+        
+        username = data[0].username;
+
+        console.log(username);
+        
+        firstName = data[0].firstName;
+        lastName = data[0].lastName;
+        birthday = data[0].birthday;
+        Introduction = data[0].Introduction;
+      } else {
+        console.log("Error fetching user profile");
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
     }
+  }
 
-    //Deactivate Account pop-up window
-    let showDeactivateAccount = false;
-    function toggleDeactivateAccount() {
-        showDeactivateAccount = !showDeactivateAccount;
-    }
+  onMount(async () => {
+    console.log(user.id);
+    const id= user.id;
+    await fetchData(id);
+  });
 
-    //Cancel button pop-up window
-    let showModalDelete = false;
-    function toggleModalDelete() {
-      showModalDelete = !showModalDelete;
-    }
 
-    //Change profile photo
-    let images = ["/src/lib/image/defaultPP-cat.png", "/src/lib/image/defaultPP-dog.png", "/src/lib/image/defaultPP-duck.png", "/src/lib/image/defaultPP-pig.png", "/src/lib/image/defaultPP-hamster.png"];
-    let currentImage = 0;
+  //-------------------------------------------------------------------------------------------------------
 
-    function nextImage() {
-        currentImage = (currentImage + 1) % images.length;
-    }
-
-    function prevImage() {
-        currentImage = (currentImage - 1 + images.length) % images.length;
-    }
-
-    //Change profile photo
-    //To do: To replace let newImage by user's current PP, "cat" is just an example
-    let newImage = "/src/lib/image/defaultPP-cat.png";
-    function toggleImage() {
+  async function handleSave(e) {
+    error = false;
+    success = false;
     showProfileChange = !showProfileChange;
-        newImage = images[currentImage];
-    }
+    const response = await fetch(`${USERPROFILE_URL}/${id}`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, firstName, lastName, birthday, Introduction})
+    });
 
+    success = response.status === 204;
+    error = !success;
 
+    // if (success) invalidate(USERPROFILE_URL);
+  }
+
+  function toggleProfile() {
+    showProfileChange = !showProfileChange;
+  }
+
+  function toggleDeactivateAccount() {
+    showDeactivateAccount = !showDeactivateAccount;
+  }
+
+  function toggleModalDelete() {
+    showModalDelete = !showModalDelete;
+  }
+
+let images =["/src/lib/image/defaultPP-cat.png", "/src/lib/image/defaultPP-dog.png", "/src/lib/image/defaultPP-hamster.png","/src/lib/image/defaultPP-duck.png", "/src/lib/image/defaultPP-pig.png"];
+let currentImage = 0;
+  function nextImage() {
+    // Implement nextImage functionality
+    currentImage = (currentImage + 1) % images.length;
+  }
+
+  function prevImage() {
+    // Implement prevImage functionality
+    currentImage = (currentImage - 1 + images.length) % images.length;
+  }
+
+  function toggleImage() {
+    newImage = images[currentImage];
+  }
   </script>
 
 <h1 id="profilePage-header">Profile page</h1>
@@ -59,23 +117,23 @@
     <div id="user-information">
 
         <span>
-         <p class="info-title">User name: </p>
-         <p>Default</p>   
+         <p class="info-title" >User name: </p>
+         <p> {username}</p>
         </span>
          
         <span>
          <p class="info-title">Real name: </p>
-         <p>Default</p>  
+         <p>{firstName} {lastName} </p>  
         </span>
         
         <span>
          <p class="info-title">Birthday: </p>
-         <p>2000-10-10</p>  
+         <p>{birthday}</p>  
         </span>
         
         <span>
          <p class="info-title">Individual information: </p>
-         <p id="individual-info">Love you</p>  
+         <p id="individual-info">{Introduction}</p>  
         </span>
     </div>
 
@@ -130,24 +188,30 @@
         </div>
 
         <div id="info-container">
-            <span >
+            <span id="username-container">
             <label for="username-change" class="info-title">User name: </label>
-            <input type="text" id="username-change" value="Default" /> 
+            <input type="text" id="username-change" bind:value={username} disabled/> 
+            <p id="username-alert">*The unique username can not be changed</p>
            </span>
             
            <span>
-            <label for="realname-change" class="info-title">Real name: </label>
-            <input type="text" id="realname-change" value="Default">
+            <label for="realname-change" class="info-title">First name: </label>
+            <input type="text" id="realname-change" bind:value={firstName}>
+           </span>
+
+           <span>
+            <label for="realname-change" class="info-title">Last name: </label>
+            <input type="text" id="realname-change" bind:value={lastName}>
            </span>
            
            <span>
             <label for="birthday-change"class="info-title">Birthday: </label>
-            <input type="date" id="birthday-change"/> 
+            <input type="date" id="birthday-change" bind:value={birthday}/> 
            </span>
            
             <span>
-            <label for="indicidual-info-change" class="info-title">Individual information: </label>
-            <input type="text" id="individual-info-change" value="Love you"/>
+            <label for="indicidual-info-change" class="info-title">Introduction: </label>
+            <input type="text" id="individual-info-change" bind:value={Introduction}/>
            </span>
         </div>
 
@@ -155,7 +219,8 @@
 
 
         <div>
-            <button on:click={toggleImage}>Save</button>
+            <button on:click|preventDefault={handleSave}>
+            Save</button>
             <button on:click={toggleProfile}>Cancel</button>
         </div>
     </div>

@@ -20,10 +20,12 @@
       credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password })
+      
     });
 
     if (!response.ok) {
       // If response is not okay (status code other than 2xx)
+      
       if (response.status === 401) {
         // Unauthorized: Incorrect username or password
         error = true;
@@ -40,7 +42,7 @@
     error = true; // Set error flag for unexpected errors
   }
 }
-    
+   
   </script>
   
   <svelte:head>

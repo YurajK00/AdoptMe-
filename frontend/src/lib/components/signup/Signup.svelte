@@ -2,7 +2,10 @@
     import { goto } from "$app/navigation";
     import { user } from "../../../lib/components/user.js";
     import { SIGNUP_URL } from "../../../lib/js/api-urls.js"
-  let username = "";
+   
+  
+  
+    let username = "";
   let firstName = "";
   let lastName = "";
   let email ="";
