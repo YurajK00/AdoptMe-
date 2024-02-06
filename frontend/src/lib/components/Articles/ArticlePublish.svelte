@@ -58,13 +58,13 @@ let success = false;
   <div id="publishArticles-container">
     
     <div>
-    <label for="article_title"> Title</label>
+    <p>Title</p>
     <textarea id="article_title" bind:value={article_title} rows="1" cols="40" maxlength="20" required></textarea>
     </div>
 
     <div id="content-upload">
     <div>
-      <label id="article_content_label" for="article_content"> Content</label>
+      <p> Content</p>
       <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required></textarea>
     </div>
 

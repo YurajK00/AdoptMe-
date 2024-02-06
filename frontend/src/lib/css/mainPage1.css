@@ -1344,7 +1344,7 @@ CSS of publish article
   justify-content: center;
   gap: 50px;
 
-  & label {
+  & p {
     position: relative;
     top: 50px;
     left: 350px;
@@ -1357,8 +1357,8 @@ CSS of publish article
 
   & #submit {
     position: relative;
-    left: 580px;
-    margin: 70px;
+    left: 650px;
+    margin: 15px;
     width: 200px;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -1382,7 +1382,8 @@ CSS of publish article
 
 .fileinput-button{
   position: relative;
-  bottom: 50px;
+  top: 50px;
+  left: 100px;
   display: inline-block;
   overflow: hidden;
   font-family: "roboto";
@@ -1393,9 +1394,8 @@ CSS of publish article
 
 #article_title {
   position: relative;
-  top: 100px;
-  left: 280px;
-  margin: 0 auto;
+  top: 30px;
+  left: 350px;
   width: 800px;
   height: 30px;
   font-size: 20px;
@@ -1409,9 +1409,8 @@ CSS of publish article
 
 #article_content{
   position: relative;
-  top: 100px;
-  left: 240px;
-  margin: 0 auto;
+  top: 30px;
+  left: 350px;
   width: 800px;
   height: 500px;
   font-size: 20px;
@@ -1421,11 +1420,6 @@ CSS of publish article
   border-radius: 2px;
   padding: 5px;
   box-shadow: 1px 1px 2px #ccc;
-}
-
-#article_content_label{
-  position: relative;
-  bottom: 900px;
 }
 
 .pop-up-publish {
@@ -1941,7 +1935,7 @@ width: 400px;
   & button{
     position: relative;
     left: -30px;
-    top: 150px;
+    top: 100px;
     width: 30px;
     background-color: #1e90ff;
     color: #fff;
@@ -1954,7 +1948,7 @@ width: 400px;
   & img{
     position: relative;
     left: -30px;
-    top: 100px;
+    top: 50px;
     width: 150px;
     height: 150px;
   }
@@ -1970,14 +1964,9 @@ width: 400px;
     padding: 15px;
   }
 
-  & textarea{
-    margin-top: 10px;
-    height: 20px;
-  }
-
   & #individual-info-change{
     position: relative;
-    right: 40px;
+    right: 50px;
     width: 280px;
     height: 80px;
   } 

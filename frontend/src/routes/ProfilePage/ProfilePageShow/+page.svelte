@@ -11,9 +11,6 @@
   <title>Adopt me</title>
 </svelte:head>
 
-<!-- The first dividing line-->
-  <DividingLine />
-
 <!-- The profilepage to show -->
   <ProfilePage />
 

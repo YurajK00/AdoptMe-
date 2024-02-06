@@ -16,6 +16,7 @@ let mf;
 
 {#if data.user}
 <ArticlePublish user ={data.user} />
+<DividingLine />
 <Contact/>
 <DividingLine />
 
