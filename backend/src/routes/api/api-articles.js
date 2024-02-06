@@ -35,6 +35,7 @@ router.get("/:id", async (req, res) => {
     try {
       // Call the getArticles function to retrieve articles
       const articles = await getArticles(req.params.id);
+      console.log(articles)
   
       // If no articles are found, send 404 status code
       if (!articles) {
@@ -62,7 +63,7 @@ let article_id = req.params.id;
     try {
       // Call the getArticles function to retrieve articles
       const articles = await getArticlelink(req.params.id);
-     
+     console.log(articles);
       // If no articles are found, send 404 status code
       if (!articles) {
         return res.sendStatus(404);

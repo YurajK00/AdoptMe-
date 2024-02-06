@@ -50,13 +50,31 @@ INSERT INTO Articles (article_content, article_title, author_name, author_id, li
 ),
 
     ('test',
-    'Adopt a cat from Auckland2',
+    'Do you want a dog from Hamilton?',
     'Nancy',
     2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
 ),
 
     ('test',
-    'Adopt a cat from Auckland3',
+    'Finding a new home for a cute rabbit!',
+    'Nancy',
+    2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
+),
+
+('test',
+    'My life, my rules, my style, my attitude',
+    'Nancy',
+    2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
+),
+
+('test',
+    'Just call me Angel my morning Angel',
+    'Nancy',
+    2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
+),
+
+('test',
+    'One Piece is Peak Fiction',
     'Nancy',
     2, 0, 0, "2024-02-06", '/src/images/YellowCat.png'
 );

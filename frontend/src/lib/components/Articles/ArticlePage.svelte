@@ -9,14 +9,13 @@
    
     import { GETARTICLE_URL } from "$lib/js/api-urls.js" ;
 export let user;
-let id = user.id;
-  
+
     let article_id;
     let articleData;
     let title ="";
     let authorname = "";
     let date_published = "";
-    let userdata;
+    //let userdata;
 
 
 
@@ -43,7 +42,7 @@ let id = user.id;
         //     console.error('Error fetching article ID:', error);
         // }
       
-const article_id = id;
+const article_id = 5;
 console.log(article_id);
 await fetchArticleData(article_id);
 
@@ -52,20 +51,33 @@ await fetchArticleData(article_id);
 
   // Function to navigate to the individual article page when an article is clicked
   
+  let articles = [
+    // { title: 'Adopt a cat from Auckland', publisher: 'Default user',  date:'2024-01-20'},
+    // { title: 'Do you want a dog from Hamilton?', publisher: 'Default user',  date:'2024-01-18'},
+    // { title: 'Finding a new home for a cute rabbit!', publisher: 'Default user',  date:'2024-01-15'},
+    // { title: 'My life, my rules, my style, my attitude', publisher: 'Default user',  date:'2024-01-12'},
+    // { title: 'Just call me Angel my morning Angel', publisher: 'Default user',  date:'2024-01-08'},
+    // { title: 'One Piece is Peak Fiction', publisher: 'Default user',  date:'2024-01-01'},
+    // { title: 'Here\'s how to adopt a Tiger in New Zealand', publisher: 'Default user',  date:'2023-12-28'},
+    // { title: 'Taylor Swift is overrated', publisher: 'Default user',  date:'2023-12-24'},
+    // { title: 'One Piece is Peak Fiction. Period', publisher: 'Default user',  date:'2023-12-20'},
+    // { title: 'I\'m not superstitious but I\'m a little stitious', publisher: 'Default user',  date:'2023-12-15'}
+  ];
  
 async function fetchArticleData(article_id) {
     
     try {
 
       const response = await fetch(`${GETARTICLE_URL}/${article_id}`);
+      console.log(article_id);
 
       if (response.ok) {
-        userdata = await response.json(); 
-        console.log(userdata);
+        articles = await response.json(); 
+        console.log(articles);
         console.log("Hey it works")
        
         
-        title = userdata.article_title;
+        title = articles[0].article_title;
 
         console.log(title);
         
@@ -78,22 +90,6 @@ async function fetchArticleData(article_id) {
     }
   }
 
-
-
-    
-
-    let articles = [
-    { title: 'Adopt a cat from Auckland', publisher: 'Default user',  date:'2024-01-20'},
-    { title: 'Do you want a dog from Hamilton?', publisher: 'Default user',  date:'2024-01-18'},
-    { title: 'Finding a new home for a cute rabbit!', publisher: 'Default user',  date:'2024-01-15'},
-    { title: 'My life, my rules, my style, my attitude', publisher: 'Default user',  date:'2024-01-12'},
-    { title: 'Just call me Angel my morning Angel', publisher: 'Default user',  date:'2024-01-08'},
-    { title: 'One Piece is Peak Fiction', publisher: 'Default user',  date:'2024-01-01'},
-    { title: 'Here\'s how to adopt a Tiger in New Zealand', publisher: 'Default user',  date:'2023-12-28'},
-    { title: 'Taylor Swift is overrated', publisher: 'Default user',  date:'2023-12-24'},
-    { title: 'One Piece is Peak Fiction. Period', publisher: 'Default user',  date:'2023-12-20'},
-    { title: 'I\'m not superstitious but I\'m a little stitious', publisher: 'Default user',  date:'2023-12-15'}
-  ];
 
  let articleToShow = articles;
   
@@ -165,12 +161,7 @@ async function fetchArticleData(article_id) {
         <div class = "LinksofArticles">
 
             {#each articleToShow as { title, publisher, date }, index (index)}
-       
-          
-
  
-
-
             <div id = "articleTitle">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
                 <a href="/Articles/SpecificArticle0"> {title}</a>
