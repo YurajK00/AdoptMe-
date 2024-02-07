@@ -2,22 +2,9 @@
     import ArticleButton from "./ArticleButton.svelte";
     import ArticleLikeButton from "./ArticleLikeButton.svelte";
     import { onMount } from 'svelte';
-    import { GETARTICLEID_URL } from "$lib/js/api-urls.js" ;
-    
-    // import { useParams } from 'svelte-routing';
-   
-   
-    import { GETARTICLE_URL } from "$lib/js/api-urls.js" ;
-export let user;
+     import { ARTICLE_URL } from "$lib/js/api-urls.js" ;
 
-    let article_id;
-    let articleData;
-    let title ="";
-    let authorname = "";
-    let date_published = "";
-    //let userdata;
-
-
+    export let user;
 
     let searchTerm = "";
     let searchResults = [];
@@ -25,62 +12,29 @@ export let user;
     let selectedDate = "";
 
 
+
     onMount(async () => {
-        console.log('Page loading...');
-       // Fetch the article ID from the backend
-        // try {
-        //    const response = await fetch(GETARTICLEID_URL);
-        //    if (response.ok) {
-        //         const  article_id = await response.json();
-        //         console.log(article_id);
-        //         // Once the article ID is fetched, fetch article data
-        //         await fetchArticleData(article_id);
-        //     } else {
-        //         console.error('Failed to fetch article ID');
-        //     }
-        // } catch (error) {
-        //     console.error('Error fetching article ID:', error);
-        // }
-      
-const article_id = 5;
-console.log(article_id);
-await fetchArticleData(article_id);
+    
+    await fetchArticleData();
+  });
 
-
-    });
-
-  // Function to navigate to the individual article page when an article is clicked
   
-  let articles = [
-    // { title: 'Adopt a cat from Auckland', publisher: 'Default user',  date:'2024-01-20'},
-    // { title: 'Do you want a dog from Hamilton?', publisher: 'Default user',  date:'2024-01-18'},
-    // { title: 'Finding a new home for a cute rabbit!', publisher: 'Default user',  date:'2024-01-15'},
-    // { title: 'My life, my rules, my style, my attitude', publisher: 'Default user',  date:'2024-01-12'},
-    // { title: 'Just call me Angel my morning Angel', publisher: 'Default user',  date:'2024-01-08'},
-    // { title: 'One Piece is Peak Fiction', publisher: 'Default user',  date:'2024-01-01'},
-    // { title: 'Here\'s how to adopt a Tiger in New Zealand', publisher: 'Default user',  date:'2023-12-28'},
-    // { title: 'Taylor Swift is overrated', publisher: 'Default user',  date:'2023-12-24'},
-    // { title: 'One Piece is Peak Fiction. Period', publisher: 'Default user',  date:'2023-12-20'},
-    // { title: 'I\'m not superstitious but I\'m a little stitious', publisher: 'Default user',  date:'2023-12-15'}
-  ];
+  let articles = [];
+
+  let articleToShow = [];
  
-async function fetchArticleData(article_id) {
+async function fetchArticleData() {
     
     try {
 
-      const response = await fetch(`${GETARTICLE_URL}/${article_id}`);
-      console.log(article_id);
+      const response = await fetch(ARTICLE_URL);
 
       if (response.ok) {
         articles = await response.json(); 
         console.log(articles);
-        console.log("Hey it works")
-       
-        
-        title = articles[0].article_title;
+        console.log("Hey it works");
 
-        console.log(title);
-        
+        articleToShow = articles;
 
       } else {
         console.log("Error fetching user profile");
@@ -90,18 +44,7 @@ async function fetchArticleData(article_id) {
     }
   }
 
-
- let articleToShow = articles;
-  
- for (let index = 0; index < articles.length; index++) {
- 
-  let articleNo = articles[index].index;
-
-
-  // console.log(`Index: ${index}`);
-  // console.log(articleNo);
-  // console.log(articles[index]);
-}
+ console.log("article to show:" , articleToShow);
 
   function search() {
     if (searchTerm.trim() !== "" || selectedDate.trim() !== "") {
@@ -122,18 +65,16 @@ async function fetchArticleData(article_id) {
     showResults = false;
   }
 
+
+
 </script>
-
-
-
-
 
 
 
 <div class="article-container">
 
 
-{#if user.isLoggedIn}
+{#if user}
     <ArticleButton />
 
     {:else}
@@ -160,11 +101,11 @@ async function fetchArticleData(article_id) {
 
         <div class = "LinksofArticles">
 
-            {#each articleToShow as { title, publisher, date }, index (index)}
+            {#each articleToShow as { article_title, author_name, date_published }}
  
             <div id = "articleTitle">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
-                <a href="/Articles/SpecificArticle0"> {title}</a>
+                <a href="/Articles/SpecificArticle0"> {article_title}</a>
       
             </div>
 
@@ -174,8 +115,8 @@ async function fetchArticleData(article_id) {
 
             <div class="info">
                 <img class="pokemon" src="/src/lib/image/pokemon.svg" alt="icon" />
-                <span class="publisher">{publisher}</span>
-                <span class="time">&#x23F1 {date}</span>
+                <span class="publisher">{author_name}</span>
+                <span class="time">&#x23F1 {date_published}</span>
             </div>
 
             {/each}

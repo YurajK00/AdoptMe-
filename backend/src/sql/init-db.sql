@@ -32,8 +32,10 @@ CREATE TABLE IF NOT EXISTS Articles (
     dislikes INTEGER,
     date_published DATE,
     image_path VARCHAR(255),
-    FOREIGN KEY (author_id) REFERENCES Users(id),
-    FOREIGN KEY (article_id)REFERENCES Users(id)
+    FOREIGN KEY (author_id) REFERENCES Users(id)
+   
+
+   
 );
 
 -- Insert sample data into the Articles table

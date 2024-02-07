@@ -65,15 +65,15 @@ export async function getUserWithCredentials(username, password) {
   }
 }
 
-export async function getArticles(article_id) {
+export async function getArticles() {
   const db = await getDatabase(); 
 
   // SQL query with placeholders
-  const sql = "SELECT * FROM Articles WHERE article_id = ?";
+  const sql = "SELECT * FROM Articles";
 
   try {
     // Execute the SQL query
-    const userData = await db.all(sql, article_id);
+    const userData = await db.all(sql);
 
     return userData; // Return the retrieved data
   } catch (error) {

@@ -11,7 +11,7 @@ const router = express.Router();
 
 //Setting up a router to post article on the server and then back to the database
 
-router.post("/" , async (req,res)=>{
+router.post("/article" , async (req,res)=>{
 
 try {
   const articleData = req.body;
@@ -27,14 +27,14 @@ try {
 
 
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
     // Retrieve article_content and article_title from query parameters
   
     
   
     try {
       // Call the getArticles function to retrieve articles
-      const articles = await getArticles(req.params.id);
+      const articles = await getArticles();
       console.log(articles)
   
       // If no articles are found, send 404 status code

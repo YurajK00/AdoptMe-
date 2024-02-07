@@ -6,6 +6,11 @@ const router = express.Router();
 import articleRoutes from "./api-articles.js";
 router.use("/articles", articleRoutes)
 
+
+import insertarticleRoutes from "./api-articles.js";
+router.use("/articles",insertarticleRoutes)
+
+
 import articlelinkRoutes from "./api-articles.js";
 router.use("/articles/link", articlelinkRoutes)
 

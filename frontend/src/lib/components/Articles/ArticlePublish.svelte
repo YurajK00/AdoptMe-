@@ -27,14 +27,16 @@ let success = false;
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ article_title :article_title, article_content:article_content })
-        
+      
       });
+      alert('Article created successfully');
+      console.log(article_title)
 
     if (!response.ok){
       const errorMessage = await response.json();
       throw new Error(errorMessage.error);
     }
-    alert('Article created successfully');
+    
 
     article_content = "";
     article_title = "";
