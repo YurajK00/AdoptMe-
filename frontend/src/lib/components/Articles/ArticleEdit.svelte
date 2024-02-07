@@ -10,21 +10,23 @@
 
 <!-- To Do: show the original title and article in textarea so that they can be editted directly-->
 <div id="publishArticles-container">
-    <label for="article_title"> Title</label>
-    <input type="text" id="article_title" name="article_title" rows="1" cols="40" maxlength="20" required/>
     
-    <div>
-    <label for="article_content"> Content</label>
-    <span class="fileinput-button">
-      <span>Add image</span>
-      <input type="file" id="content-image" name="content-image" accept="image/*"/>
-    </span>
-    </div>
+  <div>
+  <p>Title</p>
+  <textarea id="article_title" rows="1" cols="40" maxlength="20" required></textarea>
+  </div>
 
-    
-    <textarea id="article_content" name="article_content" rows="4" cols="40" maxlength="1000" required>
-    
-    </textarea>
+  <div id="content-upload">
+  <div>
+    <p> Content</p>
+    <textarea id="article_content"  rows="4" cols="40" maxlength="1000" required></textarea>
+  </div>
+
+  <div class="fileinput-button">
+    <span id="text">Add image</span>
+    <input type="file" id="content-image" name="content-image" accept="image/*"/>
+  </div>
+</div>
     
 
     <!-- To Do: click Yes to save the new article-->

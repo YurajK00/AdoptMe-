@@ -55,9 +55,164 @@ CSS of the Whole Layout
 
 
 /*
-CSS of First Part
-*/   
+CSS of Log in
+*/ 
+#loginHeader{
+  position: relative;
+  top: 30px;
+  color: #a85337;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+  font-family: "welovepeace";
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+    
+    #login-container{
+      background-color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      margin: 0 auto;
+      bottom: 25px;
+      width: 500px;
+      height: 250px;
+      border: dotted rgb(10, 20, 10);
+      border-radius: 12px;
+      padding: 15px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
 
+      & label{
+        font-size: 20px;
+        padding: 5px;
+      }
+    }
+  
+    #loginButton {
+      grid-column: 1 / 3;
+      padding: 10px;
+      margin: 25px;
+      font-size: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+  
+    .error {
+      grid-column: 1 / 3;
+      font-weight: bold;
+      color: darkred;
+      background-color: lightcoral;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .signup{
+      font-size: 18px;
+
+      & a{
+        text-decoration: underline;
+        font-family: "roboto";
+        font-size: 20px;
+        position: relative;
+        left:200px;
+        color: #21492a;
+      }
+    }
+
+
+/*
+CSS of Sign up
+*/ 
+#registerHeader{
+  position: relative;
+  top: 30px;
+  color: #a85337;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+  font-family: "welovepeace";
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
+#register-container{
+  background-color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  margin: 0 auto;
+  bottom: 25px;
+  width: 500px;
+  height: 600px;
+  border: dotted rgb(10, 20, 10);
+  border-radius: 12px;
+  padding: 15px 32px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+
+  & label{
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  & input{
+    width: 200px;
+    height: 20px;
+  }
+}
+
+#registerButton {
+  grid-column: 1 / 3;
+  padding: 10px;
+  margin: 25px;
+  font-size: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.login{
+  font-size: 18px;
+
+  & a{
+    text-decoration: underline;
+    font-family: "roboto";
+    font-size: 18px;
+    position: relative;
+    left:200px;
+    color: #21492a;
+  }
+}
+
+
+.pickPP{
+  display: flex;
+}
+
+.pickPP-image{
+  display: flex;
+  flex-direction:column;
+  gap: 10px;
+  position: relative;
+  top: 15px;
+  left: 200px;
+
+  & button{
+    width: 100px;
+    font-size: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  & img{
+  width: 100px;
+  height: 100px;
+}
+}  
+
+
+/*
+CSS of First Part
+*/ 
 .dividingLine{
   overflow: hidden;
   text-align: center;
@@ -84,7 +239,58 @@ CSS of First Part
     transition-duration: 0.8s;
     border-radius: 12px;
   }
+}
 
+#logout{
+  position: relative;
+  bottom: 15px;
+     margin: 5px;
+    background-color: #B9D8A8;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 32px;
+    color:#a85337;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "thewonder";
+    cursor: pointer;
+  
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transition-duration: 0.8s;
+      border-radius: 12px;
+    } 
+}
+
+.pop-up-logout{
+  background: url("$lib/image/pawBG.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  z-index: 999;
+
+  & p{
+    font-size: 20px;
+  }
+
+  & button{
+    width: 80px;
+    height: 40px;
+    font-size: 20px ;
+    margin: 10px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    
+  }
 }
 
 
@@ -96,16 +302,17 @@ box-shadow: 0 5px 3px lightgray;
 
 & > ul {
   list-style: none;
-  margin: 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 300px;
+  gap: 200px;
   
 }
 
 & li {
-  padding-top: 20px;
+  padding-top: 10px;
+  position: relative;
+  top: 12px;
   
   &:hover {
     transition-duration: 0.8s;
@@ -121,14 +328,11 @@ box-shadow: 0 5px 3px lightgray;
   font-family: "thewonder";
   cursor: pointer;
 
-
-  &:hover {
-    color: #d27a7b;
-    transition-duration: 0.8s;
-    
-
+    &:hover {
+      color: #d27a7b;
+      transition-duration: 0.8s;
+    }
   }
-}
 }
 
 
@@ -1145,7 +1349,7 @@ CSS of publish article
   justify-content: center;
   gap: 50px;
 
-  & label {
+  & p {
     position: relative;
     top: 50px;
     left: 350px;
@@ -1155,8 +1359,11 @@ CSS of publish article
     
   }
 
+
   & #submit {
-    margin: 0 auto;
+    position: relative;
+    left: 650px;
+    margin: 15px;
     width: 200px;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -1174,13 +1381,16 @@ CSS of publish article
   }
 }
 
+#content-upload{
+  display: flex;
+}
 
 .fileinput-button{
   position: relative;
+  top: 50px;
+  left: 100px;
   display: inline-block;
   overflow: hidden;
-  left: 750px;
-  top:60px;
   font-family: "roboto";
   padding: 10px;
   color: #a85337;
@@ -1188,7 +1398,9 @@ CSS of publish article
 }
 
 #article_title {
-  margin: 0 auto;
+  position: relative;
+  top: 30px;
+  left: 350px;
   width: 800px;
   height: 30px;
   font-size: 20px;
@@ -1201,7 +1413,9 @@ CSS of publish article
 }
 
 #article_content{
-  margin: 0 auto;
+  position: relative;
+  top: 30px;
+  left: 350px;
   width: 800px;
   height: 500px;
   font-size: 20px;
@@ -1223,6 +1437,7 @@ CSS of publish article
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  z-index: 1;
 
   & p{
     font-size: 20px;
@@ -1600,6 +1815,7 @@ CSS of profile page
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  z-index: 1;
 
   & p{
     font-size: 20px;
@@ -1631,6 +1847,7 @@ CSS of profile page
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  z-index: 1;
 
   & button{
     position: relative;
@@ -1723,7 +1940,7 @@ width: 400px;
   & button{
     position: relative;
     left: -30px;
-    top: 150px;
+    top: 100px;
     width: 30px;
     background-color: #1e90ff;
     color: #fff;
@@ -1736,7 +1953,7 @@ width: 400px;
   & img{
     position: relative;
     left: -30px;
-    top: 100px;
+    top: 50px;
     width: 150px;
     height: 150px;
   }
@@ -1752,18 +1969,23 @@ width: 400px;
     padding: 15px;
   }
 
-  & textarea{
-    margin-top: 10px;
-    height: 20px;
-  }
-
   & #individual-info-change{
     position: relative;
-    right: 40px;
-    width: 280px;
-    height: 80px;
+    width: 200px;
+    height: 50px;
   } 
 
+}
+
+#username-container{
+  display: flex;
+  flex-direction: column;
+}
+
+#username-alert{
+  color: red;
+  font-size:12px;
+  font-family: "roboto";
 }
 
 
@@ -1824,6 +2046,7 @@ aside.user-profile {
   left: 50px;
   top: 100px;
   overflow-y: auto;
+  z-index: 1;
 
   & .profile-content{
     position: relative;

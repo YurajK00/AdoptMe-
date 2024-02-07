@@ -1,6 +1,6 @@
-<script>
-    export let likes = 300;
-    export let dislikes = 24;
+<!-- <script>
+    export let likes;
+    export let dislikes;
   
     function incrementLikes() {
       likes += 1;
@@ -19,4 +19,4 @@
     <button on:click={incrementDislikes}>
         <span class="thumb-icon">&#128078 {dislikes}
     </button>
-</div>
+</div> -->
