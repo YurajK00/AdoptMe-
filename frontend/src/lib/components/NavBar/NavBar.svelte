@@ -15,12 +15,19 @@
     }
 
     async function handleLogout() {
-      showModal = !showModal;
+
+      // isLoggedIn= false;
+
     const response = await fetch(AUTH_URL, {
       method: "DELETE",
       credentials: "include"
     });
-    await invalidateAll();
+    if(response.ok){
+      showModal = !showModal;
+      window.location.href = "/";
+      await invalidateAll();
+
+    }
   }
     
 

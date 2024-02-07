@@ -142,7 +142,7 @@ CSS of Sign up
   margin: 0 auto;
   bottom: 25px;
   width: 500px;
-  height: 500px;
+  height: 600px;
   border: dotted rgb(10, 20, 10);
   border-radius: 12px;
   padding: 15px 32px;
@@ -153,6 +153,11 @@ CSS of Sign up
   & label{
     font-size: 20px;
     padding: 5px;
+  }
+
+  & input{
+    width: 200px;
+    height: 20px;
   }
 }
 

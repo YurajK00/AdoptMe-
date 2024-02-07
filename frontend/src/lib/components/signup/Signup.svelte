@@ -95,27 +95,43 @@ body: JSON.stringify({
     <form id="register-container"> 
       
       <label for="username">Enter your username:</label>
-      <input type="text" name ="username" bind:value={username} required />
+      <div>
+        <input type="text" name ="username" bind:value={username} required />
+        {#if usernameTakenError}
+        <p style="color: red;">Username is already taken.</p>
+        {/if}
+      </div>
+      
       <label for="firstName">Enter your first name:</label>
       <input type="text" name="firstName" bind:value={firstName} required />
       <label for="lastName">Enter your last name:</label>
       <input type="text" name="lastName" bind:value={lastName} required />
-      {#if usernameTakenError}
-      <p style="color: red;">Username is already taken.</p>
-      {/if}
+      
+
       <label for="email">Enter your email:</label>
+      <div>
       <input type="email" name="email" bind:value={email} required />
       {#if emailTakenError}
-        <p style="color: red;">Email is already taken. Please use a different email address.</p>
+      <p style="color: red;">Email is already taken. Please use a different email address.</p>
       {/if}
+     </div>
+
 
       <label for="birthday">Choose your birthday:</label>
       <input type="date" name="birthday" bind:value={birthday} required />
 
-      <label for="password">Enter your password:</label>
+
+        <label for="password">Enter your password:</label>
       <input type="password" name="password" bind:value={password} required />
       <label for="confirmedPassword">Confirm your password:</label>
+      <div>
       <input type="password" name="confirmedPassword" bind:value={confirmedPassword} required />
+      {#if passwordMatchError}
+      <p style="color: red;">Password does not match.</p>
+      {/if}
+      </div>
+      
+
       <div class="pickPP">
         <div class="pickPP-label">
           <label for="profilePicture">Profile pictures:</label>
@@ -124,10 +140,9 @@ body: JSON.stringify({
         <img src={images[currentImage]} alt="nextImage">
         <button on:click={toggleImage}>next</button>
       </div>
-      {#if passwordMatchError}
-      <p style="color: red;">Password does not match.</p>
-      {/if}
     </div>
+
+
 
       <button id="registerButton" type="submit" on:click={handleSignup} >Signup</button>
       <div class="login">
@@ -137,4 +152,5 @@ body: JSON.stringify({
           
         </span>
       </div>
+
     </form>

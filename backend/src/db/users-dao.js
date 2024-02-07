@@ -111,7 +111,7 @@ export async function getArticles() {
 // }
 
 export async function insertArticle(articleData){
-  const {article_content , article_title , author_username} = articleData
+  const {article_content , article_title , author_username} = articleData;
  
   const db = await getDatabase();
 

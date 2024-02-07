@@ -191,12 +191,12 @@ let currentImage = 0;
             
            <span>
             <label for="realname-change" class="info-title">First name: </label>
-            <input type="text" id="realname-change" bind:value={firstName}>
+            <input type="text" id="realname-change"  bind:value={firstName} required/>
            </span>
 
            <span>
             <label for="realname-change" class="info-title">Last name: </label>
-            <input type="text" id="realname-change" bind:value={lastName}>
+            <input type="text" id="realname-change"  bind:value={lastName} required/>
            </span>
            
            <span>
@@ -206,7 +206,7 @@ let currentImage = 0;
            
             <span>
             <label for="indicidual-info-change" class="info-title">Introduction: </label>
-            <input type="text" id="individual-info-change" bind:value={Introduction}/>
+            <input type="text" id="individual-info-change" bind:value={Introduction} required/>
            </span>
         </div>
 
