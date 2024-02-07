@@ -86,53 +86,56 @@ export async function getArticles() {
 
 //Publish New Article
 
-// export async function insertArticle(articleData){
-//   const db = await getDatabase();
-
-//   const{ article_title , article_content , author_username} = articleData;
-
-
-
-
-//   const sql = "INSERT INTO Articles (article_title, article_content) VALUES (?,?)"
-//   const values = [article_title, article_content]
-
-  
-//  try {
-//     const result = await db.run(sql, values);
-//     console.log("Article added", result.article_id);
-//     return result.changes>0;
-//   } catch (error) {
-//     console.error("Error adding article:", error);
-//     throw error;
-//   }
-
-
 // }
 
-export async function insertArticle(articleData, res) {
-  const { article_content, article_title, author_username } = articleData;
+// export async function insertArticle(articleData, res) {
+//   const { article_content, article_title, author_name } = articleData;
 
-  getDatabase().then(async (db) => {
-    const row = await db.get('SELECT id FROM Users WHERE username = ?', [author_username]);
+//   getDatabase().then(async (db) => {
+//     const row = await db.get('SELECT id FROM Users WHERE username = ?', [author_name]);
 
-    if (!row) {
-      return res.status(404).json({ error: 'Author not found' });
-    }
+//     if (!row) {
+//       return res.status(404).json({ error: 'Author not found' });
+//     }
 
-    const author_id = row.id;
+//     const author_id = row[].id;
 
-    // Insert the new article into the Articles table and retrieve author_name dynamically
-    db.run(
-      `INSERT INTO Articles (article_content, article_title, author_id, author_name) 
-       SELECT ?, ?, u.id, u.username
-       FROM Users u 
-       WHERE u.id = ? and u.username = ?`,
-      [article_content, article_title, author_id, author_username],
+//     // Insert the new article into the Articles table and retrieve author_name dynamically
+//     db.run(
+//       `INSERT INTO Articles (article_content, article_title, author_id, author_name) 
+//        SELECT ?, ?, u.id, u.username
+//        FROM Users u 
+//        WHERE u.id = ? and u.username = ?`,
+//       [article_content, article_title, author_id, author_name],
      
-    );
-  })
+//     );
+//   })
+// }
+
+export async function insertArticle(articleData) {
+  console.log("Function call to addComment...");
+  const db = await getDatabase();
+
+  const {  article_content, article_title} = articleData;
+
+  const sql = "INSERT INTO Articles (article_content, article_title) VALUES (?, ?)";
+  const values = [article_content, article_title];
+
+  try {
+    const result = await db.run(sql, values);
+    console.log("Comment added:", result);
+    return result.lastID;
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    throw error;
+  }
 }
+
+
+
+
+
+
 
 
 //--------------------------------------------------------------------------------------------------------------

@@ -15,7 +15,7 @@ let mf;
 <h1 id="articlePublishHeader">Publish your own article</h1>
 
 {#if data.user}
-<ArticlePublish user ={data.user} />
+<ArticlePublish />
 <DividingLine />
 <Contact/>
 <DividingLine />

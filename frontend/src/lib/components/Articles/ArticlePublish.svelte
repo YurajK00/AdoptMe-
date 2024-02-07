@@ -1,6 +1,6 @@
 <script>
  
-  import { ARTICLE_URL } from "$lib/js/api-urls.js";
+  import { POST_URL } from "$lib/js/api-urls.js";
   
   
 
@@ -22,21 +22,21 @@ let success = false;
 
     try{
     
-      const response = await fetch(ARTICLE_URL, {
+      const response = await fetch(POST_URL, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ article_title :article_title, article_content:article_content })
+        body: JSON.stringify({ article_title, article_content })
       
       });
-      alert('Article created successfully');
+      
       console.log(article_title)
 
     if (!response.ok){
       const errorMessage = await response.json();
       throw new Error(errorMessage.error);
     }
-    
+    success = true;
 
     article_content = "";
     article_title = "";

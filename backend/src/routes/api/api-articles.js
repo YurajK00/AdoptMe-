@@ -11,23 +11,41 @@ const router = express.Router();
 
 //Setting up a router to post article on the server and then back to the database
 
- 
+
+  // router.post('/article', async (req, res) => {
+  //   try {
+  //     const articleData = req.body;
+  //     // Validate that required fields are present in the request body
+  //     if (!articleData) {
+  //       return res.status(400).json({ error: 'Missing required fields in the request body' });
+  //     }
+  
+  //     // Call the insertArticle function to insert the article into the database
+  //     else{
+  //       const result = await insertArticle(articleData, res);
+  
+  //     // Assuming insertArticle doesn't return articles, you may want to modify the response accordingly
+  //     res.status(201).json({ message: 'Article created successfully' });
+  //     }
+  //   } catch (error) {
+  //     console.error('Error adding article:', error);
+  //     res.status(500).json({ error: 'Failed to add article' });
+  //   }
+  // });
+
+
 
   router.post('/article', async (req, res) => {
-    
-      const articleData = req.body;
-  
-      // Validate that required fields are present in the request body
-      if (!articleData) {
-        return res.status(400).json({ error: 'Missing required fields in the request body' });
-      }
-  
-      // Call the insertArticle function to insert the article into the database
-      const result = await insertArticle(articleData, res);
-  
-      // Assuming insertArticle doesn't return articles, you may want to modify the response accordingly
-      res.status(201).json({ message: 'Article created successfully' });
-   
+    console.log("...post article...");
+    try {
+      const userData = req.body;
+      console.log(userData);
+      const articleId = await insertArticle(userData);
+      res.status(201).json({ articleId });
+    } catch (error) {
+        console.error('Error adding article:', error);
+        res.status(500).json({ error: 'Failed to add article' });
+    }
   });
 
 
@@ -43,7 +61,7 @@ router.get("/", async (req, res) => {
   
       // If no articles are found, send 404 status code
       if (!articles) {
-        return res.sendStatus(404);
+        res.sendStatus(404);
       }
   
       // If articles are found, send them as a response
