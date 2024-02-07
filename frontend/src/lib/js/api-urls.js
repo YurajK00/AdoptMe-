@@ -23,6 +23,6 @@ export const USERPROFILE_URL = `${BASE_URL}/userprofile`;
 
 export const GETARTICLE_URL = `${BASE_URL}/articles/link`;
 
-export const GETARTICLEID_URL = `${BASE_URL}/articles/id`;
+export const PATCH_URL = `${BASE_URL}/articles`;
 
 

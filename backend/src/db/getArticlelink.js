@@ -1,4 +1,6 @@
 import { getDatabase } from "./database.js";
+import yup from "yup";
+
 
 
 export async function getArticlelink(article_id) {
@@ -35,3 +37,31 @@ export async function getArticlelink(article_id) {
     } 
   }
   
+
+
+  const updateUserSchema = yup
+  .object({
+   likes: yup.number().integer(),
+  dislikes: yup.number().integer()
+ 
+  })
+  .required();
+
+  export async function patchLikes(article_id, updateData) {
+    const validated = updateUserSchema.validateSync(updateData, {
+      abortEarly: false,
+      stripUnknown: true
+    });
+   
+    const sql = "UPDATE Articles SET likes = ? ,dislikes =? WHERE article_id = ?";
+    const db = await getDatabase();
+  
+    const dbResult = await db.run(sql, validated.likes, validated.dislikes, article_id);
+  
+    // Return true if changes applied, false otherwise
+    return dbResult.changes > 0;
+  }
+
+
+  
+

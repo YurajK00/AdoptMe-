@@ -14,8 +14,8 @@ router.use("/articles",insertarticleRoutes)
 import articlelinkRoutes from "./api-articles.js";
 router.use("/articles/link", articlelinkRoutes)
 
-import articleidRoutes from "./api-articles.js";
-router.use("/articles/id", articleidRoutes)
+import patchidRoutes from "./api-articles.js";
+router.use("/articles", patchidRoutes)
 
 
 import authRoutes from "./api-auth.js";

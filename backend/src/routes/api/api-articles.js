@@ -3,6 +3,7 @@ import { getArticles } from "../../db/users-dao.js";
 import { insertArticle } from "../../db/users-dao.js";
 import { getArticlelink } from "../../db/getArticlelink.js";
 import { getArticleid } from "../../db/getArticlelink.js";
+import { patchLikes } from "../../db/getArticlelink.js";
 
 
 const router = express.Router();
@@ -129,5 +130,19 @@ let article_id = req.params.id;
     
     
       });
+
+      router.patch("/:id" , async (req,res) =>{
+        try {
+            const userUpdated = await patchLikes(req.params.id ,req.body);
+            return res.sendStatus(userUpdated ? 204 : 404);
+          } catch {
+            return res.sendStatus(422);
+          }
+        });
+        
+        
+
+
+      
   
   export default router;

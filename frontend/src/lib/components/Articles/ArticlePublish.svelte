@@ -3,11 +3,19 @@
   import { POST_URL } from "$lib/js/api-urls.js";
   
   
-
+export let data;
 let article_title = "";
 let article_content = "";
+let username1 = data.username;
+let username = username1
+let likes ;
+let dislikes;
+let date_published;
+
+// console.log(typeof (username1));
 let error = false;
 let success = false;
+
 
 
     let showModal = false;
@@ -26,11 +34,13 @@ let success = false;
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ article_title, article_content })
+        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published})
       
       });
-      
+      console.log(username)
       console.log(article_title)
+      console.log(typeof (article_title));
+      console.log(typeof (username));
 
     if (!response.ok){
       const errorMessage = await response.json();

@@ -116,10 +116,17 @@ export async function insertArticle(articleData) {
   console.log("Function call to addComment...");
   const db = await getDatabase();
 
-  const {  article_content, article_title} = articleData;
+  const {  article_content, article_title ,username, likes ,dislikes , date_published} = articleData;
+  
+  
+  const authorQuery = "SELECT username FROM Users WHERE username = ?";
+  const authorResult = await db.get(authorQuery, [username]);
 
-  const sql = "INSERT INTO Articles (article_content, article_title) VALUES (?, ?)";
-  const values = [article_content, article_title];
+  const author_name = authorResult;
+
+
+  const sql = "INSERT INTO Articles (article_content, article_title, author_name ,date_published , likes, dislikes) VALUES (?, ?,?, date('now') ,0 ,0)";
+  const values = [article_content, article_title, author_name, likes,dislikes, date_published];
 
   try {
     const result = await db.run(sql, values);

@@ -3,6 +3,7 @@
     import ArticleLikeButton from "./ArticleLikeButton.svelte";
     import { onMount } from 'svelte';
      import { ARTICLE_URL } from "$lib/js/api-urls.js" ;
+     import { PATCH_URL } from "$lib/js/api-urls.js" ;
 
     export let user;
 
@@ -11,14 +12,11 @@
     let showResults = false;
     let selectedDate = "";
 
-
-
     onMount(async () => {
     
     await fetchArticleData();
   });
 
-  
   let articles = [];
 
   let articleToShow = [];
@@ -32,6 +30,7 @@ async function fetchArticleData() {
       if (response.ok) {
         articles = await response.json(); 
         articleToShow = articles;
+        likes = articleToShow[0].likes; 
 
       } else {
         console.log("Error fetching user profile");
@@ -58,6 +57,24 @@ async function fetchArticleData() {
     showResults = false;
   }
 
+  let likes = 0;
+  let id = 2;
+  async function handleLikeClick() {
+    let error = false;
+    let success = false;
+    const response = await fetch(`${PATCH_URL}/${id}`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ likes })
+    });
+
+    likes += 1;
+    console.log(likes);
+    success = response.status === 204;
+    error = !success;
+
+  }
 
 
 </script>
@@ -94,7 +111,7 @@ async function fetchArticleData() {
 
         <div class = "LinksofArticles">
 
-            {#each articleToShow as { article_title, author_name, date_published }}
+            {#each articleToShow as { article_title, author_name, date_published, likes, dislikes}}
  
             <div id = "articleTitle">
                 <img class="send" src="/src/lib/image/send.svg" alt="icon" /> 
@@ -103,7 +120,16 @@ async function fetchArticleData() {
             </div>
 
             <div id = "articleLikeButton">
-                <ArticleLikeButton />
+              <div class="articleLikeButton">
+                <button on:click={handleLikeClick} >
+                    <span class="thumb-icon">&#128077 {likes}
+
+                </button>
+            
+                <button on:click={handleLikeClick}>
+                    <span class="thumb-icon">&#128078 {dislikes}
+                </button>
+            </div>
             </div>
 
             <div class="info">

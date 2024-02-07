@@ -40,7 +40,7 @@ let id = user.id;
   }
 
   onMount(async () => {
-    console.log(user.id);
+    console.log(user.username);
     const id= user.id;
     await fetchData(id);
   });
