@@ -31,9 +31,6 @@ async function fetchArticleData() {
 
       if (response.ok) {
         articles = await response.json(); 
-        console.log(articles);
-        console.log("Hey it works");
-
         articleToShow = articles;
 
       } else {
@@ -44,24 +41,20 @@ async function fetchArticleData() {
     }
   }
 
- console.log("article to show:" , articleToShow);
-
   function search() {
-    if (searchTerm.trim() !== "" || selectedDate.trim() !== "") {
-      searchResults = articles.filter(article => 
-        (article.title.toLowerCase().includes(searchTerm.toLowerCase()) || searchTerm.trim() === "") &&
-        (article.date.includes(selectedDate) || selectedDate.trim() === "")
-      );
-      articleToShow = searchResults;
-      showResults = true;
-    } else {
-        showResults = false;
-    }
+    searchResults = articles.filter(({ article_title, date_published }) =>
+      (article_title.toLowerCase().includes(searchTerm.toLowerCase()) || searchTerm.trim() === "") &&
+      (date_published && date_published.includes(selectedDate) || selectedDate.trim() === "")
+    );
+
+    articleToShow = searchResults;
+    showResults = true;
   }
 
   function resetSearch() {
     articleToShow = articles;
     searchTerm = "";
+    selectedDate = "";
     showResults = false;
   }
 
