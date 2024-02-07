@@ -58,6 +58,8 @@ async function fetchArticleData() {
   }
 
   let likes = 0;
+  let dislikes = 0;
+
   let id = 2;
   async function handleLikeClick() {
     let error = false;
@@ -66,8 +68,9 @@ async function fetchArticleData() {
       method: "PATCH",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ likes })
+      body: JSON.stringify({ likes,dislikes })
     });
+
 
     likes += 1;
     console.log(likes);
@@ -75,6 +78,7 @@ async function fetchArticleData() {
     error = !success;
 
   }
+  console.log(likes); 
 
 
 </script>

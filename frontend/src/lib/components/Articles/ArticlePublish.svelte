@@ -11,6 +11,8 @@ let username = username1
 let likes ;
 let dislikes;
 let date_published;
+let image_path;
+
 
 // console.log(typeof (username1));
 let error = false;
@@ -34,7 +36,7 @@ let success = false;
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published})
+        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published,image_path})
       
       });
       console.log(username)
@@ -60,6 +62,20 @@ let success = false;
 
 }
 
+function handleFileChange(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageDataUrl = e.target.result;
+        // Concatenate the image data URL to the article content
+        article_content += `<img src="${imageDataUrl}" alt="Uploaded image">`;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
   
 </script>
 
@@ -81,15 +97,19 @@ let success = false;
       </p>
       <div class = "AC">
       <!-- <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required
-      > </textarea> -->
+      > </textarea> --> 
+      
+
+                                                     
       <Editor   id="article_content" 
-      apiKey="47j9ca2i2bj3u4tecumr45esqktc9oooh23le1byo4z4lzqt"bind:value={article_content} />
+      apiKey="47j9ca2i2bj3u4tecumr45esqktc9oooh23le1byo4z4lzqt" bind:value={article_content} />
+     
       </div>
       </div>
 
     <div class="fileinput-button">
       <span id="text">Add image</span>
-      <input type="file" id="content-image" name="content-image" accept="image/*"/>
+      <input type="file" id="content-image" name="content-image" accept="image/*" onchange={handleFileChange}/>
     </div>
   </div>
 
