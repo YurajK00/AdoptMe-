@@ -60,12 +60,13 @@ body: JSON.stringify({
         
         else {
           const data = await response.json();
+          console.log(data.error);
         if (response.status === 400) {
          
-            if (data.error === "username or email already taken") {
+            if (data.error === 'username_taken') {
                 usernameTakenError = true;
             } 
-             if (data.error === "username or email already taken") {
+            if (data.error === 'email_taken') {
                 emailTakenError = true;
             }
             if (password !== confirmedPassword) {

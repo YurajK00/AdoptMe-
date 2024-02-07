@@ -15,13 +15,22 @@ export async function signup(userData) {
     throw new Error("Passwords do not match");
   }
 
+
   // Check if username or email already exists
-  const existingUser = await db.get("SELECT * FROM Users WHERE username = ? OR email = ?", [username, email]);
+  const existingUserName = await db.get("SELECT * FROM Users WHERE username = ? ", [username]);
   
-  if (existingUser) {
-    throw new Error("Username or email already taken"); 
+  if (existingUserName) {
+    throw new Error("Username already taken"); 
     
   } 
+
+  const existingEmail = await db.get("SELECT * FROM Users WHERE email = ?", [email]);
+  
+  if (existingEmail) {
+    throw new Error("Email already taken");
+    
+  } 
+
 
   // Hash and salt the password
   const hashedPassword = await bcrypt.hash(password, saltRounds);

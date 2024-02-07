@@ -26,8 +26,10 @@ router.post("/", async (req, res) => {
   } catch (error) {
     if (error.message === 'Passwords do not match') {
       res.status(400).json({ error: 'password_mismatch' });
-    } else if (error.message === 'Username or email already taken') {
-      res.status(400).json({ error: 'username_or_email_taken' });
+    }else if(error.message === "Username already taken") {
+      res.status(400).json({ error: 'username_taken' }); 
+    } else if (error.message === "Email already taken") {
+      res.status(400).json({ error: 'email_taken' });
     } else {
       res.status(500).json({ error: 'signup_fail' });
     }

@@ -110,37 +110,28 @@ export async function getArticles() {
 
 // }
 
-export async function insertArticle(articleData){
-  const {article_content , article_title , author_username} = articleData;
- 
-  const db = await getDatabase();
+export async function insertArticle(articleData, res) {
+  const { article_content, article_title, author_username } = articleData;
 
- await db.get('SELECT id FROM Users WHERE username = ?', [author_username], (err, row) => {
-  if (err) {
-      return res.status(500).json({ error: err.message });
-  }
+  getDatabase().then(async (db) => {
+    const row = await db.get('SELECT id FROM Users WHERE username = ?', [author_username]);
 
-  if (!row) {
+    if (!row) {
       return res.status(404).json({ error: 'Author not found' });
-  }
+    }
 
-  const author_id = row.id;
+    const author_id = row.id;
 
-  // Insert the new article into the Articles table and retrieve author_name dynamically
-  db.run(
+    // Insert the new article into the Articles table and retrieve author_name dynamically
+    db.run(
       `INSERT INTO Articles (article_content, article_title, author_id, author_name) 
-       SELECT ?, ?, u.username, ?, ?, ?, ?
+       SELECT ?, ?, u.id, u.username
        FROM Users u 
-       WHERE u.username = ?`,
+       WHERE u.id = ? and u.username = ?`,
       [article_content, article_title, author_id, author_username],
-      function (err) {
-          if (err) {
-              return res.status(500).json({ error: err.message });
-          }
-          res.status(201).json({ message: 'Article created successfully', article_id: this.lastID });
-      }
-  );
-});
+     
+    );
+  })
 }
 
 
