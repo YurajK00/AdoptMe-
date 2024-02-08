@@ -15,8 +15,6 @@ export const ARTICLE_URL = `${BASE_URL}/articles`;
 
 export const POST_URL = `${BASE_URL}/articles/article`;
 
-
-
 export const SIGNUP_URL = `${BASE_URL}/signup`;
 
 export const USERPROFILE_URL = `${BASE_URL}/userprofile`;
@@ -24,5 +22,11 @@ export const USERPROFILE_URL = `${BASE_URL}/userprofile`;
 export const GETARTICLE_URL = `${BASE_URL}/articles/link`;
 
 export const PATCH_URL = `${BASE_URL}/articles`;
+
+//----------------------------------------------------------------------------------------------------
+
+export const COMMENT_URL = `${BASE_URL}/comments`;
+
+
 
 

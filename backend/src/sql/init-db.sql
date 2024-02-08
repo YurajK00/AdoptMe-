@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Users (
 
 -- Insert sample data into the Users table
 INSERT INTO Users ( username, firstName, lastName, email, password , confirmedPassword,birthday,Introduction, profilePicture) VALUES
-    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', 'nono','nono' , '1990-01-20', 'Hello I am Echo', '/src/lib/image/defaultPP-cat.png'),
+    ( 'Echo', 'Echo', 'Martinez', 'echo@gmail.com', '$2a$10$we.xr5S.l/Ralx0FiGgKoOe62wdwOsmkOBc1vlGN60D.a.7wTplc2','$2a$10$we.xr5S.l/Ralx0FiGgKoOe62wdwOsmkOBc1vlGN60D.a.7wTplc2' , '1990-01-20', 'Hello I am Echo', '/src/lib/image/defaultPP-cat.png'),
     ( 'Yuraj', 'Yuraj', 'Kharche','yuraj@gmail.com', 'lolo','lolo','1990-01-20','Hello I am Yuraj','/src/lib/image/defaultPP-dog.png' ),
     ( 'Billy', 'Billy', 'TheButcher','billy@gmail.com', 'yoyo', 'yoyo','1990-01-20','Hello I am Billy','/src/lib/image/defaultPP-duck.png'),
     ('Natalia', 'Natalia' , 'Sharp' , 'natalia@gmail.com','momo','momo','1990-01-20','Hello I am Natalia' ,'/src/lib/image/defaultPP-hamster.png');
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Articles (
     article_content TEXT NOT NULL,
     article_title TEXT NOT NULL,
     author_id INTEGER ,
-    author_name VARCHAR(255),
+    author_name TEXT NOT NULL,
     likes INTEGER,
     dislikes INTEGER,
     date_published DATE,
@@ -110,19 +110,38 @@ INSERT INTO Articles (article_content, article_title, author_name, author_id, li
 DROP TABLE IF EXISTS comments;
 CREATE TABLE comments (
     comment_id INTEGER NOT NULL PRIMARY KEY,
-    article_id INTEGER NOT NULL,
-    comment_content VARCHAR(249) NOT NULL,
-    commentor_id INTEGER NOT NULL,
+    article_id INTEGER, 
+    comment_content TEXT,
+    commentor_id INTEGER,
     likes INTEGER,
     dislikes INTEGER,
-    date_posted VARCHAR(50) NOT NULL,
+    date_posted VARCHAR(50),
     nestedComment_content VARCHAR(249),
-    nestedComment_id INTEGER,
-    FOREIGN KEY (commentor_id) REFERENCES users(id)
-);
+    nestedComment_id INTEGER
+
+  
+    );
 
 
 INSERT INTO comments (article_id, comment_content, commentor_id, likes, dislikes, date_posted, nestedComment_content, nestedComment_id) VALUES
     (1,'I love the rabbit', 1, 23, 0, '2001-03-23', 'Me, too!', 2),
     (2,'Such a cute turtle!', 1, 219, 39, '04/03/2024', 'Are you serious?', 21);
+
+
+
+
+-- Drop the table if it exists
+DROP TABLE IF EXISTS likes;
+
+-- Create the likes table
+CREATE TABLE likes (
+    like_id INTEGER NOT NULL PRIMARY KEY , -- Assuming SQLite, adjust for other databases\
+    article_id Integer,
+    likes INTEGER DEFAULT 0,
+    dislikes INTEGER DEFAULT 0,
+    FOREIGN KEY(article_id) REFERENCES Articles(article_id)
+);
+
+-- Insert initial values
+
 

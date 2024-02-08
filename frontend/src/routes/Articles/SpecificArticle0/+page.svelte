@@ -8,5 +8,5 @@
   <title>Adopt me</title>
 </svelte:head>
 
-<ArticleDemo />
+<ArticleDemo data = {data.user} />
 

@@ -6,6 +6,9 @@ const router = express.Router();
 import articleRoutes from "./api-articles.js";
 router.use("/articles", articleRoutes)
 
+import likeRoutes from "./api-likes.js";
+router.use("/likes", likeRoutes)
+
 
 import insertarticleRoutes from "./api-articles.js";
 router.use("/articles",insertarticleRoutes)
@@ -23,9 +26,13 @@ router.use("/auth", authRoutes);
 
 import userRoutes from "./api-users.js";
 router.use("/users", userRoutes);
+//------------------------------------------------------------------------------------
 
 import comments from "./api-comments.js";
 router.use("/comments", comments);
+
+//----------------------------------------------------------------------------------------
+
 
 import singupusersRoutes from "./api-signup.js";
 router.use("/signup" , singupusersRoutes);

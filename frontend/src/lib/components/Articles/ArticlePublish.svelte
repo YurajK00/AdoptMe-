@@ -6,15 +6,13 @@ import Editor from '@tinymce/tinymce-svelte';
   export let data;
 let article_title = "";
 let article_content = "";
-let username1 = data.username;
-let username = username1
+let username = data.username;
 let likes ;
 let dislikes;
 let date_published;
 let image_path;
 
 
-// console.log(typeof (username1));
 let error = false;
 let success = false;
 
@@ -31,18 +29,14 @@ let success = false;
     success = false;
 
     try{
-    
+     console.log({ article_title, article_content , username , likes, dislikes, date_published, image_path})
       const response = await fetch(POST_URL, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published,image_path})
-      
+        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published, image_path})
       });
-      console.log(username)
-      console.log(article_title)
-      console.log(typeof (article_title));
-      console.log(typeof (username));
+
 
     if (!response.ok){
       const errorMessage = await response.json();

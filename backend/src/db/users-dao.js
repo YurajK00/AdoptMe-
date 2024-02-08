@@ -84,33 +84,6 @@ export async function getArticles() {
 
 //------------------------------------------------------------------------------------------------------------------
 
-//Publish New Article
-
-// }
-
-// export async function insertArticle(articleData, res) {
-//   const { article_content, article_title, author_name } = articleData;
-
-//   getDatabase().then(async (db) => {
-//     const row = await db.get('SELECT id FROM Users WHERE username = ?', [author_name]);
-
-//     if (!row) {
-//       return res.status(404).json({ error: 'Author not found' });
-//     }
-
-//     const author_id = row[].id;
-
-//     // Insert the new article into the Articles table and retrieve author_name dynamically
-//     db.run(
-//       `INSERT INTO Articles (article_content, article_title, author_id, author_name) 
-//        SELECT ?, ?, u.id, u.username
-//        FROM Users u 
-//        WHERE u.id = ? and u.username = ?`,
-//       [article_content, article_title, author_id, author_name],
-     
-//     );
-//   })
-// }
 
 export async function insertArticle(articleData) {
   console.log("Function call to addComment...");
@@ -122,10 +95,10 @@ export async function insertArticle(articleData) {
   const authorQuery = "SELECT username FROM Users WHERE username = ?";
   const authorResult = await db.get(authorQuery, [username]);
 
-  const author_name = authorResult;
+  const author_name = authorResult.username;
 
 
-  const sql = "INSERT INTO Articles (article_content, article_title, author_name ,date_published , likes, dislikes) VALUES (?, ?,?, date('now') ,0 ,0)";
+  const sql = "INSERT INTO Articles (article_content, article_title, author_name ,date_published , likes, dislikes) VALUES (?, ?, ?, date('now') , 0 , 0)";
   const values = [article_content, article_title, author_name, likes,dislikes, date_published];
 
   try {

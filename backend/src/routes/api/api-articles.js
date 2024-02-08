@@ -6,6 +6,7 @@ import { getArticleid } from "../../db/getArticlelink.js";
 import { patchLikes } from "../../db/getArticlelink.js";
 
 
+
 const router = express.Router();
 
 
@@ -48,6 +49,7 @@ const router = express.Router();
         res.status(500).json({ error: 'Failed to add article' });
     }
   });
+  
 
 
 router.get("/", async (req, res) => {
@@ -139,8 +141,10 @@ let article_id = req.params.id;
             return res.sendStatus(422);
           }
         });
-        
-        
+
+
+
+ 
 
 
       

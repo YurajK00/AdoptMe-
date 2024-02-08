@@ -62,6 +62,26 @@ export async function getArticlelink(article_id) {
     return dbResult.changes > 0;
   }
 
-
+//   export async function insertLikes(likeData) {
+//     console.log("Function call to addComment...");
+//     const db = await getDatabase();
   
+//     const { likes, dislikes } = likeData;
+  
+//     const sql = "INSERT INTO ARTICLES(likes, dislikes) VALUES (?, ?)";
+//     const values = [likes, dislikes];
+  
+//     try {
+//         const result = await db.run(sql, values);
+//         console.log("Likes added:", result);
+//         return result.lastID;
+//     } catch (error) {
+//         console.error("Error adding likes:", error);
+//         throw error;
+//     }
+// }
+
+
+ 
+
 

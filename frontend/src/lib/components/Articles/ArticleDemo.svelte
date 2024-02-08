@@ -1,6 +1,10 @@
 <script>
   import {onMount} from 'svelte';
-  let article = {
+  import { COMMENT_URL } from "$lib/js/api-urls.js";
+  import { invalidate } from "$app/navigation";
+  export let data;
+
+let article = {
     username: '',
     commentDate:'',
     headerPhoto: '',
@@ -10,7 +14,78 @@
     content: ''
   };
 
-  //To show or hide comments
+//FETCH A COMMENT---------------------------------------------------------------------------------------------------------------------------
+
+
+async function fetchComments() {
+
+ 
+    try {
+      const response = await fetch(`${COMMENT_URL}/${id}`);
+        
+        if (response.ok) {
+          commentdata = await response.json();
+
+      } else {
+        throw new Error('Failed to fetch comments')
+      }
+        
+        // Update the comments array with the fetched comments
+
+    } catch (error) {
+        console.error('Error fetching comments:', error.message);
+    }
+
+    
+}
+
+//CREATE A COMMENT---------------------------------------------------------------------------------------------------------------------------
+  
+
+
+// async function createComment() {
+// let success = false;
+
+//  try{
+//       const response = await fetch(COMMENT_URL, {
+//         method: "POST",
+//         credentials: "include",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({comment_content:comment_content})
+//       });
+//       if (!response.ok){
+//       const errorMessage = await response.json();
+//       throw new Error(errorMessage.error);
+      
+//     }
+   
+//    await fetchComments();
+//    addComment(e);
+
+//     success = true;
+// }catch (error) {
+//             console.error('Error creating article:', error.message);
+//             alert('Error creating article: ' + error.message);
+// }
+// }
+
+
+ //FETCH THE COMPONENTS WHEN THE PAGE LOADS----------------------------------------------------------------------------------------------------------------------------
+let commentdata = [];
+let id = data.id;
+let comment_content ="";
+
+ onMount(async () => {
+
+  await addComment();
+  invalidate(COMMENT_URL);
+
+
+
+  });
+
+//-----------------------------------------------------------------------------------------------------------------------------
+  //To show or hide comments``````````
   let showComments = true;
 
   function toggleComments() {
@@ -46,26 +121,46 @@
 
   let comments = [];
 
-  function addComment(event) {
-    event.preventDefault();
+  async function addComment() {
+
+    try{
+      const response = await fetch(COMMENT_URL, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({comment_content:comment_content})
+      });
+      if (!response.ok){
+      const errorMessage = await response.json();
+      throw new Error(errorMessage.error);
+    }
+  
+}catch (error) {
+            console.error('Error creating article:', error.message);
+            alert('Error creating article: ' + error.message);
+}
+await fetchComments();
+
+
+    
     const commentInput = document.getElementById('comment-input');
     const commentText = commentInput.value.trim();
     if (commentText !== '') {
       const comment = {
-        username: article.username,
+        username: data.username,
         commentDate: new Date().toLocaleDateString(),
-        text: commentText
+        text: comment_content
       }
       comments = [...comments, comment];
       commentInput.value = '';
     }
   }
 
-  onMount(() => {
-    // Scroll to the bottom of the page when a new comment is added
-    const commentList = document.getElementById('comment-list');
-    commentList.scrollTop = commentList.scrollHeight;
-  });
+  // onMount(() => {
+  //   // Scroll to the bottom of the page when a new comment is added
+  //   const commentList = document.getElementById('comment-list');
+  //   commentList.scrollTop = commentList.scrollHeight;
+  // });
 </script>
 
 
@@ -91,12 +186,17 @@
       <hr>
       <form on:submit={addComment}>
         <label for="comment-input">Post Comments:</label>
-        <textarea id="comment-input" rows="4"></textarea>
+        <textarea id="comment-input" rows="4" bind:value= {comment_content}></textarea>
         <button type="submit">Submit</button>
       </form>
       <hr>
+<!---TO FETCH COMMENTS------------------------------------------------------------->
 
-      <button id="show-hide-comments" on:click={toggleComments}>
+
+</div>
+<!-------------------------------------------------------------------------->
+  <div>    
+<button id="show-hide-comments" on:click={toggleComments}>
         {#if showComments}
           Hide Comments
         {:else}
@@ -106,7 +206,8 @@
 
       {#if showComments}
       <ul id="comment-list">
-        {#each comments as comment}
+        {#each comments as comments}
+        <!-- {#each commentdata as  comments} -->
           <li>
 
             <div id="commentor-container">
@@ -115,8 +216,8 @@
             
             
             <div id="commentor-info">
-            <p id="commentor-name">User : <u>{comment.username}</u> - {comment.commentDate}</p>
-            <p id="comment-content">{comment.text}</p>
+            <p id="commentor-name">User : <u>{comments.username}</u> - {comments.commentDate}</p>
+            <p id="comment-content">{comments.text}</p>
             </div>
 
             <!-- TO DO: Add nest comment -->
