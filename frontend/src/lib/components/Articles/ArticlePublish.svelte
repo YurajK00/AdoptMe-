@@ -1,18 +1,18 @@
 <script>
  
-  import { POST_URL } from "$lib/js/api-urls.js";
-  
-  
-export let data;
+import { POST_URL } from "$lib/js/api-urls.js";
+import Editor from '@tinymce/tinymce-svelte';
+
+  export let data;
 let article_title = "";
 let article_content = "";
-let username1 = data.username;
-let username = username1
+let username = data.username;
 let likes ;
 let dislikes;
 let date_published;
+let image_path;
 
-// console.log(typeof (username1));
+
 let error = false;
 let success = false;
 
@@ -29,18 +29,14 @@ let success = false;
     success = false;
 
     try{
-    
+     console.log({ article_title, article_content , username , likes, dislikes, date_published, image_path})
       const response = await fetch(POST_URL, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published})
-      
+        body: JSON.stringify({ article_title, article_content , username , likes, dislikes, date_published, image_path})
       });
-      console.log(username)
-      console.log(article_title)
-      console.log(typeof (article_title));
-      console.log(typeof (username));
+
 
     if (!response.ok){
       const errorMessage = await response.json();
@@ -60,10 +56,24 @@ let success = false;
 
 }
 
+function handleFileChange(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageDataUrl = e.target.result;
+        // Concatenate the image data URL to the article content
+        article_content += `<img src="${imageDataUrl}" alt="Uploaded image">`;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
-    
 
-  </script>
+  
+</script>
+
+
 
 <form on:submit|preventDefault={createArticle}>
 
@@ -75,14 +85,25 @@ let success = false;
     </div>
 
     <div id="content-upload">
-    <div>
-      <p> Content</p>
-      <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required></textarea>
-    </div>
+    <div >
+      <p> 
+       Content
+      </p>
+      <div class = "AC">
+      <!-- <textarea id="article_content" bind:value={article_content} rows="4" cols="40" maxlength="1000" required
+      > </textarea> --> 
+      
+
+                                                     
+      <Editor   id="article_content" 
+      apiKey="47j9ca2i2bj3u4tecumr45esqktc9oooh23le1byo4z4lzqt" bind:value={article_content} />
+     
+      </div>
+      </div>
 
     <div class="fileinput-button">
       <span id="text">Add image</span>
-      <input type="file" id="content-image" name="content-image" accept="image/*"/>
+      <input type="file" id="content-image" name="content-image" accept="image/*" onchange={handleFileChange}/>
     </div>
   </div>
 
@@ -122,6 +143,20 @@ let success = false;
   .success {
     color: darkgreen;
     background-color: lightgreen;
+  }
+  .AC{
+    position: relative;
+  top: 30px;
+  left: 350px;
+  width: 800px;
+  height: 500px;
+  font-size: 20px;
+  color:black;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 5px;
+  box-shadow: 1px 1px 2px #ccc;
   }
 
 </style>

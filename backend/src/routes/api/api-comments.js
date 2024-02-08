@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  console.log("Article id: " + req.query.article_id);
+router.get("/:id", async (req, res) => {
+  console.log("Article id: " + req.params.id);
   try {
-    const comments = await getcomments(req.query.article_id);
+    const comments = await getcomments(req.params.id);
     console.log("...got comments...");
     console.log(comments);
-    res.status(200).json({ comments });
+    res.status(200).json({ comments});
   } catch (error) {
     console.error("Error fetching comments:", error);
     res.status(500).json({ error: "Failed to fetch comments" });

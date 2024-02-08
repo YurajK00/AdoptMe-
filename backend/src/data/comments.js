@@ -1,14 +1,14 @@
 import { getDatabase } from "../db/database.js";
 
 
-export async function getcomments(article_id){
+export async function getcomments(comment_id){
   console.log("Function call to getcomments...");
   const db  = await getDatabase();
 
-  const sql ="SELECT * FROM comments WHERE article_id = ?";
-  const dbresult = await db.get(sql, article_id)
+  const sql ="SELECT * FROM comments WHERE comment_id = ?";
+  const dbresult = await db.get(sql, comment_id)
   console.log(dbresult);
-  return dbresult;
+  return dbresult.comment_content;
 }
 
 export async function addcomments(commentData) {
