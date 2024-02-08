@@ -1,13 +1,12 @@
 # Final project - A personal blogging system &ndash - Amber Axolotls
 
-![](./frontend//static//Amber%20Axolotls.png)
+![](./frontend//src//lib//image//scroll-4.png)
 
-This repository contains a starting point for your team's final project.
+The website which enables to post articles of adopting any animals across the Auckland
 
-Your team should update this README to include the information required, as presented in the project handout available on Canvas.
+Team Younglings
 
-Hello Amber Axolotls group, your README was edited by Tyne! Hi!
+Members - Billy, Echo, Yuraj, Natalia
 
-Another change from Tyne!
 
-Change on Tyne's second feature.
+Sample Username and Password for the new user - {username : EchoMa, password : welcome}
