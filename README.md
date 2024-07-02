@@ -46,7 +46,7 @@ This repository contains a full-stack web development project that showcases a c
   <li> Open the directed browser and navigate to `<b>http://localhost:3000</b>` to view the application.</li>
     </ol>
     
-<h3 align = "left"> Contributords: </h3>
+<h3 align = "left"> Contributors: </h3>
 <p>
    Echo(yxx10101), Natalia(Brideget), Billy(ZedZed34)
   
